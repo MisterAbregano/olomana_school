@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Mr. Abregano</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQoAAAC+CAMAAAD6ObEsAAABAlBMVEX///8ASBQAShQAPQAARAAAPwAAOwAANQAAQQAASREAPgAANwAAShMASA4AAAAAMgAALwAALADx9PLHz8ibrJ4AKAATUCBTdFi3wrgAJAAARgY9ZUMAIgDn6+gAGwAAKgBlgWkjWC0AHgDi6eRwiXQAFgDY3tkAEQDAysJbemAADADU3teLn46ktaiVp5iDmIhrh3AuWTc8ZEJ4kH5Jak8ORRq2yLusvbA0WzohVSpddWEgTScoTC7C0sfR2NJMalELNhIoSis4Vj2DoIqElYgVQxooUzB2ln8xVzd1h3hGXkple2qxurJFZEmbp55piG9Mc1RahmeYs6AbXS11gniUoJWgR5PTAAAWM0lEQVR4nO1caWOaStseQQFFRAdUXFCTMQTC4oJKEgOeZmsSY5...
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: left center;
+    }
+    .container {
+      width: 50%;
+      padding: 2em;
+      background: rgba(255, 255, 255, 0.9);
+      text-align: right;
+      border-left: 4px solid black;
+    }
+    input[type="password"] {
+      width: 80%;
+      padding: 0.5em;
+      font-size: 1em;
+    }
+    button {
+      padding: 0.5em 1em;
+      font-size: 1em;
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    #error {
+      color: red;
+      margin-top: 10px;
+    }
+    iframe {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Mr. Abregano’s Classroom Portal</h1>
+    <p>Please enter the password to continue:</p>
+    <input type="password" id="password" placeholder="Enter password" />
+    <button onclick="checkPassword()">Submit</button>
+    <p id="error"></p>
+  </div>
+
+  <iframe id="ytplayer" width="0" height="0" 
+    src="https://www.youtube.com/embed/HOK74BGCYXM?autoplay=1&loop=1&playlist=HOK74BGCYXM"
+    frameborder="0"
+    allow="autoplay"
+  ></iframe>
+
+  <script>
+    function checkPassword() {
+      const password = document.getElementById('password').value;
+      if (password === 'aloha123') {
+        document.querySelector('.container').style.display = 'none';
+        document.getElementById('ytplayer').style.display = 'block';
+      } else {
+        document.getElementById('error').innerText = 'Incorrect password. Please try again.';
+      }
+    }
+  </script>
+</body>
+</html>
