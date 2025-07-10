@@ -1,140 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Mr. R Abregano | Classroom</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Mr. Abregano’s Classroom – Resources</title>
   <style>
-    html, body {
-      margin: 0; padding: 0; min-height: 100vh;
-      background: #f5f0e6;
+    body {
       font-family: Georgia, serif;
+      margin: 0; padding: 2em;
+      background: #f5f0e6;
       color: #222;
-    }
-    /* tiled logo at 50% opacity */
-    body::before {
-      content: "";
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: url('https://www.olomanaschoolhi.k12.hi.us/pics/OLOS_LOGO.gif')
-                  center top / 200px repeat fixed;
-      opacity: 0.5;
-      pointer-events: none;
-      z-index: -1;
     }
     .container {
       max-width: 960px;
-      margin: 2em auto;
-      background: rgba(255,255,255,0.95);
-      padding: 2em;
-      border-radius: 12px;
-      box-shadow: 0 0 12px rgba(0,0,0,0.2);
+      margin: auto;
     }
-    h1, h2 { color: #004d40; margin-top: 0; }
-    section { margin: 2em 0; }
-    a.button-link {
-      display: inline-block; padding: 8px 16px;
-      background: #004d40; color: #fff; text-decoration: none; border-radius: 6px;
+    h2 {
+      margin-bottom: 0.5em;
+      font-size: 1.5em;
     }
-    a.button-link:hover { background: #00695c; }
-    .instagram-frame {
-      width: 100%; max-width: 400px; height: 300px;
-      border: none; margin-top: 1em; border-radius: 8px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    .section {
+      margin: 2em 0;
     }
-    .zoom-link img {
-      max-width: 150px; margin: 1em 0; cursor: pointer;
+    .button-link {
+      display: inline-block;
+      margin-top: 0.5em;
+      padding: 0.5em 1em;
+      background-color: #004d40;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .button-link:hover {
+      background-color: #00695c;
+    }
+
+    /* Instagram gradient border */
+    .instagram {
+      border: 3px solid;
+      border-image: linear-gradient(
+        to right,
+        #f09433 0%, 
+        #e6683c 25%, 
+        #dc2743 50%, 
+        #cc2366 75%, 
+        #bc1888 100%
+      ) 1;
+      border-radius: 8px;
+      padding: 1em;
     }
   </style>
 </head>
 <body>
-  <script>
-    if (sessionStorage.getItem('auth') !== 'true') {
-      window.location.href = 'index.html';
-    }
-  </script>
-
   <div class="container">
-    <h1>Mr. R Abregano</h1>
-    <p>Welcome to our classroom community page—a safe hub for students, parents, and guardians.</p>
 
-    <section>
-  <h2>📹 Zoom Conference Hub</h2>
-  <p><em>By appointment only</em></p>
-
-  <!-- Zoom setup link -->
-  <div class="zoom-link">
-    <a href="https://zoom.us" target="_blank">
-      <img
-        src="https://thumbs.dreamstime.com/b/school-classroom-interactive-smart-board-laptop-projector-modern-learning-experience-school-classroom-272630755.jpg"
-        alt="Modern high school classroom with smart board and collaborative lab tables"
-        style="display:block; width:100%; max-width:600px; margin:1em auto; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1); cursor:pointer;">
-    </a>
-  </div>
-
-  <!-- Actual Zoom embed (you can replace the empty src with your meeting link) -->
-  <iframe
-    src=""
-    width="100%"
-    height="250"
-    title="Zoom Meeting"
-    style="border:1px solid #ccc; border-radius:6px;">
-  </iframe>
-
-  <p><small>
-    Schedule a Parent/Teacher/Guardian Meeting. Note: 30-minute online meeting, phone call, or in-person.<br>
-    Email to request: <a href="mailto:ryan.abregano@k12.hi.us">ryan.abregano@k12.hi.us</a>
-  </small></p>
-</section>
-
-
-    <section>
-      <h2>🏫 Google Classroom Access</h2>
-      <p>Email <a href="mailto:ryan.abregano@k12.hi.us"><strong>Mr. A’s</strong></a> to request your invite code.</p>
-    </section>
-
-    <section>
-      <h2>🧾 Infinite Campus</h2>
-      <a class="button-link" href="https://www.infinitecampus.com/audience/parents-students" target="_blank">
-        Access Portal
+    <!-- 1-on-1 Meeting -->
+    <div class="section">
+      <h2>👥 Schedule a Parent/Teacher/Guardian Meeting</h2>
+      <p>Note: 30-minute online meeting, phone call, or in-person.</p>
+      <a href="https://calendar.app.google/vAVS96g6UWSLZ58F9" target="_blank" class="button-link">
+        📅 Book Now
       </a>
-    </section>
+    </div>
 
-    <section>
-      <h2>📸 Instagram</h2>
-      <iframe class="instagram-frame" src="https://www.instagram.com/olomanaschool/embed"></iframe>
-    </section>
+    <!-- Zoom Hub -->
+    <div class="section">
+      <h2>📹 Zoom Conference Hub</h2>
+      <p><em>By appointment only</em></p>
+      <iframe
+        src=""
+        title="Zoom Embed Placeholder"
+        style="width:100%;max-width:400px;height:300px;border:none;">
+      </iframe>
+      <p style="font-size:0.9em;">* Parents or guardians of Olomana students may request an appointment via email.</p>
+    </div>
 
-    <section>
-      <h2>📷 Na Halia aloha – student showcase gallery</h2>
-      <p>Gallery coming soon—students may submit photos for approval.</p>
-    </section>
+    <!-- Google Classroom -->
+    <div class="section">
+      <h2>🏫 Google Classroom Access</h2>
+      <p>If you are a student or guardian of a student in Mr. A’s class, please email <strong>Mr. A’s</strong> to request access: <a href="mailto:ryan.abregano@k12.hi.us">ryan.abregano@k12.hi.us</a>.</p>
+    </div>
+
+    <!-- Infinite Campus -->
+    <div class="section">
+      <h2>⚛️ Infinite Campus Portal</h2>
+      <p>Access grades, attendance, and report cards through the DOE’s portal.</p>
+      <a href="https://www.infinitecampus.com/audience/parents-students" target="_blank" class="button-link">
+        🔗 Infinite Campus Login
+      </a>
+    </div>
+
+    <!-- Instagram Feed -->
+    <div class="section instagram">
+      <h2>📸 Instagram Feed</h2>
+      <iframe
+        src="https://www.instagram.com/olomanaschool/embed"
+        title="Olomana Instagram"
+        style="width:100%;height:500px;border:none;overflow:hidden;">
+      </iframe>
+    </div>
+
   </div>
-
-  <!-- Hidden YouTube player for Kauhale O Kamapuaʻa -->
-  <div id="yt"></div>
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    function onYouTubeIframeAPIReady() {
-      new YT.Player('yt', {
-        height: '0', width: '0', videoId: 'HOK74BGCYXM',
-        playerVars: {
-          autoplay: 1,
-          loop: 1,
-          playlist: 'HOK74BGCYXM',
-          controls: 0,
-          modestbranding: 1,
-          rel: 0,
-          start: 0
-        },
-        events: {
-          onReady: e => {
-            e.target.setVolume(10);
-            e.target.playVideo();
-          }
-        }
-      });
-    }
-  </script>
 </body>
 </html>
