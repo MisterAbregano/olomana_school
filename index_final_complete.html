@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mr. R Abregano's Classroom</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('b561ff88-6fd3-40c2-bdd0-0a2335499b6e.png');
+      background-repeat: no-repeat;
+      background-position: right top;
+      background-size: cover;
+      background-color: #f5f0e6;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: black;
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      right: 3%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px;
+      max-width: 420px;
+      border-radius: 12px;
+      text-align: right;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      margin: 12px 0;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+      background-color: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+    #music {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Mr. Abregano's Classroom</h1>
+    <p>Please enter the password to continue:</p>
+    <input type="password" id="password" placeholder="Enter password..." />
+    <button onclick="validatePassword()">Submit</button>
+    <p class="error" id="error-msg"></p>
+  </div>
+
+  <iframe id="music" width="0" height="0"
+    src="https://www.youtube.com/embed/HOK74BGCYXM?autoplay=1&loop=1&playlist=HOK74BGCYXM&start=0"
+    frameborder="0"
+    allow="autoplay"
+  ></iframe>
+
+  <script>
+    function validatePassword() {
+      const input = document.getElementById("password").value;
+      const errorMsg = document.getElementById("error-msg");
+      const music = document.getElementById("music");
+
+      if (input === "@kamapuaa25") {
+        errorMsg.textContent = "";
+        music.style.display = "block";
+        setTimeout(() => {
+          window.location.href = "back(1).html";
+        }, 500); // short delay for autoplay
+      } else {
+        errorMsg.innerHTML = `Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.`;
+      }
+    }
+  </script>
+</body>
+</html>
