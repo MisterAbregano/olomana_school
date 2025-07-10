@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Welina Mai Mr. Abregano’s Classroom</title>
+  <title>Welina Mai Kakou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
     html, body {
       margin: 0; padding: 0;
       height: 100%; overflow: hidden;
-      display: flex; justify-content: center; 
+      display: flex; justify-content: center;
       align-items: flex-end;      /* panel at bottom */
       padding-bottom: 5vh;        /* small gap from bottom */
       font-family: Georgia, serif;
-      background: #f5f0e6 
+      background: #f5f0e6
         url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png')
         center top / contain no-repeat fixed;
     }
@@ -33,10 +33,13 @@
       text-align: center; position: relative;
       z-index: 1;
     }
-    h1 {
-      margin: 0 0 1em;
-      font-size: 1.5em;
+    h1, h2 {
+      margin: 0;
+      line-height: 1.2;
+      font-family: Georgia, serif;
     }
+    h1 { font-size: 1.8em; margin-bottom: 0.3em; }
+    h2 { font-size: 1.4em; margin-bottom: 1em; }
     input[type="password"], button {
       width: 100%; padding: 12px; margin: 0.5em 0;
       box-sizing: border-box; font-size: 1em;
@@ -52,7 +55,8 @@
 </head>
 <body>
   <div id="login">
-    <h1>Welina Mai Mr. Abregano’s Classroom</h1>
+    <h1>Welina Mai Kakou</h1>
+    <h2>Mr. Abregano’s Classroom</h2>
     <p>Please enter the password to continue:</p>
     <input type="password" id="pw" placeholder="Password…">
     <button onclick="check()">Submit</button>
@@ -70,12 +74,12 @@
       });
     }
     function check(){
-      const p = document.getElementById('pw').value,
-            e = document.getElementById('err');
+      const p = document.getElementById('pw').value;
+      const e = document.getElementById('err');
       if(p === '@kamapuaa25'){
         e.textContent = '';
         document.getElementById('login').style.display = 'none';
-        // reveal your content panel here
+        // reveal your content panel here…
       } else {
         e.innerHTML = 'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
