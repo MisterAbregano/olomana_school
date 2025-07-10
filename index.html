@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <title>Welina Mai Kākou</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <style>
-    /*–– Leaf-pattern on left & right edges only ––*/
+    /* Leaf‐pattern panels on left & right edges */
     html, body {
       margin: 0; padding: 0; height: 100%; overflow: hidden;
       background-color: #f5f0e6;
@@ -19,32 +19,30 @@
       font-family: Georgia, serif;
       position: relative;
     }
-    /* light overlay so content remains legible */
     body::after {
       content: ""; position: fixed; top: 0; left: 0;
       width: 100%; height: 100%; background: #f5f0e6;
       opacity: 0.9; pointer-events: none; z-index: -1;
     }
 
-    /*–– wrapper to stack logo + login card ––*/
+    /* Centered logo + login card */
     .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 100%;
-      padding-top: 60vh;    /* pushes content ~¾ down */
+      padding-top: 8vh;
       z-index: 1;
     }
-
-    /*–– logo now same width as the card ––*/
+    /* Smaller, centered logo */
     .logo {
-      width: 80%;
-      max-width: 360px;
+      width: 20%;
+      max-width: 200px;
       height: auto;
       margin-bottom: 1em;
     }
 
-    /*–– login card styling ––*/
+    /* Login card */
     #login {
       width: 80%;
       max-width: 360px;
@@ -58,6 +56,7 @@
       border-radius: 8px;
       margin-bottom: 8vh;
     }
+
     h1 { margin: 0 0 .5em; font-size: 1.8em; }
     h2 { margin: 0 0 1em;  font-size: 1.4em; }
 
@@ -71,17 +70,19 @@
       font-size: 1em; background: #000; color: #fff;
       border: none; cursor: pointer; border-radius: 4px;
     }
-    .error { color: red; font-size: .9em; margin-top: .5em; }
+    .error {
+      color: red; font-size: .9em; margin-top: .5em;
+    }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <!-- enlarged logo -->
+    <!-- centered small logo -->
     <img class="logo"
          src="https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png"
-         alt="Olomana School Razorback Logo">
+         alt="Olomana School Logo">
 
-    <!-- login card -->
+    <!-- centered login card -->
     <div id="login">
       <h1>Welina Mai Kākou</h1>
       <h2>Mr. Abregano’s Classroom</h2>
@@ -92,34 +93,34 @@
     </div>
   </div>
 
-  <!-- hidden YouTube player for Kauhale chant -->
+  <!-- hidden YouTube player -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     function onYouTubeIframeAPIReady() {
-      new YT.Player('yt', {
-        height: '0', width: '0', videoId: 'HOK74BGCYXM',
-        playerVars: {
+      new YT.Player('yt',{
+        height:'0', width:'0', videoId:'HOK74BGCYXM',
+        playerVars:{
           autoplay:1, loop:1, playlist:'HOK74BGCYXM',
           controls:0, modestbranding:1, rel:0, start:0
         },
-        events: { onReady: e => { e.target.setVolume(10); e.target.playVideo(); }}
+        events:{ onReady:e=>{ e.target.setVolume(10); e.target.playVideo(); }}
       });
     }
-    function check() {
+    function check(){
       const pw = document.getElementById('pw').value;
-      const err = document.getElementById('err');
-      if (pw === '@kamapuaa25') {
+      const err= document.getElementById('err');
+      if(pw==='@kamapuaa25'){
         sessionStorage.setItem('auth','true');
-        window.location.href = 'back.html';
+        window.location.href='back.html';
       } else {
-        err.innerHTML =
+        err.innerHTML=
           'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
     }
-    document.getElementById('submitBtn').addEventListener('click', check);
-    document.getElementById('pw').addEventListener('keypress', e => {
-      if (e.key === 'Enter') check();
+    document.getElementById('submitBtn').addEventListener('click',check);
+    document.getElementById('pw').addEventListener('keypress',e=>{
+      if(e.key==='Enter') check();
     });
   </script>
 </body>
