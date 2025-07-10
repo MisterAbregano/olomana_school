@@ -72,34 +72,31 @@
       display: none;
     }
 
-    /* Styling for the photo frame */
-    .photo-box {
-      display: block;
-      width: 100%;
-      height: 350px;
-      background-color: #fff;
-      border: 6px solid #004c00; /* green border */
-      border-radius: 20px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      position: relative;
-      background: url('https://www.example.com/your-photo.jpg') center/cover no-repeat; /* Insert your photo here */
-      background-size: cover;
-      margin-top: 20px;
+    /* Instagram box style */
+    .instagram-box {
+      border: 6px solid #6a5b3f;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(45deg, #ff5c8e, #ffce2f, #00c2e3);
+      background-size: 200% 200%;
+      animation: gradient 4s ease infinite;
     }
 
-    /* Text box for your bio */
-    .bio-text-box {
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: rgba(255, 255, 255, 0.8);
-      padding: 15px;
-      border-radius: 10px;
-      font-size: 1rem;
-      color: #333;
-      width: 80%;
-      text-align: center;
+    /* Animation for Instagram background */
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
   </style>
 </head>
@@ -124,20 +121,20 @@
     </p>
   </div>
 
-  <!-- Photo Box with Bio -->
+  <!-- Safehaven Gallery -->
   <div class="section">
-    <h2>🖼️ Photo Box</h2>
-    <p>This space showcases my biography. More details to come!</p>
+    <h2>📖 Safehaven Gallery</h2>
+    <p>A flipbook of student memories and stories.</p>
 
-    <!-- Photo box with your photo (replace the background image) -->
-    <div class="photo-box">
-      <div class="bio-text-box">
-        <h3>Ryan Abregano</h3>
-        <p>
-          I am a passionate cultural educator and practitioner of Native Hawaiian perspectives. Currently, I serve as an Educational Assistant III at Olomana School in Hawaii, supporting students with disabilities. My aim is to support students and help develop ways to generate income for cultural work, alongside my growing interest in coding, web development, and technology.
-        </p>
-      </div>
-    </div>
+    <!-- Clickable Pixelfed link image -->
+    <p>
+      <a href="https://pixelfed.org/" target="_blank">
+        <img 
+          src="https://pixelfed.org/favicons/android-chrome-192x192.png" 
+          alt="Visit Pixelfed" 
+          style="width:150px;display:block;margin:1em auto;border-radius:8px;box-shadow:0 0 8px rgba(0,0,0,0.1);" />
+      </a>
+    </p>
   </div>
 
   <!-- Hidden YouTube player for Kauhale chant -->
