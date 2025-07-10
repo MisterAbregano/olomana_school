@@ -11,26 +11,23 @@
       background:#f5f0e6 url('https://3.files.edl.io/8f50/22/04/13/193516-…630e.png') center top/contain no-repeat fixed;
       font-family:Georgia, serif;
     }
-    body::after {
-      content:""; position:fixed; top:0;left:0; width:100%;height:100%;
-      background:#f5f0e6; opacity:0.9; pointer-events:none; z-index:-1;
-    }
+    body::after { content:""; position:fixed;top:0;left:0;width:100%;height:100%;
+                  background:#f5f0e6;opacity:0.9;pointer-events:none;z-index:-1; }
     #login {
       width:90%; max-width:400px; padding:2em;
       background:rgba(255,255,255,0.95); text-align:center;
       border-radius:12px; box-shadow:0 0 15px rgba(0,0,0,0.2);
     }
-    h1 { margin:0 0 0.5em; font-size:1.8em; }
+    h1 { margin:0 0 .5em; font-size:1.8em; }
     h2 { margin:0 0 1em; font-size:1.4em; }
     input, button {
-      width:100%; padding:0.75em; margin:0.5em 0;
-      font-size:1em; box-sizing:border-box;
+      width:100%; padding:.75em; margin:.5em 0; font-size:1em;
+      box-sizing:border-box;
     }
     button {
-      background:#000; color:#fff; border:none; cursor:pointer;
-      border-radius:4px;
+      background:#000; color:#fff; border:none; cursor:pointer; border-radius:4px;
     }
-    .error { color:red; font-size:0.9em; }
+    .error { color:red; font-size:.9em; }
   </style>
 </head>
 <body>
@@ -47,22 +44,25 @@
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-    // Initialize audio on load
-    function onYouTubeIframeAPIReady(){
-      new YT.Player('yt',{
+    // Start the chant immediately (loop, low volume)
+    function onYouTubeIframeAPIReady() {
+      new YT.Player('yt', {
         height:'0', width:'0', videoId:'HOK74BGCYXM',
         playerVars:{autoplay:1,loop:1,playlist:'HOK74BGCYXM',controls:0,modestbranding:1,rel:0},
         events:{onReady:e=>{e.target.setVolume(10); e.target.playVideo();}}
       });
     }
-    function check(){
-      const p = document.getElementById('pw').value;
-      const e = document.getElementById('err');
-      if(p === '@kamapuaa25'){
-        // Redirect to protected page
+
+    function check() {
+      const pw = document.getElementById('pw').value;
+      const err = document.getElementById('err');
+      if (pw === '@kamapuaa25') {
+        // mark as authenticated
+        sessionStorage.setItem('auth', 'true');
+        // send to protected page
         window.location.href = 'back.html';
       } else {
-        e.innerHTML = 'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
+        err.innerHTML = 'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
     }
   </script>
