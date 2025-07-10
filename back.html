@@ -1,143 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Mr. Abregano’s Classroom – Resources</title>
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
+  <meta charset="UTF-8" />
+  <title>Olomana School - Student Gallery & Zoom Conference</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <style>
-    html, body {
-      margin: 0; padding: 0; height: 100%;
-      background: #f5f0e6;
+    /* Leaf-pattern panels on left & right edges */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      background-color: #f5f0e6;
+      background-image: url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png'),
+        url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png');
+      background-position: left center, right center;
+      background-repeat: repeat-y, repeat-y;
+      background-size: 0.5in auto, 0.5in auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
       font-family: Georgia, serif;
-      color: #222;
-    }
-    .container {
-      max-width: 960px;
-      margin: auto;
-      padding: 2em;
-    }
-    h2 { font-size: 1.5em; margin-bottom: .5em; }
-    .section { margin: 2em 0; }
-    .button-link {
-      display: inline-block; margin: .5em .5em .5em 0; padding: .5em 1em;
-      background: #004d40; color: #fff; text-decoration: none;
-      border-radius: 8px; font-weight: bold;
-    }
-    .button-link:hover { background: #00695c; }
-    .button-link.disabled { opacity: .6; pointer-events: none; }
-
-    /* Instagram and Pixelfed embed */
-    .instagram, .pixelfed {
-      border: 6px solid;
-      border-image: linear-gradient(to right, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) 1;
-      border-radius: 8px; padding: .5em; overflow: hidden;
-    }
-    .instagram iframe, .pixelfed iframe { width: 100%; height: 300px; border: none; }
-
-    /* Flipbook container */
-    #flipbook-container {
-      width: 100%; max-width: 600px; height: 400px;
-      margin: 2em auto; box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      position: relative;
     }
 
-    /* Gallery link styling */
-    .gallery-link {
-      margin-top: 1em;
-      font-size: 1em;
+    .section {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
     }
-    .gallery-link a {
-      color: #004d40;
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #333;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    a.button-link {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 5px;
       text-decoration: none;
-      font-weight: bold;
+      margin: 10px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
     }
-    .gallery-link a:hover {
-      text-decoration: underline;
+
+    a.button-link:hover {
+      background-color: #45a049;
+    }
+
+    .disabled {
+      background-color: #888;
+    }
+
+    #yt {
+      display: none;
+    }
+
+    /* Instagram box style */
+    .instagram-box {
+      border: 6px solid #6a5b3f;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+      background: linear-gradient(45deg, #ff5c8e, #ffce2f, #00c2e3);
+      background-size: 200% 200%;
+      animation: gradient 4s ease infinite;
+    }
+
+    /* Animation for Instagram background */
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
   </style>
 </head>
+
 <body>
+  <!-- Main content -->
+  <div class="section">
+    <h2>📹 Zoom Conference Hub</h2>
+    <p><em>By appointment only</em></p>
 
-  <div class="container">
-    <!-- Zoom Conference Hub -->
-    <div class="section">
-      <h2>📹 Zoom Conference Hub</h2>
-      <p><em>By appointment only</em></p>
-      <div class="zoom-buttons">
-        <a href="https://zoom.us/client/latest/ZoomInstaller.exe" target="_blank" class="button-link">
-          <i class="fa-solid fa-desktop"></i> Download Zoom (PC)
-        </a>
-        <a href="#" class="button-link" onclick="alert('Scan QR or install via app store')">
-          <i class="fa-solid fa-mobile-screen-button"></i> Get Zoom (Mobile)
-        </a>
-        <a href="#" class="button-link disabled">
-          <i class="fa-solid fa-calendar-alt"></i> Schedule
-        </a>
-      </div>
-    </div>
-
-    <!-- Google Classroom -->
-    <div class="section">
-      <h2>🏫 Google Classroom Access</h2>
-      <p>If you are a student or guardian in 
-        <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a>, please request access.</p>
-    </div>
-
-    <!-- Infinite Campus -->
-    <div class="section">
-      <h2>⚛️ Infinite Campus Portal</h2>
-      <p>Access grades, attendance, and report cards through the DOE’s portal.</p>
-      <a href="https://www.infinitecampus.com/audience/parents-students" target="_blank" class="button-link">
-        🔗 Infinite Campus Login
+    <!-- Interactive buttons -->
+    <p>
+      <a href="https://zoom.us/client/latest/ZoomInstaller.exe" target="_blank" class="button-link">
+        💻 Download Zoom (PC)
       </a>
-    </div>
+      <a href="#" class="button-link" onclick="document.getElementById('qrModal').style.display='block';return false;">
+        📱 Get Zoom (Mobile)
+      </a>
+      <a href="#" class="button-link disabled" aria-disabled="true">
+        📆 Schedule (Coming Soon)
+      </a>
+    </p>
+  </div>
 
-    <!-- Instagram Feed -->
-    <div class="section instagram">
-      <h2>📸 Instagram Feed</h2>
-      <iframe src="https://www.instagram.com/olomanaschool/embed" title="Olomana Instagram"></iframe>
-    </div>
+  <!-- Safehaven Gallery -->
+  <div class="section">
+    <h2>📖 Safehaven Gallery</h2>
+    <p>A flipbook of student memories and stories.</p>
 
-    <!-- Pixelfed Account -->
-    <div class="section">
-      <h2>🌐 Olomana Student Pixelfed Gallery</h2>
-      <p>Visit our student-run Pixelfed account: 
-        <a href="https://pixelfed.social/@olomanaschool" target="_blank">
-          @olomanaschool on Pixelfed
-        </a>
-      </p>
-      <!-- Embed Pixelfed feed -->
-      <div class="pixelfed">
-        <iframe src="https://pixelfed.social/@olomanaschool/embed" title="Olomana Pixelfed Gallery"></iframe>
-      </div>
-    </div>
-
-    <!-- Safehaven Gallery Flipbook -->
-    <div class="section">
-      <h2>📖 Safehaven Gallery</h2>
-      <p>A flipbook of student memories and stories.</p>
-      <div id="flipbook-container"></div>
-    </div>
-
-  </div> <!-- end .container -->
-
-  <!-- StPageFlip -->
-  <script src="https://cdn.jsdelivr.net/npm/stpageflip@3.0.0/dist/js/stpageflip.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const flipbook = new St.PageFlip(
-        document.getElementById('flipbook-container'),
-        { width:600, height:400, size:"stretch", showCover:true }
-      );
-      flipbook.loadFromImages([
-        'https://placehold.co/600x400?text=Page+1',
-        'https://placehold.co/600x400?text=Page+2',
-        'https://placehold.co/600x400?text=Page+3'
-      ]);
-    });
-  </script>
+    <!-- Clickable Pixelfed link image -->
+    <p>
+      <a href="https://pixelfed.org/" target="_blank">
+        <img 
+          src="https://pixelfed.org/favicons/android-chrome-192x192.png" 
+          alt="Visit Pixelfed" 
+          style="width:150px;display:block;margin:1em auto;border-radius:8px;box-shadow:0 0 8px rgba(0,0,0,0.1);" />
+      </a>
+    </p>
+  </div>
 
   <!-- Hidden YouTube player for Kauhale chant -->
   <div id="yt"></div>
@@ -145,15 +143,27 @@
   <script>
     function onYouTubeIframeAPIReady() {
       new YT.Player('yt', {
-        height:'0', width:'0', videoId:'HOK74BGCYXM',
-        playerVars:{
-          autoplay:1, loop:1, playlist:'HOK74BGCYXM',
-          controls:0, modestbranding:1, rel:0, start:0
+        height: '0',
+        width: '0',
+        videoId: 'HOK74BGCYXM',
+        playerVars: {
+          autoplay: 1,
+          loop: 1,
+          playlist: 'HOK74BGCYXM',
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          start: 0
         },
-        events:{ onReady:e=>{ e.target.setVolume(10); e.target.playVideo(); }}
+        events: {
+          onReady: e => {
+            e.target.setVolume(10);
+            e.target.playVideo();
+          }
+        }
       });
     }
   </script>
-
 </body>
+
 </html>
