@@ -5,17 +5,16 @@
   <title>Welina Mai Kakou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    /* Full-screen wallpaper, raised to the top */
     html, body {
       margin: 0; padding: 0; height: 100%; overflow: hidden;
       background: #f5f0e6
         url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png')
-        center top / 50% auto no-repeat fixed;
+        center -100px / 50% auto no-repeat fixed;
       display: flex; justify-content: center; align-items: flex-end;
       padding-bottom: 15vh; font-family: Georgia, serif;
       position: relative;
     }
-    /* Light overlay so the panel pops */
+    /* Light overlay so panel pops */
     body::after {
       content: ""; position: fixed; top: 0; left: 0;
       width: 100%; height: 100%; background: #f5f0e6;
@@ -68,20 +67,14 @@
   <script>
     function onYouTubeIframeAPIReady() {
       new YT.Player('yt', {
-        height: '0', width: '0', videoId: 'HOK74BGCYXM',
-        playerVars: {
-          autoplay: 1, loop: 1, playlist: 'HOK74BGCYXM',
-          controls: 0, modestbranding: 1, rel: 0, start: 0
+        height:'0', width:'0', videoId:'HOK74BGCYXM',
+        playerVars:{
+          autoplay:1, loop:1, playlist:'HOK74BGCYXM',
+          controls:0, modestbranding:1, rel:0, start:0
         },
-        events: {
-          onReady: e => {
-            e.target.setVolume(10);
-            e.target.playVideo();
-          }
-        }
+        events:{onReady:e=>{ e.target.setVolume(10); e.target.playVideo(); }}
       });
     }
-
     function check() {
       const pw = document.getElementById('pw').value;
       const err = document.getElementById('err');
@@ -93,7 +86,6 @@
           'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
     }
-
     document.getElementById('submitBtn').addEventListener('click', check);
     document.getElementById('pw').addEventListener('keypress', e => {
       if (e.key === 'Enter') check();
