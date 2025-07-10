@@ -5,58 +5,45 @@
   <title>Welina Mai Kakou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    /* ========== Full-screen wallpaper ========== */
+    /* Full‐screen wallpaper */
     html, body {
-      margin: 0; padding: 0;
-      height: 100%; overflow: hidden;
+      margin: 0; padding: 0; height: 100%; overflow: hidden;
       background: #f5f0e6
         url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png')
-        center top/contain no-repeat fixed;
+        center top / contain no-repeat fixed;
       position: relative;
+      display: flex; justify-content: center; align-items: flex-end;
+      padding-bottom: 15vh;
       font-family: Georgia, serif;
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;       /* push panel down */
-      padding-bottom: 15vh;        /* show more of the image above */
     }
-    /* Light overlay so the panel pops */
+    /* Overlay to keep panel legible */
     body::after {
-      content: "";
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #f5f0e6;
-      opacity: 0.9;
-      pointer-events: none;
-      z-index: -1;
+      content:""; position:fixed; top:0; left:0;
+      width:100%; height:100%; background:#f5f0e6;
+      opacity:0.9; pointer-events:none; z-index:-1;
     }
-
-    /* ========== Login Panel ========== */
+    /* Login panel styling */
     #login {
       width: 90%; max-width: 420px;
       background: rgba(255,255,255,0.95);
-      padding: 30px;
-      border-radius: 12px;
+      padding: 30px; border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      text-align: center;
-      z-index: 1;
+      text-align: center; z-index: 1;
     }
-    h1 { margin: 0 0 0.5em; font-size: 1.8em; }
-    h2 { margin: 0 0 1em; font-size: 1.4em; }
+    h1 { margin:0 0 .5em; font-size:1.8em; }
+    h2 { margin:0 0 1em; font-size:1.4em; }
     input, button {
-      width: 100%; padding: 12px; margin: 0.5em 0;
-      box-sizing: border-box; font-size: 1em;
+      width:100%; padding:12px; margin:.5em 0; box-sizing:border-box;
+      font-size:1em;
     }
     button {
-      background: #000; color: #fff; border: none;
-      cursor: pointer; border-radius: 4px;
+      background:#000; color:#fff; border:none;
+      cursor:pointer; border-radius:4px;
     }
-    .error {
-      color: red; font-size: 0.9em; margin-top: 0.5em;
-    }
+    .error { color:red; font-size:.9em; margin-top:.5em; }
   </style>
 </head>
 <body>
-
   <div id="login">
     <h1>Welina Mai Kakou</h1>
     <h2>Mr. Abregano’s Classroom</h2>
@@ -66,11 +53,10 @@
     <p class="error" id="err"></p>
   </div>
 
-  <!-- Hidden YouTube player for continuous chant -->
+  <!-- Hidden YouTube Audio Player -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-    // 1) Start the chant on load, looped and low volume
     function onYouTubeIframeAPIReady() {
       new YT.Player('yt', {
         height: '0', width: '0',
@@ -92,19 +78,16 @@
         }
       });
     }
-
-    // 2) Password check and redirect
     function check() {
       const pw = document.getElementById('pw').value;
       const err = document.getElementById('err');
       if (pw === '@kamapuaa25') {
-        sessionStorage.setItem('auth', 'true');
+        sessionStorage.setItem('auth','true');
         window.location.href = 'back.html';
       } else {
         err.innerHTML = 'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
     }
   </script>
-
 </body>
 </html>
