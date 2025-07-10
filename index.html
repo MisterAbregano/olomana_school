@@ -1,78 +1,79 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Olomana School | Mr. R Abregano</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome | Mr. R Abregano</title>
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: 'Georgia', serif;
-      background: url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png') no-repeat center center fixed;
+      background: url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png') center center no-repeat;
       background-size: cover;
-      background-blend-mode: overlay;
-      background-color: rgba(255, 255, 255, 0.8);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #222;
     }
-    .container {
-      max-width: 800px;
-      margin: auto;
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.9);
       padding: 2em;
-      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
       text-align: center;
-    }
-    .mahiole-img {
-      width: 100%;
       max-width: 400px;
-      margin-bottom: 1em;
-    }
-    .quote {
-      font-family: "Lucida Handwriting", cursive;
-      font-size: 1.3em;
-      margin: 1em 0;
     }
     input[type="password"] {
-      padding: 0.5em;
+      padding: 10px;
+      width: 80%;
       font-size: 1em;
+      margin-bottom: 1em;
     }
-    iframe {
-      margin-top: 2em;
-    }
-    .school-link {
-      margin-top: 1em;
-      display: block;
-      font-size: 0.9em;
-      color: #444;
-    }
-    .clock {
+    button {
+      padding: 10px 20px;
       font-size: 1em;
+      background-color: #004d40;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00695c;
+    }
+    .quote {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.2em;
       margin-top: 1em;
-      font-family: monospace;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <img src="https://raw.githubusercontent.com/MisterAbregano/olomana_school/main/mahiole_voyagers.png" alt="Mahiole Voyagers" class="mahiole-img">
+  <div class="login-container">
+    <h2>Welcome to Mr. R Abregano's Classroom</h2>
+    <form onsubmit="return checkPassword()">
+      <input type="password" id="password" placeholder="Enter password..." required><br>
+      <button type="submit">Submit</button>
+    </form>
     <div class="quote">
       “Imua e nā pōkiʻi, a inu i ka wai ʻawaʻawa, ʻaʻohe hope e hoʻi mai ai.”
     </div>
-    <input type="password" placeholder="Enter password to proceed" />
-
-    <iframe width="300" height="80" src="https://www.youtube.com/embed/bHmIphW9Qso?autoplay=1&mute=0" title="Kauhale o Kamapuaa" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-    <a href="https://www.olomanaschoolhi.k12.hi.us" target="_blank" class="school-link">Visit Olomana School Website</a>
-    <div class="clock" id="clock"></div>
   </div>
 
   <script>
-    function updateClock() {
-      const now = new Date();
-      const time = now.toLocaleTimeString();
-      const date = now.toLocaleDateString();
-      document.getElementById('clock').innerText = `Time: ${time} | Date: ${date}`;
+    function checkPassword() {
+      var input = document.getElementById("password").value;
+      if (input === "@kamapuaa25") {
+        window.location.href = "back.html";
+        return false;
+      } else {
+        alert("Incorrect password. Please try again.");
+        return false;
+      }
     }
-    setInterval(updateClock, 1000);
-    updateClock();
   </script>
 </body>
 </html>
