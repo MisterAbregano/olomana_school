@@ -1,52 +1,179 @@
-  <div class="section">
-    <h2>📹 Zoom Conference Hub</h2>
-   <p>
-  <a href="https://zoom.us/client/latest/ZoomInstaller.exe" target="_blank" class="button-link">
-    <i class="fa-solid fa-desktop"></i> Download Zoom (PC)
-  </a>
-  <a href="#" class="button-link" onclick="document.getElementById('qrModal').style.display='block';return false;">
-    <i class="fa-solid fa-mobile-screen-button"></i> Get Zoom (Mobile)
-  </a>
-  <a href="#" class="button-link disabled" aria-disabled="true">
-    <i class="fa-solid fa-calendar-alt"></i> Schedule
-  </a>
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Mr. Abregano’s Classroom – Resources</title>
 
-    <!-- QR‐code modal (hidden by default) -->
-    <div id="qrModal" style="
-         display: none;
-         position: fixed; top: 0; left: 0;
-         width: 100%; height: 100%;
-         background: rgba(0,0,0,0.6);
-         justify-content: center; align-items: center;
-      ">
-      <div style="
-           background: #fff; padding: 1em;
-           border-radius: 8px; text-align: center;
-           position: relative;
-         ">
-        <button onclick="this.parentElement.parentElement.style.display='none'"
-                style="
-                  position: absolute; top: 8px; right: 8px;
-                  background: transparent; border: none;
-                  font-size: 1.2em; cursor: pointer;
-                ">&times;</button>
-        <p>Scan this QR code to install Zoom on your phone:</p>
-        <!-- replace with your actual QR code URL -->
-        <img src="YOUR_QR_CODE_IMAGE_ADDRESS.jpg"
-             alt="Zoom Mobile App QR Code"
-             style="width:150px; height:auto;">
+  <!-- Font Awesome -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-pM8K9XWmiJwhk4cI3EcxC9QXh2c2dq2IcRH4T8Qr8JXlqliah0YbKYFET5hWvVQJdQf0WHpV+SJ22A54nYB+DQ==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
+
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      height: 100%; overflow-y: auto;
+      background: #f5f0e6;
+      font-family: Georgia, serif;
+      color: #222;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 2em;
+    }
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 0.5em;
+    }
+    .section {
+      margin: 2em 0;
+    }
+    .button-link {
+      display: inline-block;
+      margin: 0.5em 0.5em 0.5em 0;
+      padding: 0.5em 1em;
+      background-color: #004d40;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+    .button-link:hover {
+      background-color: #00695c;
+    }
+    .button-link.disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .instagram {
+      border: 3px solid;
+      border-image: linear-gradient(
+        to right,
+        #f09433 0%,
+        #e6683c 25%,
+        #dc2743 50%,
+        #cc2366 75%,
+        #bc1888 100%
+      ) 1;
+      border-radius: 8px;
+      padding: 1em;
+      overflow: hidden;
+    }
+    .zoom-buttons a {
+      vertical-align: middle;
+    }
+    .zoom-image {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin-top: 1em;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- Zoom Conference Hub -->
+    <div class="section">
+      <h2>📹 Zoom Conference Hub</h2>
+      <p><em>By appointment only</em></p>
+
+      <div class="zoom-buttons">
+        <a href="https://zoom.us/client/latest/ZoomInstaller.exe"
+           target="_blank"
+           class="button-link">
+          <i class="fa-solid fa-desktop"></i> Download Zoom (PC)
+        </a>
+        <a href="#"
+           class="button-link"
+           onclick="alert('Scan the QR code or install via your app store')">
+          <i class="fa-solid fa-mobile-screen-button"></i> Get Zoom (Mobile)
+        </a>
+        <a href="#"
+           class="button-link disabled">
+          <i class="fa-solid fa-calendar-alt"></i> Schedule
+        </a>
       </div>
+
+      <img 
+        src="https://3.files.edl.io/.../your-zoom-image.jpg" 
+        alt="Zoom Conference Preview" 
+        class="zoom-image">
+
+      <p style="font-size:0.9em; margin-top:0.5em;">
+        * Parents or guardians of Olomana students may request an appointment via email.
+      </p>
     </div>
 
-    <!-- Placeholder for the meeting iframe -->
-    <iframe
-      src=""
-      title="Zoom Embed Placeholder"
-      style="width:100%;max-width:400px;height:300px;border:none;">
-    </iframe>
+    <!-- Google Classroom -->
+    <div class="section">
+      <h2>🏫 Google Classroom Access</h2>
+      <p>
+        If you are a student or guardian of a student in Mr. A’s class, please email 
+        <strong>Mr. A’s</strong> to request access: 
+        <a href="mailto:ryan.abregano@k12.hi.us">ryan.abregano@k12.hi.us</a>.
+      </p>
+    </div>
 
-    <p style="font-size:0.9em;">
-      * Parents or guardians of Olomana students may request an appointment via email.
-    </p>
+    <!-- Infinite Campus -->
+    <div class="section">
+      <h2>⚛️ Infinite Campus Portal</h2>
+      <p>
+        Access grades, attendance, and report cards through the DOE’s portal.
+      </p>
+      <a 
+        href="https://www.infinitecampus.com/audience/parents-students" 
+        target="_blank" 
+        class="button-link">
+        🔗 Infinite Campus Login
+      </a>
+    </div>
+
+    <!-- Instagram Feed -->
+    <div class="section instagram">
+      <h2>📸 Instagram Feed</h2>
+      <iframe
+        src="https://www.instagram.com/olomanaschool/embed"
+        title="Olomana Instagram"
+        style="width:100%;height:500px;border:none;overflow:hidden;">
+      </iframe>
+    </div>
+
   </div>
+
+  <!-- Hidden YouTube player for Kauhale chant -->
+  <div id="yt"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    function onYouTubeIframeAPIReady() {
+      new YT.Player('yt', {
+        height: '0',
+        width: '0',
+        videoId: 'HOK74BGCYXM',
+        playerVars: {
+          autoplay: 1,
+          loop: 1,
+          playlist: 'HOK74BGCYXM',
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          start: 0
+        },
+        events: {
+          onReady: e => {
+            e.target.setVolume(10);
+            e.target.playVideo();
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
