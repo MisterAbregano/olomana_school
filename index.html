@@ -1,88 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Mr. R Abregano’s Classroom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      /* Uses the uploaded image file as a lightly opaque wallpaper */
-      background: url('b561ff88-6fd3-40c2-bdd0-0a2335499b6e.png') no-repeat right top;
-      background-size: contain;
-      background-color: #f5f0e6;
-      font-family: Georgia, serif;
-      color: #000;
+    html, body { margin:0; padding:0; height:100%; overflow:hidden; }
+    /* Front-cover background image (full opacity) */
+    body::before {
+      content:""; position:fixed; top:0; left:0;
+      width:100%; height:100%;
+      background: url('https://3.files.edl.io/a578/20/05/14/201748-f5c02746-a3b7-42cb-8a92-4df9c2085c7b.jpg') center/cover no-repeat;
+      opacity:1;
+      pointer-events:none;
+      z-index:-1;
     }
-    .container {
-      position: absolute;
-      top: 50%;
-      right: 3%;
-      transform: translateY(-50%);
-      background: rgba(255,255,255,0.85);
-      padding: 30px;
-      max-width: 420px;
-      border-radius: 12px;
-      text-align: right;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    /* Container styling */
+    #login-container, #content-container {
+      width:90%; max-width:420px; margin:0 auto;
+      position:relative; top:50%; transform:translateY(-50%);
+      background:rgba(255,255,255,0.95); padding:30px;
+      border-radius:12px; text-align:center;
+      box-shadow:0 0 15px rgba(0,0,0,0.2);
     }
-    h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
+    #content-container {
+      display:none; top:auto; transform:none; margin-top:2em; text-align:left;
     }
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      font-size: 14px;
-      margin: 12px 0;
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 14px;
-      background: #000;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-    }
-    .error {
-      color: red;
-      margin-top: 10px;
-    }
-    /* Hidden YouTube player */
-    iframe#music {
-      display: none;
-    }
+    h1 { margin:0 0 .5em; font-family:Georgia, serif; }
+    input[type="password"] { width:100%; padding:12px; margin:1em 0; }
+    button { padding:10px 20px; background:#000; color:#fff; border:none; cursor:pointer; }
+    .error { color:red; margin-top:1em; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <!-- Login panel -->
+  <div id="login-container">
     <h1>Welcome to Mr. Abregano’s Classroom</h1>
-    <p>Please enter the password to continue:</p>
-    <input type="password" id="password" placeholder="Enter password…" />
-    <button onclick="validatePassword()">Submit</button>
+    <p>Please enter the password:</p>
+    <input type="password" id="password" placeholder="Password…">
+    <button onclick="validatePassword()">Go</button>
     <p class="error" id="error-msg"></p>
   </div>
 
-  <iframe
-    id="music"
-    width="0" height="0"
-    src="https://www.youtube.com/embed/HOK74BGCYXM?autoplay=1&loop=1&playlist=HOK74BGCYXM&start=0"
-    frameborder="0"
-    allow="autoplay"
-  ></iframe>
+  <!-- Content panel (revealed on correct password) -->
+  <div id="content-container">
+    <h1>Mr. R Abregano</h1>
+    <p>Welcome to our classroom community page—a safe hub for students, parents, and guardians.</p>
+    <!-- (Your Zoom, Calendar, Classroom, etc. sections go here) -->
+  </div>
 
+  <!-- Hidden Music-YouTube Player -->
+  <div id="music"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
+    let player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('music', {
+        height:'0', width:'0',
+        videoId: 'HOK74BGCYXM',
+        playerVars: {
+          autoplay:1,
+          loop:1,
+          playlist:'HOK74BGCYXM',
+          controls:0,
+          start:0,
+          modestbranding:1,
+          rel:0
+        },
+        events: {
+          onReady: e => {
+            e.target.setVolume(10);  // 10% volume
+            e.target.playVideo();
+          }
+        }
+      });
+    }
     function validatePassword() {
-      const val = document.getElementById('password').value;
-      const err = document.getElementById('error-msg');
-      const music = document.getElementById('music');
-
-      if (val === '@kamapuaa25') {
+      const pass = document.getElementById('password').value;
+      const err  = document.getElementById('error-msg');
+      if (pass === '@kamapuaa25') {
         err.textContent = '';
-        music.style.display = 'block';
-        // redirect to back.html after a brief moment for audio to start
-        setTimeout(() => window.location.href = 'back.html', 500);
+        document.getElementById('login-container').style.display   = 'none';
+        document.getElementById('content-container').style.display = 'block';
       } else {
         err.innerHTML = 'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
