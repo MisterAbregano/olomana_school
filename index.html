@@ -5,91 +5,91 @@
   <title>Welina Mai Kakou</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <style>
-    /* full-screen wallpaper, centered at top */
+    /* full-screen banyan-tree wallpaper, centered at top */
     html, body {
       margin: 0; padding: 0; height: 100%; overflow: hidden;
       background: #f5f0e6
-        url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png')
+        url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fdissolve.com%2Fstock-photo%2Fhuge-Banyan-Tree-lush-green-tropical-rainforest-Akaka-Falls-royalty-free-image%2F101-D869-9-455&psig=AOvVaw3u1YFUEUP64VWAksK9siOP&ust=1752253862324000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCKDL6r3kso4DFQAAAAAdAAAAABAE')
         center top / 50% auto no-repeat fixed;
       display: flex; justify-content: center; align-items: flex-start;
       font-family: Georgia, serif;
+      position: relative;
     }
-    /* light overlay so the card pops */
+    /* light overlay so card remains legible */
     body::after {
-      content: ""; position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%; background: #f5f0e6;
-      opacity: 0.9; pointer-events: none; z-index: -1;
+      content: "";
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #f5f0e6; opacity: 0.9;
+      pointer-events: none; z-index: -1;
     }
 
-    /* wrapper to stack logo + card */
+    /* side Razorback logos */
+    .side-logo {
+      position: fixed; top: 50%; transform: translateY(-50%);
+      width: 0.5in; opacity: 0.5; pointer-events: none; z-index: 0;
+    }
+    .side-logo.left  { left: 0; }
+    .side-logo.right { right:0; }
+
+    /* stack main logo + login card */
     .wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      padding-top: 8vh; /* push everything down a bit */
+      display: flex; flex-direction: column; align-items: center;
+      width: 100%; padding-top: 8vh; z-index: 1;
     }
 
-    /* logo image */
+    /* main top logo */
     .logo {
-      max-width: 200px; /* adjust if needed */
-      width: 20%;
-      height: auto;
+      max-width: 200px; width: 20%; height: auto;
       margin-bottom: 1em;
     }
 
     /* login card */
     #login {
-      width: 80%;
-      max-width: 360px;
+      width: 80%; max-width: 360px;
       background: rgba(255,255,255,0.95);
-      padding: 30px;
-      text-align: center;
+      padding: 30px; text-align: center;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
       border: 4px solid rgba(0,0,0,0.5);
-      outline: 6px solid rgba(0,128,0,0.5);
-      outline-offset: -4px;
-      border-radius: 8px;
+      outline:6px solid rgba(0,128,0,0.5);
+      outline-offset:-4px; border-radius:8px;
     }
 
-    h1 { margin: 0 0 .5em; font-size: 1.8em; }
-    h2 { margin: 0 0 1em;  font-size: 1.4em; }
+    h1 { margin: 0 0 .5em; font-size:1.8em; }
+    h2 { margin: 0 0 1em;  font-size:1.4em; }
 
     input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin: .5em 0;
-      box-sizing: border-box;
-      font-size: 1em;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      width:100%; padding:12px; margin:.5em 0;
+      box-sizing:border-box; font-size:1em;
+      border:1px solid #ccc; border-radius:4px;
     }
 
     button {
-      width: 100%;
-      padding: 12px;
-      margin: .5em 0;
-      font-size: 1em;
-      background: #000; color: #fff;
-      border: none; cursor: pointer; border-radius: 4px;
+      width:100%; padding:12px; margin:.5em 0;
+      font-size:1em; background:#000; color:#fff;
+      border:none; cursor:pointer; border-radius:4px;
     }
 
-    .error {
-      color: red;
-      font-size: .9em;
-      margin-top: .5em;
-    }
+    .error { color:red; font-size:.9em; margin-top:.5em; }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <!-- logo at very top -->
-    <img
-      class="logo"
-      src="https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png"
-      alt="Olomana School Logo">
 
-    <!-- login card below -->
+  <!-- Left & right Razorback side-logos -->
+  <img class="side-logo left"
+       src="https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png"
+       alt="Olomana Razorback Logo">
+  <img class="side-logo right"
+       src="https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png"
+       alt="Olomana Razorback Logo">
+
+  <div class="wrapper">
+    <!-- Main logo -->
+    <img class="logo"
+         src="https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png"
+         alt="Olomana School Logo">
+
+    <!-- Login card -->
     <div id="login">
       <h1>Welina Mai Kakou</h1>
       <h2>Mr. Abregano’s Classroom</h2>
@@ -100,34 +100,31 @@
     </div>
   </div>
 
-  <!-- hidden YouTube player for looped chant -->
+  <!-- hidden YouTube player -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     function onYouTubeIframeAPIReady() {
-      new YT.Player('yt', {
-        height: '0', width: '0', videoId: 'HOK74BGCYXM',
-        playerVars: {
-          autoplay: 1, loop: 1, playlist: 'HOK74BGCYXM',
-          controls: 0, modestbranding: 1, rel: 0, start: 0
-        },
-        events: { onReady: e => { e.target.setVolume(10); e.target.playVideo(); } }
+      new YT.Player('yt',{ height:'0',width:'0',videoId:'HOK74BGCYXM',
+        playerVars:{ autoplay:1,loop:1,playlist:'HOK74BGCYXM',
+                     controls:0,modestbranding:1,rel:0,start:0 },
+        events:{ onReady:e=>{ e.target.setVolume(10); e.target.playVideo(); }}
       });
     }
-    function check() {
+    function check(){
       const pw = document.getElementById('pw').value;
-      const err = document.getElementById('err');
-      if (pw === '@kamapuaa25') {
+      const err= document.getElementById('err');
+      if(pw==='@kamapuaa25'){
         sessionStorage.setItem('auth','true');
-        window.location.href = 'back.html';
+        window.location.href='back.html';
       } else {
-        err.innerHTML =
+        err.innerHTML=
           'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
     }
-    document.getElementById('submitBtn').addEventListener('click', check);
-    document.getElementById('pw').addEventListener('keypress', e => {
-      if (e.key === 'Enter') check();
+    document.getElementById('submitBtn').addEventListener('click',check);
+    document.getElementById('pw').addEventListener('keypress',e=>{
+      if(e.key==='Enter') check();
     });
   </script>
 </body>
