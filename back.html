@@ -7,30 +7,34 @@
   <style>
     html, body {
       margin:0; padding:0; min-height:100vh;
-      background: url('https://www.olomanaschoolhi.k12.hi.us/pics/OLOS_LOGO.gif') center top/200px repeat fixed;
+      background:url('https://www.olomanaschoolhi.k12.hi.us/pics/OLOS_LOGO.gif') center top/200px repeat fixed;
       font-family:Georgia, serif; color:#222;
     }
     .container {
       max-width:960px; margin:2em auto; padding:2em;
-      background:rgba(255,255,255,0.95);
-      border-radius:12px; box-shadow:0 0 12px rgba(0,0,0,0.2);
+      background:rgba(255,255,255,0.95); border-radius:12px;
+      box-shadow:0 0 12px rgba(0,0,0,0.2);
     }
     h1,h2 { color:#004d40; }
     section { margin:2em 0; }
     a.button-link {
       display:inline-block; padding:8px 16px;
-      background:#004d40; color:#fff; text-decoration:none;
-      border-radius:6px;
+      background:#004d40; color:#fff; text-decoration:none; border-radius:6px;
     }
     a.button-link:hover { background:#00695c; }
     .instagram-frame {
       width:100%; max-width:400px; height:300px;
-      border:none; margin-top:1em; border-radius:8px;
-      box-shadow:0 0 8px rgba(0,0,0,0.1);
+      border:none; margin-top:1em; border-radius:8px; box-shadow:0 0 8px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
+  <script>
+    // redirect back to gate if not authenticated
+    if (sessionStorage.getItem('auth') !== 'true') {
+      window.location.href = 'index.html';
+    }
+  </script>
 
   <div class="container">
     <h1>Mr. R Abregano</h1>
@@ -50,7 +54,7 @@
 
     <section>
       <h2>🏫 Google Classroom Access</h2>
-      <p>Email <strong>ryan.abregano@k12.hi.us</strong> for your invite code.</p>
+      <p>Email <strong>ryan.abregano@k12.hi.us</strong> to request your invite.</p>
     </section>
 
     <section>
@@ -69,18 +73,17 @@
     </section>
   </div>
 
-  <!-- Continue playing hidden YouTube audio -->
+  <!-- continue background chant -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-    function onYouTubeIframeAPIReady(){
-      new YT.Player('yt',{
+    function onYouTubeIframeAPIReady() {
+      new YT.Player('yt', {
         height:'0', width:'0', videoId:'HOK74BGCYXM',
         playerVars:{autoplay:1,loop:1,playlist:'HOK74BGCYXM',controls:0,modestbranding:1,rel:0},
-        events:{onReady:e=>{e.target.setVolume(10); e.target.playVideo();}}
+        events:{onReady:e=>{e.target.setVolume(10);e.target.playVideo();}}
       });
     }
   </script>
-
 </body>
 </html>
