@@ -5,18 +5,17 @@
   <title>Welina Mai Kakou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    /* Full-screen, centered wallpaper */
+    /* Full‐screen, centered wallpaper scaled to fit */
     html, body {
       margin: 0; padding: 0; height: 100%; overflow: hidden;
       background: #f5f0e6
         url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png')
-        center center / cover no-repeat fixed;
+        center center / contain no-repeat fixed;
       display: flex; justify-content: center; align-items: flex-end;
-      padding-bottom: 15vh;
-      font-family: Georgia, serif;
+      padding-bottom: 15vh; font-family: Georgia, serif;
       position: relative;
     }
-    /* Light overlay */
+    /* Light overlay so text remains legible */
     body::after {
       content: ""; position: fixed; top: 0; left: 0;
       width: 100%; height: 100%; background: #f5f0e6;
@@ -28,30 +27,28 @@
       width: 80%; max-width: 360px;
       padding: 30px; background: rgba(255,255,255,0.95);
       text-align: center; box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      border: 4px solid rgba(0,0,0,0.5);           /* translucent black */
-      outline: 6px solid rgba(0,128,0,0.5);        /* translucent green */
-      outline-offset: -4px;
-      border-radius: 8px;
-      position: relative; bottom: -0.875in;        /* as last adjusted */
-      z-index: 1;
+      border: 4px solid rgba(0,0,0,0.5);
+      outline: 6px solid rgba(0,128,0,0.5);
+      outline-offset: -4px; border-radius: 8px;
+      position: relative; bottom: -0.875in; z-index: 1;
     }
+
     h1 { margin: 0 0 .5em; font-size: 1.8em; }
     h2 { margin: 0 0 1em;  font-size: 1.4em; }
 
-    /* Standard input + button */
     input[type="password"] {
       width: 100%; padding: 12px; margin: .5em 0;
       box-sizing: border-box; font-size: 1em;
       border: 1px solid #ccc; border-radius: 4px;
     }
+
     button {
       width: 100%; padding: 12px; margin: .5em 0;
       font-size: 1em; background: #000; color: #fff;
       border: none; cursor: pointer; border-radius: 4px;
     }
-    .error {
-      color: red; font-size: .9em; margin-top: .5em;
-    }
+
+    .error { color: red; font-size: .9em; margin-top: .5em; }
   </style>
 </head>
 <body>
@@ -73,10 +70,8 @@
       new YT.Player('yt', {
         height: '0', width: '0', videoId: 'HOK74BGCYXM',
         playerVars: {
-          autoplay: 1, loop: 1,
-          playlist: 'HOK74BGCYXM',
-          controls: 0, modestbranding: 1,
-          rel: 0, start: 0
+          autoplay: 1, loop: 1, playlist: 'HOK74BGCYXM',
+          controls: 0, modestbranding: 1, rel: 0, start: 0
         },
         events: {
           onReady: e => {
@@ -88,13 +83,13 @@
     }
 
     function check() {
-      const pw    = document.getElementById('pw').value;
-      const errEl = document.getElementById('err');
+      const pw = document.getElementById('pw').value;
+      const err = document.getElementById('err');
       if (pw === '@kamapuaa25') {
         sessionStorage.setItem('auth','true');
         window.location.href = 'back.html';
       } else {
-        errEl.innerHTML = 
+        err.innerHTML =
           'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
     }
