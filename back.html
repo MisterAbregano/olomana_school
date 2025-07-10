@@ -86,17 +86,17 @@
     <!-- Google Classroom -->
     <div class="section">
       <h2>🏫 Google Classroom Access</h2>
-      <p>
-        If you are a student or guardian in 
-        <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a>, please request access.
-      </p>
+      <p>If you are a student or guardian in 
+        <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a>, please request access.</p>
     </div>
 
     <!-- Infinite Campus -->
     <div class="section">
       <h2>⚛️ Infinite Campus Portal</h2>
       <p>Access grades, attendance, and report cards through the DOE’s portal.</p>
-      <a href="https://www.infinitecampus.com/audience/parents-students" target="_blank" class="button-link">
+      <a href="https://www.infinitecampus.com/audience/parents-students"
+         target="_blank"
+         class="button-link">
         🔗 Infinite Campus Login
       </a>
     </div>
@@ -104,7 +104,10 @@
     <!-- Instagram Feed -->
     <div class="section instagram">
       <h2>📸 Instagram Feed</h2>
-      <iframe src="https://www.instagram.com/olomanaschool/embed" title="Olomana Instagram"></iframe>
+      <iframe
+        src="https://www.instagram.com/olomanaschool/embed"
+        title="Olomana Instagram">
+      </iframe>
     </div>
 
     <!-- Safehaven Gallery Flipbook -->
@@ -142,9 +145,10 @@
   <script src="https://cdn.jsdelivr.net/npm/stpageflip@3.0.0/dist/js/stpageflip.min.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const flipbook = new St.PageFlip(document.getElementById('flipbook-container'), {
-        width: 600, height: 400, size: "stretch", showCover: true
-      });
+      const flipbook = new St.PageFlip(
+        document.getElementById('flipbook-container'),
+        { width:600, height:400, size:"stretch", showCover:true }
+      );
       flipbook.loadFromImages([
         'https://placehold.co/600x400?text=Page+1',
         'https://placehold.co/600x400?text=Page+2',
