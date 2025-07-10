@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome | Mr. R Abregano</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: url('https://www.olomanaschoolhi.k12.hi.us/pics/OLOS_LOGO.gif') repeat;
+      background-size: 100px;
+      color: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-container {
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 500px;
+    }
+    .login-container img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 12px;
+      margin-bottom: 1em;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    }
+    input[type="password"] {
+      padding: 10px;
+      width: 80%;
+      font-size: 1em;
+      margin-top: 1em;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #004d40;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 1em;
+    }
+    button:hover {
+      background-color: #00695c;
+    }
+    .quote {
+      font-family: 'Brush Script MT', cursive;
+      font-size: 1.1em;
+      margin-top: 1em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <img src="Ai_pohaku.png" alt="Welcoming Image">
+    <form onsubmit="return checkPassword()">
+      <input type="password" id="password" placeholder="Enter password..." required><br>
+      <button type="submit">Submit</button>
+    </form>
+    <div class="quote">
+      “Imua e nā pōkiʻi, a inu i ka wai ʻawaʻawa, ʻaʻohe hope e hoʻi mai ai.”
+    </div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      var input = document.getElementById("password").value;
+      if (input === "@kamapuaa25") {
+        window.location.href = "back.html";
+        return false;
+      } else {
+        alert("Incorrect password. Please try again.");
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
