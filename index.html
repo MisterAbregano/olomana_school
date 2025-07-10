@@ -5,7 +5,6 @@
   <title>Welina Mai Kakou</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    /* Full-screen wallpaper */
     html, body {
       margin: 0; padding: 0; height: 100%; overflow: hidden;
       background: #f5f0e6
@@ -16,53 +15,40 @@
       padding-bottom: 15vh;
       font-family: Georgia, serif;
     }
-    /* Soft overlay */
     body::after {
-      content: ""; position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%; background: #f5f0e6;
-      opacity: 0.9; pointer-events: none; z-index: -1;
+      content:""; position:fixed; top:0; left:0;
+      width:100%; height:100%; background:#f5f0e6;
+      opacity:0.9; pointer-events:none; z-index:-1;
     }
-    /* Login panel */
     #login {
       width: 90%; max-width: 420px;
       background: rgba(255,255,255,0.95);
       padding: 30px; border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
       text-align: center; z-index: 1;
-      position: relative; bottom: -2in; /* lowered 2" */
+      position: relative;
+      bottom: -1.75in; /* raised by 0.25" */
     }
     h1 { margin: 0 0 .5em; font-size: 1.8em; }
     h2 { margin: 0 0 1em;   font-size: 1.4em; }
-
-    /* Password field styling */
     input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin: .5em 0;
-      box-sizing: border-box;
-      font-size: 1em;
-
-      /* 4pt black border + 6pt green outline */
+      width: 100%; padding: 12px; margin: .5em 0;
+      box-sizing: border-box; font-size: 1em;
       border: 4pt solid black;
       outline: 6pt solid green;
       outline-offset: -4pt;
       border-radius: 4px;
     }
-
-    /* Submit button */
     button {
       width: 100%; padding: 12px; margin: .5em 0;
       font-size: 1em;
       background: #000; color: #fff; border: none;
       cursor: pointer; border-radius: 4px;
     }
-    .error {
-      color: red; font-size: .9em; margin-top: .5em;
-    }
+    .error { color: red; font-size: .9em; margin-top: .5em; }
   </style>
 </head>
 <body>
-
   <div id="login">
     <h1>Welina Mai Kakou</h1>
     <h2>Mr. Abregano’s Classroom</h2>
@@ -72,20 +58,19 @@
     <p class="error" id="err"></p>
   </div>
 
-  <!-- Hidden YouTube player -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-    // YouTube looped audio
     function onYouTubeIframeAPIReady() {
       new YT.Player('yt', {
         height: '0', width: '0', videoId: 'HOK74BGCYXM',
-        playerVars: { autoplay:1, loop:1, playlist:'HOK74BGCYXM', controls:0, modestbranding:1, rel:0 },
+        playerVars: {
+          autoplay: 1, loop: 1, playlist: 'HOK74BGCYXM',
+          controls: 0, modestbranding: 1, rel: 0, start: 0
+        },
         events: { onReady: e => { e.target.setVolume(10); e.target.playVideo(); } }
       });
     }
-
-    // Password check & redirect
     function check() {
       const pw = document.getElementById('pw').value;
       const err = document.getElementById('err');
@@ -96,8 +81,6 @@
         err.innerHTML = 'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
     }
-
-    // Allow click or Enter key
     document.getElementById('submitBtn').addEventListener('click', check);
     document.getElementById('pw').addEventListener('keypress', e => {
       if (e.key === 'Enter') check();
