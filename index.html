@@ -1,77 +1,90 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome | Mr. R Abregano</title>
+  <meta charset="UTF-8" />
+  <title>Mr. R Abregano’s Classroom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Georgia', serif;
-      background: url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png') center center no-repeat;
-      background-size: cover;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #222;
+      /* Uses the uploaded image file as a lightly opaque wallpaper */
+      background: url('b561ff88-6fd3-40c2-bdd0-0a2335499b6e.png') no-repeat right top;
+      background-size: contain;
+      background-color: #f5f0e6;
+      font-family: Georgia, serif;
+      color: #000;
     }
-    .login-container {
-      background-color: rgba(255, 255, 255, 0.9);
-      padding: 2em;
+    .container {
+      position: absolute;
+      top: 50%;
+      right: 3%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.85);
+      padding: 30px;
+      max-width: 420px;
       border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      max-width: 400px;
+      text-align: right;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+    h1 {
+      font-size: 24px;
+      margin-bottom: 10px;
     }
     input[type="password"] {
-      padding: 10px;
-      width: 80%;
-      font-size: 1em;
-      margin-bottom: 1em;
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+      margin: 12px 0;
     }
     button {
       padding: 10px 20px;
-      font-size: 1em;
-      background-color: #004d40;
-      color: white;
+      font-size: 14px;
+      background: #000;
+      color: #fff;
       border: none;
-      border-radius: 6px;
       cursor: pointer;
     }
-    button:hover {
-      background-color: #00695c;
+    .error {
+      color: red;
+      margin-top: 10px;
     }
-    .quote {
-      font-family: 'Brush Script MT', cursive;
-      font-size: 1.2em;
-      margin-top: 1em;
+    /* Hidden YouTube player */
+    iframe#music {
+      display: none;
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Welcome to Mr. R Abregano's Classroom</h2>
-    <form onsubmit="return checkPassword()">
-      <input type="password" id="password" placeholder="Enter password..." required><br>
-      <button type="submit">Submit</button>
-    </form>
-    <div class="quote">
-      “Imua e nā pōkiʻi, a inu i ka wai ʻawaʻawa, ʻaʻohe hope e hoʻi mai ai.”
-    </div>
+  <div class="container">
+    <h1>Welcome to Mr. Abregano’s Classroom</h1>
+    <p>Please enter the password to continue:</p>
+    <input type="password" id="password" placeholder="Enter password…" />
+    <button onclick="validatePassword()">Submit</button>
+    <p class="error" id="error-msg"></p>
   </div>
 
+  <iframe
+    id="music"
+    width="0" height="0"
+    src="https://www.youtube.com/embed/HOK74BGCYXM?autoplay=1&loop=1&playlist=HOK74BGCYXM&start=0"
+    frameborder="0"
+    allow="autoplay"
+  ></iframe>
+
   <script>
-    function checkPassword() {
-      var input = document.getElementById("password").value;
-      if (input === "@kamapuaa25") {
-        window.location.href = "back.html";
-        return false;
+    function validatePassword() {
+      const val = document.getElementById('password').value;
+      const err = document.getElementById('error-msg');
+      const music = document.getElementById('music');
+
+      if (val === '@kamapuaa25') {
+        err.textContent = '';
+        music.style.display = 'block';
+        // redirect to back.html after a brief moment for audio to start
+        setTimeout(() => window.location.href = 'back.html', 500);
       } else {
-        alert("Incorrect password. Please try again.");
-        return false;
+        err.innerHTML = 'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
     }
   </script>
