@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mr. R Abregano | Classroom Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Georgia', serif;
+      font-size: 11pt;
+      background: url('https://www.olomanaschoolhi.k12.hi.us/pics/OLOS_LOGO.gif';base64,iVBORw0KGgoAAAANSUhEUgAAAQoAAAC+CAMAAAD6ObEsAAABAlBMVEX///8ASBQAShQAPQAARAAAPwAAOwAANQAAQQAASREAPgAANwAAShMASA4AAAAAMgAALwAALADx9PLHz8ibrJ4AKAATUCBTdFi3wrgAJAAARgY9ZUMAIgDn6+gAGwAAKgBlgWkjWC0AHgDi6eRwiXQAFgDY3tkAEQDAysJbemAADADU3teLn46ktaiVp5iDmIhrh3AuWTc8ZEJ4kH5Jak8ORRq2yLusvbA0WzohVSpddWEgTScoTC7C0sfR2NJMalELNhIoSis4Vj2DoIqElYgVQxooUzB2ln8xVzd1h3hGXkple2qxurJFZEmbp55piG9Mc1RahmeYs6AbXS11gniUoJWgR5PTAAAWM0lEQVR4nO1caWOaStseQQFFRAdUXFCTMQTC4oJKEgOeZmsSY5v2efr//8o7A7jEmOX0TU9z+nB9aAnCOHPNvc7cIwAJEiRIkCBBggQJEiRIkCBBggQJEiRIkCBBggQJEiRIkCBBggQJEiRIkCBBggQJEiRIkCBBggQJErwj/g815p/+ly2FsQAAAABJRU5ErkJggg==') repeat;
+      background-size: contain; background-position: 288px 0; background-repeat: no-repeat; background-color:#f5f5e9;
+      color: #222;
+    }
+    .container {
+      padding-right: 1em;
+      max-width: 960px;
+      margin: auto;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.9);
+    }
+    .bio {
+      text-align: center;
+      margin-bottom: 2em;
+    }
+    .bio img {
+      width: 100px;
+      height: auto;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      display: block;
+      margin: 1em auto;
+    }
+    .section {
+      margin: 2em 0;
+    }
+    .section iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 300px;
+      border: 2px solid #004d40;
+    }
+    .instagram-embed {
+      border: 3px solid black;
+      box-shadow: 0 0 5px green;
+    }
+    .gallery {
+      margin-top: 2em;
+    }
+    .button-link {
+      display: inline-block;
+      margin-top: 10px;
+      background-color: #004d40;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-weight: bold;
+    }
+    .button-link:hover {
+      background-color: #00695c;
+    }
+  
+    @media (max-width: 480px) {
+      body {
+        background-position: 120px 0;
+      }
+    }
+    
+
+    @media(max-width:480px){
+      body{background-position:120px 0;}
+    }
+    
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="bio">
+      <h1>Mr. R Abregano</h1>
+      <p>Welcome to our class page. Let's journey together with purpose and aloha.</p>
+      <img src="https://drive.google.com/uc?id=1RTlkSww9NySNor7OMeXrrJ-nmt_NUk7E" alt="Mr. R Abregano Headshot">
+    </div>
+
+    <div class="section">
+      <h2>📹 Zoom Conference Hub</h2>
+      <p><em>By appointment only</em></p>
+      <iframe src="" title="Zoom Embed Placeholder"></iframe>
+    </div>
+
+    <div class="section">
+      <h2>📅 Schedule with Mr. A</h2>
+      <a href="https://calendar.app.google/vAVS96g6UWSLZ58F9" target="_blank" class="button-link">📅 Book Now</a>
+    </div>
+
+    <div class="section">
+      <h2>🏫 Google Classroom Access</h2>
+      <p>Please email <strong>ryan.abregano@k12.hi.us</strong> to request access.</p>
+    </div>
+
+    <div class="section">
+      <h2>🧾 Infinite Campus Portal</h2>
+      <a href="https://www.infinitecampus.com/audience/parents-students" target="_blank" class="button-link">🔗 Infinite Campus Login</a>
+    </div>
+
+    <div class="section instagram-embed">
+      <h2>📸 Instagram Feed</h2>
+      <iframe src="https://www.instagram.com/olomanaschool/embed" title="Olomana Instagram"></iframe>
+    </div>
+
+    <div class="section gallery">
+      <h2>📷 Nā Hāliʻa Aloha</h2>
+      <p>A growing collection of memories shared by students and staff. Images will appear after approval by Mr. A.</p>
+      <!-- Placeholder gallery -->
+    </div>
+  </div>
+
+    <!-- Autoplay Kauhale o Kamapuaa, starts muted then un‑mutes -->
+    <iframe id="kamapuaa"
+      width="0" height="0"
+      src="https://www.youtube.com/embed/bHmIphW9Qso?autoplay=1&loop=1&playlist=bHmIphW9Qso&mute=1&enablejsapi=1"
+      frameborder="0"
+      allow="autoplay; encrypted-media">
+    </iframe>
+    <script>
+      window.addEventListener('load', () => {
+        const player = document.getElementById('kamapuaa').contentWindow;
+        setTimeout(()=> {
+          player.postMessage('{"event":"command","func":"unMute","args":""}','*');
+        }, 1200);
+      });
+    </script>
+    
+</body>
+</html>
