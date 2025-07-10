@@ -9,7 +9,7 @@
       margin: 0; padding: 0; height: 100%; overflow: hidden;
       background: #f5f0e6
         url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png')
-        center top / contain no-repeat fixed;
+        center top/contain no-repeat fixed;
       position: relative;
       display: flex; justify-content: center; align-items: flex-end;
       padding-bottom: 15vh;
@@ -27,21 +27,17 @@
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
       text-align: center; z-index: 1;
       position: relative;
-      bottom: -2in; /* lowers the panel by 2 inches */
+      bottom: -2in; /* lowered by 2" per your last request */
     }
     h1 { margin: 0 0 .5em; font-size: 1.8em; }
     h2 { margin: 0 0 1em; font-size: 1.4em; }
     input, button {
-      width: 100%; padding: 12px; margin: .5em 0;
-      box-sizing: border-box; font-size: 1em;
+      width:100%; padding:12px; margin:.5em 0; box-sizing:border-box; font-size:1em;
     }
     button {
-      background: #000; color: #fff; border: none;
-      cursor: pointer; border-radius: 4px;
+      background:#000; color:#fff; border:none; cursor:pointer; border-radius:4px;
     }
-    .error {
-      color: red; font-size: .9em; margin-top: .5em;
-    }
+    .error { color:red; font-size:.9em; margin-top:.5em; }
   </style>
 </head>
 <body>
@@ -51,20 +47,32 @@
     <h2>Mr. Abregano’s Classroom</h2>
     <p>Please enter the password to continue:</p>
     <input type="password" id="pw" placeholder="Password…">
-    <button onclick="check()">Submit</button>
+    <button id="submitBtn">Submit</button>
     <p class="error" id="err"></p>
   </div>
 
+  <!-- Hidden YouTube player -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
+    // 1) Setup YouTube looped audio
     function onYouTubeIframeAPIReady() {
       new YT.Player('yt', {
-        height:'0', width:'0', videoId:'HOK74BGCYXM',
-        playerVars:{autoplay:1,loop:1,playlist:'HOK74BGCYXM',controls:0,modestbranding:1,rel:0},
-        events:{onReady:e=>{e.target.setVolume(10);e.target.playVideo();}}
+        height: '0', width: '0', videoId: 'HOK74BGCYXM',
+        playerVars: {
+          autoplay:1, loop:1, playlist:'HOK74BGCYXM',
+          controls:0, modestbranding:1, rel:0, start:0
+        },
+        events: {
+          onReady: e => {
+            e.target.setVolume(10);
+            e.target.playVideo();
+          }
+        }
       });
     }
+
+    // 2) Check function
     function check() {
       const pw = document.getElementById('pw').value;
       const err = document.getElementById('err');
@@ -75,6 +83,12 @@
         err.innerHTML = 'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
     }
+
+    // 3) Wire up both button click and Enter key on the input
+    document.getElementById('submitBtn').addEventListener('click', check);
+    document.getElementById('pw').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') check();
+    });
   </script>
 </body>
 </html>
