@@ -1,31 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Mr. R Abregano | Classroom</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <style>
     html, body {
-      margin:0; padding:0;
-      font-family: Georgia, serif;
-      /* TILE THE LOGO AS BACKGROUND */
-      background: url('https://www.olomanaschoolhi.k12.hi.us/pics/OLOS_LOGO.gif') center/200px repeat fixed;
-      color: #222;
+      margin:0; padding:0; min-height:100vh;
+      background: url('https://www.olomanaschoolhi.k12.hi.us/pics/OLOS_LOGO.gif') center top/200px repeat fixed;
+      font-family:Georgia, serif; color:#222;
     }
     .container {
-      max-width:960px;
-      margin:2em auto;
-      background: rgba(255,255,255,0.95);
-      padding:2em;
-      border-radius:12px;
-      box-shadow:0 0 12px rgba(0,0,0,0.2);
+      max-width:960px; margin:2em auto; padding:2em;
+      background:rgba(255,255,255,0.95);
+      border-radius:12px; box-shadow:0 0 12px rgba(0,0,0,0.2);
     }
-    h1, h2 { color:#004d40; }
+    h1,h2 { color:#004d40; }
     section { margin:2em 0; }
     a.button-link {
       display:inline-block; padding:8px 16px;
-      background:#004d40; color:#fff;
-      text-decoration:none; border-radius:6px;
+      background:#004d40; color:#fff; text-decoration:none;
+      border-radius:6px;
     }
     a.button-link:hover { background:#00695c; }
     .instagram-frame {
@@ -36,6 +31,7 @@
   </style>
 </head>
 <body>
+
   <div class="container">
     <h1>Mr. R Abregano</h1>
     <p>Welcome to our classroom community page—a safe hub for students, parents, and guardians.</p>
@@ -44,22 +40,22 @@
       <h2>📹 Zoom Conference Hub</h2>
       <p><em>By appointment only</em></p>
       <iframe src="" width="100%" height="250" title="Zoom"></iframe>
-      <p><small>Request via email: ryan.abregano@k12.hi.us</small></p>
+      <p><small>Email: ryan.abregano@k12.hi.us</small></p>
     </section>
 
     <section>
       <h2>📅 Schedule</h2>
-      <a href="https://calendar.app.google/vAVS96g6UWSLZ58F9" class="button-link" target="_blank">Book Now</a>
+      <a class="button-link" href="https://calendar.app.google/vAVS96g6UWSLZ58F9" target="_blank">Book Now</a>
     </section>
 
     <section>
-      <h2>🏫 Google Classroom</h2>
-      <p>Email <strong>ryan.abregano@k12.hi.us</strong> for access.</p>
+      <h2>🏫 Google Classroom Access</h2>
+      <p>Email <strong>ryan.abregano@k12.hi.us</strong> for your invite code.</p>
     </section>
 
     <section>
       <h2>🧾 Infinite Campus</h2>
-      <a href="https://www.infinitecampus.com/audience/parents-students" class="button-link" target="_blank">Access Portal</a>
+      <a class="button-link" href="https://www.infinitecampus.com/audience/parents-students" target="_blank">Access Portal</a>
     </section>
 
     <section>
@@ -72,5 +68,19 @@
       <p>Gallery coming soon—students may submit photos for approval.</p>
     </section>
   </div>
+
+  <!-- Continue playing hidden YouTube audio -->
+  <div id="yt"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    function onYouTubeIframeAPIReady(){
+      new YT.Player('yt',{
+        height:'0', width:'0', videoId:'HOK74BGCYXM',
+        playerVars:{autoplay:1,loop:1,playlist:'HOK74BGCYXM',controls:0,modestbranding:1,rel:0},
+        events:{onReady:e=>{e.target.setVolume(10); e.target.playVideo();}}
+      });
+    }
+  </script>
+
 </body>
 </html>
