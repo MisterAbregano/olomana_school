@@ -1,115 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Welina Mai Kākou</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Mr. Abregano’s Classroom – Resources</title>
+
+  <!-- Font Awesome for icons -->
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+    integrity="sha512-pM8K9XWmiJwhk4cI3EcxC9QXh2c2dq2IcRH4T8Qr8JXlqliah0YbKYFET5hWvVQJdQf0WHpV+SJ22A54nYB+DQ==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" />
+
   <style>
-    /* Leaf‐pattern panels on left & right edges */
     html, body {
-      margin: 0; padding: 0; height: 100%; overflow: hidden;
-      background-color: #f5f0e6;
-      background-image:
-        url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png'),
-        url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png');
-      background-position: left center, right center;
-      background-repeat: repeat-y, repeat-y;
-      background-size: 0.5in auto, 0.5in auto;
-      display: flex; justify-content: center; align-items: flex-start;
+      margin: 0; padding: 0;
+      height: 100%; overflow-y: auto;
+      background: #f5f0e6;
       font-family: Georgia, serif;
-      position: relative;
+      color: #222;
     }
-    body::after {
-      content: ""; position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%; background: #f5f0e6;
-      opacity: 0.9; pointer-events: none; z-index: -1;
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 2em;
     }
-
-    /* Centered logo + login card */
-    .wrapper {
-      display: flex; flex-direction: column; align-items: center;
-      width: 100%; padding-top: 8vh; z-index: 1;
+    h2 {
+      font-size: 1.5em;
+      margin-bottom: 0.5em;
     }
-    /* Logo now matches card width */
-    .logo {
-      width: 80%;      /* same as card */
-      max-width: 360px;
-      height: auto;
-      margin-bottom: 1em;
+    .section {
+      margin: 2em 0;
     }
-
-    /* Login card */
-    #login {
-      width: 80%; max-width: 360px;
-      background: rgba(255,255,255,0.95);
-      padding: 30px; text-align: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      border: 4px solid rgba(0,0,0,0.5);
-      outline: 6px solid rgba(0,128,0,0.5);
-      outline-offset: -4px; border-radius: 8px;
-      margin-bottom: 8vh;
+    .button-link {
+      display: inline-block;
+      margin: 0.5em 0.5em 0.5em 0;
+      padding: 0.5em 1em;
+      background-color: #004d40;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
     }
-    h1 { margin: 0 0 .5em; font-size: 1.8em; }
-    h2 { margin: 0 0 1em;  font-size: 1.4em; }
-
-    input[type="password"] {
-      width:100%; padding:12px; margin:.5em 0;
-      box-sizing:border-box; font-size:1em;
-      border:1px solid #ccc; border-radius:4px;
+    .button-link:hover {
+      background-color: #00695c;
     }
-    button {
-      width:100%; padding:12px; margin:.5em 0;
-      font-size:1em; background:#000; color:#fff;
-      border:none; cursor:pointer; border-radius:4px;
+    .button-link.disabled {
+      opacity: 0.6;
+      pointer-events: none;
     }
-    .error { color:red; font-size:.9em; margin-top:.5em; }
+    .instagram {
+      border: 3px solid;
+      border-image: linear-gradient(
+        to right,
+        #f09433 0%,
+        #e6683c 25%,
+        #dc2743 50%,
+        #cc2366 75%,
+        #bc1888 100%
+      ) 1;
+      border-radius: 8px;
+      padding: 1em;
+      overflow: hidden;
+    }
+    .zoom-buttons a {
+      vertical-align: middle;
+    }
+    .zoom-preview {
+      text-align: center;
+      margin-top: 1em;
+      color: #004d40;
+      text-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <!-- logo enlarged to match login card width -->
-    <img class="logo"
-         src="https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png"
-         alt="Olomana School Logo">
+  <div class="container">
 
-    <!-- login card -->
-    <div id="login">
-      <h1>Welina Mai Kākou</h1>
-      <h2>Mr. Abregano’s Classroom</h2>
-      <p>Please enter the password to continue:</p>
-      <input type="password" id="pw" placeholder="Password…">
-      <button id="submitBtn">Submit</button>
-      <p class="error" id="err"></p>
+    <!-- Zoom Conference Hub -->
+    <div class="section">
+      <h2>📹 Zoom Conference Hub</h2>
+      <p><em>By appointment only</em></p>
+
+      <div class="zoom-buttons">
+        <a href="https://zoom.us/client/latest/ZoomInstaller.exe"
+           target="_blank"
+           class="button-link">
+          <i class="fa-solid fa-desktop"></i> Download Zoom (PC)
+        </a>
+        <a href="#"
+           class="button-link"
+           onclick="alert('Scan the QR code or install via your app store')">
+          <i class="fa-solid fa-mobile-screen-button"></i> Get Zoom (Mobile)
+        </a>
+        <a href="#"
+           class="button-link disabled">
+          <i class="fa-solid fa-calendar-alt"></i> Schedule
+        </a>
+      </div>
+
+      <!-- Video icon preview in place of an image -->
+      <div class="zoom-preview">
+        <i class="fa-solid fa-video fa-4x"></i>
+      </div>
+
+      <p style="font-size:0.9em; margin-top:0.5em;">
+        * Parents or guardians of Olomana students may request an appointment via email.
+      </p>
     </div>
+
+    <!-- Google Classroom -->
+    <div class="section">
+      <h2>🏫 Google Classroom Access</h2>
+      <p>
+        If you are a student or guardian in 
+        <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a>, please request access to Google Classroom.
+      </p>
+    </div>
+
+    <!-- Infinite Campus -->
+    <div class="section">
+      <h2>⚛️ Infinite Campus Portal</h2>
+      <p>
+        Access grades, attendance, and report cards through the DOE’s portal.
+      </p>
+      <a 
+        href="https://www.infinitecampus.com/audience/parents-students" 
+        target="_blank" 
+        class="button-link">
+        🔗 Infinite Campus Login
+      </a>
+    </div>
+
+    <!-- Instagram Feed -->
+    <div class="section instagram">
+      <h2>📸 Instagram Feed</h2>
+      <iframe
+        src="https://www.instagram.com/olomanaschool/embed"
+        title="Olomana Instagram"
+        style="width:100%;height:500px;border:none;overflow:hidden;">
+      </iframe>
+    </div>
+
   </div>
 
-  <!-- hidden YouTube player -->
+  <!-- Hidden YouTube player for Kauhale O Kamapuaʻa (only here) -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     function onYouTubeIframeAPIReady() {
-      new YT.Player('yt',{
-        height:'0', width:'0', videoId:'HOK74BGCYXM',
-        playerVars:{ autoplay:1, loop:1, playlist:'HOK74BGCYXM',
-                    controls:0, modestbranding:1, rel:0, start:0 },
-        events:{ onReady:e=>{ e.target.setVolume(10); e.target.playVideo(); }}
+      new YT.Player('yt', {
+        height: '0',
+        width: '0',
+        videoId: 'HOK74BGCYXM',
+        playerVars: {
+          autoplay: 1,
+          loop: 1,
+          playlist: 'HOK74BGCYXM',
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          start: 0
+        },
+        events: {
+          onReady: e => {
+            e.target.setVolume(10);
+            e.target.playVideo();
+          }
+        }
       });
     }
-    function check(){
-      const pw = document.getElementById('pw').value;
-      const err= document.getElementById('err');
-      if(pw==='@kamapuaa25'){
-        sessionStorage.setItem('auth','true');
-        window.location.href='back.html';
-      } else {
-        err.innerHTML =
-          'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
-      }
-    }
-    document.getElementById('submitBtn').addEventListener('click',check);
-    document.getElementById('pw').addEventListener('keypress',e=>{
-      if(e.key==='Enter') check();
-    });
   </script>
 </body>
 </html>
