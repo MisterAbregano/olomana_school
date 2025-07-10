@@ -1,88 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Welina Mai Kakou</title>
+  <meta charset="UTF-8">
+  <title>Mr. R Abregano | Classroom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
     html, body {
       margin: 0; padding: 0;
-      height: 100%; overflow: hidden;
-      display: flex; justify-content: center;
-      align-items: flex-end;      /* panel at bottom */
-      padding-bottom: 5vh;        /* small gap from bottom */
       font-family: Georgia, serif;
-      background: #f5f0e6
-        url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png')
-        center top / contain no-repeat fixed;
+      /* tiled logo background */
+      background: url('https://www.olomanaschoolhi.k12.hi.us/pics/OLOS_LOGO.gif')
+                  center top / 200px repeat fixed;
+      color: #222;
     }
-    body::after {
-      content: "";
-      position: fixed; top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: #f5f0e6;
-      opacity: 0.9;
-      pointer-events: none;
-      z-index: -1;
-    }
-    #login {
-      width: 90%; max-width: 420px;
+    .container {
+      max-width: 960px;
+      margin: 2em auto;
       background: rgba(255,255,255,0.95);
-      padding: 30px; border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      text-align: center; position: relative;
-      z-index: 1;
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
     }
-    h1, h2 {
-      margin: 0;
-      line-height: 1.2;
-      font-family: Georgia, serif;
+    h1, h2 { color: #004d40; }
+    section { margin: 2em 0; }
+    a.button-link {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #004d40;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
     }
-    h1 { font-size: 1.8em; margin-bottom: 0.3em; }
-    h2 { font-size: 1.4em; margin-bottom: 1em; }
-    input[type="password"], button {
-      width: 100%; padding: 12px; margin: 0.5em 0;
-      box-sizing: border-box; font-size: 1em;
-    }
-    button {
-      background: #000; color: #fff; border: none;
-      cursor: pointer; border-radius: 4px;
-    }
-    .error {
-      color: red; font-size: 0.9em; margin-top: 0.5em;
+    a.button-link:hover { background: #00695c; }
+    .instagram-frame {
+      width: 100%;
+      max-width: 400px;
+      height: 300px;
+      border: none;
+      margin-top: 1em;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
-  <div id="login">
-    <h1>Welina Mai Kakou</h1>
-    <h2>Mr. Abregano’s Classroom</h2>
-    <p>Please enter the password to continue:</p>
-    <input type="password" id="pw" placeholder="Password…">
-    <button onclick="check()">Submit</button>
-    <p class="error" id="err"></p>
+  <div class="container">
+    <h1>Mr. R Abregano</h1>
+    <p>Welcome to our classroom community page—a safe hub for students, parents, and guardians.</p>
+
+    <section>
+      <h2>📹 Zoom Conference Hub</h2>
+      <p><em>By appointment only</em></p>
+      <iframe src="" width="100%" height="250" title="Zoom"></iframe>
+      <p><small>Request via email: ryan.abregano@k12.hi.us</small></p>
+    </section>
+
+    <section>
+      <h2>📅 Schedule</h2>
+      <a href="https://calendar.app.google/vAVS96g6UWSLZ58F9" class="button-link" target="_blank">Book Now</a>
+    </section>
+
+    <section>
+      <h2>🏫 Google Classroom</h2>
+      <p>Email <strong>ryan.abregano@k12.hi.us</strong> for access.</p>
+    </section>
+
+    <section>
+      <h2>🧾 Infinite Campus</h2>
+      <a href="https://www.infinitecampus.com/audience/parents-students" class="button-link" target="_blank">Access Portal</a>
+    </section>
+
+    <section>
+      <h2>📸 Instagram</h2>
+      <iframe class="instagram-frame" src="https://www.instagram.com/olomanaschool/embed"></iframe>
+    </section>
+
+    <section>
+      <h2>📷 Nā Hāliʻa Aloha</h2>
+      <p>Gallery coming soon—students may submit photos for approval.</p>
+    </section>
   </div>
 
-  <!-- Hidden YouTube audio -->
+  <!-- Hidden YouTube Player for Kauhale O Kamapua‘a -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-    function onYouTubeIframeAPIReady(){
-      new YT.Player('yt',{height:'0',width:'0',videoId:'HOK74BGCYXM',
-        playerVars:{autoplay:1,loop:1,playlist:'HOK74BGCYXM',controls:0,modestbranding:1,rel:0,start:0},
-        events:{onReady:e=>{e.target.setVolume(10);e.target.playVideo();}}
+    function onYouTubeIframeAPIReady() {
+      new YT.Player('yt', {
+        height: '0',
+        width: '0',
+        videoId: 'HOK74BGCYXM',
+        playerVars: {
+          autoplay: 1,
+          loop: 1,
+          playlist: 'HOK74BGCYXM',
+          controls: 0,
+          modestbranding: 1,
+          rel: 0,
+          start: 0
+        },
+        events: {
+          onReady: function(e) {
+            e.target.setVolume(10);
+            e.target.playVideo();
+          }
+        }
       });
-    }
-    function check(){
-      const p = document.getElementById('pw').value;
-      const e = document.getElementById('err');
-      if(p === '@kamapuaa25'){
-        e.textContent = '';
-        document.getElementById('login').style.display = 'none';
-        // reveal your content panel here…
-      } else {
-        e.innerHTML = 'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
-      }
     }
   </script>
 </body>
