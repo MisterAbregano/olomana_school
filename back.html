@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>Mr. Abregano’s Classroom – Resources</title>
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome for icons -->
   <link 
     rel="stylesheet" 
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
@@ -26,54 +26,34 @@
       margin: auto;
       padding: 2em;
     }
-    h2 {
-      font-size: 1.5em;
-      margin-bottom: 0.5em;
-    }
-    .section {
-      margin: 2em 0;
-    }
+    h2 { font-size:1.5em; margin-bottom:.5em; }
+    .section { margin:2em 0; }
     .button-link {
-      display: inline-block;
-      margin: 0.5em 0.5em 0.5em 0;
-      padding: 0.5em 1em;
-      background-color: #004d40;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
+      display:inline-block; margin:.5em .5em .5em 0; padding:.5em 1em;
+      background:#004d40; color:#fff; text-decoration:none;
+      border-radius:8px; font-weight:bold;
     }
-    .button-link:hover {
-      background-color: #00695c;
-    }
-    .button-link.disabled {
-      opacity: 0.6;
-      pointer-events: none;
-    }
+    .button-link:hover { background:#00695c; }
+    .button-link.disabled { opacity:.6; pointer-events:none; }
+
+    /* Instagram embed */
     .instagram {
-      border: 3px solid;
-      border-image: linear-gradient(
+      border:6px solid;
+      border-image:linear-gradient(
         to right,
-        #f09433 0%,
-        #e6683c 25%,
-        #dc2743 50%,
-        #cc2366 75%,
-        #bc1888 100%
+        #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%
       ) 1;
-      border-radius: 8px;
-      padding: 1em;
-      overflow: hidden;
+      border-radius:8px; padding:.5em; overflow:hidden;
     }
-    .zoom-buttons a {
-      vertical-align: middle;
-    }
-    .zoom-image {
-      display: block;
-      width: 100%;
-      max-width: 400px;
-      margin-top: 1em;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    .instagram iframe { width:100%; height:300px; border:none; }
+
+    /* Zoom preview icon */
+    .zoom-preview { text-align:center; margin-top:1em; color:#004d40; text-shadow:0 0 5px rgba(0,0,0,.2); }
+
+    /* Flipbook container */
+    #flipbook-container {
+      width:100%; max-width:600px; height:400px;
+      margin:2em auto; box-shadow:0 0 15px rgba(0,0,0,0.1);
     }
   </style>
 </head>
@@ -84,54 +64,39 @@
     <div class="section">
       <h2>📹 Zoom Conference Hub</h2>
       <p><em>By appointment only</em></p>
-
       <div class="zoom-buttons">
-        <a href="https://zoom.us/client/latest/ZoomInstaller.exe"
-           target="_blank"
-           class="button-link">
+        <a href="https://zoom.us/client/latest/ZoomInstaller.exe" target="_blank" class="button-link">
           <i class="fa-solid fa-desktop"></i> Download Zoom (PC)
         </a>
-        <a href="#"
-           class="button-link"
-           onclick="alert('Scan the QR code or install via your app store')">
+        <a href="#" class="button-link" onclick="alert('Scan QR or install via app store')">
           <i class="fa-solid fa-mobile-screen-button"></i> Get Zoom (Mobile)
         </a>
-        <a href="#"
-           class="button-link disabled">
+        <a href="#" class="button-link disabled">
           <i class="fa-solid fa-calendar-alt"></i> Schedule
         </a>
       </div>
-
-.zoom-preview {
-  margin-top: 1em;
-  color: #004d40;    /* match your button color */
-  text-shadow: 0 0 5px rgba(0,0,0,0.2);
-}
-
-      <p style="font-size:0.9em; margin-top:0.5em;">
+      <div class="zoom-preview">
+        <i class="fa-solid fa-video fa-4x"></i>
+      </div>
+      <p style="font-size:.9em; margin-top:.5em;">
         * Parents or guardians of Olomana students may request an appointment via email.
       </p>
     </div>
 
     <!-- Google Classroom -->
     <div class="section">
-  <h2>🏫 Google Classroom Access</h2>
-  <p>
-    If you are a student or guardian in 
-    <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a>, please request access to Google Classroom.
-  </p>
-</div>
+      <h2>🏫 Google Classroom Access</h2>
+      <p>
+        If you are a student or guardian in 
+        <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a>, please request access.
+      </p>
+    </div>
 
     <!-- Infinite Campus -->
     <div class="section">
       <h2>⚛️ Infinite Campus Portal</h2>
-      <p>
-        Access grades, attendance, and report cards through the DOE’s portal.
-      </p>
-      <a 
-        href="https://www.infinitecampus.com/audience/parents-students" 
-        target="_blank" 
-        class="button-link">
+      <p>Access grades, attendance, and report cards through the DOE’s portal.</p>
+      <a href="https://www.infinitecampus.com/audience/parents-students" target="_blank" class="button-link">
         🔗 Infinite Campus Login
       </a>
     </div>
@@ -139,16 +104,17 @@
     <!-- Instagram Feed -->
     <div class="section instagram">
       <h2>📸 Instagram Feed</h2>
-      <iframe
-        src="https://www.instagram.com/olomanaschool/embed"
-        title="Olomana Instagram"
-        style="width:100%;height:500px;border:none;overflow:hidden;">
-      </iframe>
+      <iframe src="https://www.instagram.com/olomanaschool/embed" title="Olomana Instagram"></iframe>
     </div>
-    </iframe>
-    </div>   <!-- end of last section (flipbook) -->
 
-    <!-- ===== Olomana Student Gallery (Pixelfed) ===== -->
+    <!-- Safehaven Gallery Flipbook -->
+    <div class="section">
+      <h2>📖 Safehaven Gallery</h2>
+      <p>A flipbook of student memories and stories.</p>
+      <div id="flipbook-container"></div>
+    </div>
+
+    <!-- Olomana Student Gallery (Pixelfed) -->
     <div class="section">
       <h2>📷 Olomana Student Gallery</h2>
       <iframe
@@ -169,15 +135,23 @@
         </a>
       </p>
     </div>
-    <!-- ===== end Pixelfed section ===== -->
 
   </div>  <!-- end .container -->
 
-  <!-- Hidden YouTube player for Kauhale chant -->
-  <div id="yt"></div>
-  <!-- ... rest of your script ... -->
-
-  </div>
+  <!-- StPageFlip -->
+  <script src="https://cdn.jsdelivr.net/npm/stpageflip@3.0.0/dist/js/stpageflip.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const flipbook = new St.PageFlip(document.getElementById('flipbook-container'), {
+        width: 600, height: 400, size: "stretch", showCover: true
+      });
+      flipbook.loadFromImages([
+        'https://placehold.co/600x400?text=Page+1',
+        'https://placehold.co/600x400?text=Page+2',
+        'https://placehold.co/600x400?text=Page+3'
+      ]);
+    });
+  </script>
 
   <!-- Hidden YouTube player for Kauhale chant -->
   <div id="yt"></div>
@@ -185,24 +159,12 @@
   <script>
     function onYouTubeIframeAPIReady() {
       new YT.Player('yt', {
-        height: '0',
-        width: '0',
-        videoId: 'HOK74BGCYXM',
-        playerVars: {
-          autoplay: 1,
-          loop: 1,
-          playlist: 'HOK74BGCYXM',
-          controls: 0,
-          modestbranding: 1,
-          rel: 0,
-          start: 0
+        height:'0', width:'0', videoId:'HOK74BGCYXM',
+        playerVars:{
+          autoplay:1, loop:1, playlist:'HOK74BGCYXM',
+          controls:0, modestbranding:1, rel:0, start:0
         },
-        events: {
-          onReady: e => {
-            e.target.setVolume(10);
-            e.target.playVideo();
-          }
-        }
+        events:{ onReady:e=>{ e.target.setVolume(10); e.target.playVideo(); }}
       });
     }
   </script>
