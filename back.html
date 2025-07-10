@@ -3,34 +3,52 @@
 <head>
   <meta charset="UTF-8" />
   <title>Mr. R Abregano | Classroom</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
     html, body {
-      margin:0; padding:0; min-height:100vh;
-      background:url('https://www.olomanaschoolhi.k12.hi.us/pics/OLOS_LOGO.gif') center top/200px repeat fixed;
-      font-family:Georgia, serif; color:#222;
+      margin: 0; padding: 0; min-height: 100vh;
+      background: #f5f0e6;
+      font-family: Georgia, serif;
+      color: #222;
+    }
+    body::before {
+      content: "";
+      position: fixed; top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('https://www.olomanaschoolhi.k12.hi.us/pics/OLOS_LOGO.gif')
+                  center top / 200px repeat fixed;
+      opacity: 0.25;
+      pointer-events: none;
+      z-index: -1;
     }
     .container {
-      max-width:960px; margin:2em auto; padding:2em;
-      background:rgba(255,255,255,0.95); border-radius:12px;
-      box-shadow:0 0 12px rgba(0,0,0,0.2);
+      max-width: 960px;
+      margin: 2em auto;
+      background: rgba(255,255,255,0.95);
+      padding: 2em;
+      border-radius: 12px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.2);
     }
-    h1,h2 { color:#004d40; }
-    section { margin:2em 0; }
+    h1, h2 { color: #004d40; margin-top: 0; }
+    section { margin: 2em 0; }
     a.button-link {
-      display:inline-block; padding:8px 16px;
-      background:#004d40; color:#fff; text-decoration:none; border-radius:6px;
+      display: inline-block; padding: 8px 16px;
+      background: #004d40; color: #fff;
+      text-decoration: none; border-radius: 6px;
     }
-    a.button-link:hover { background:#00695c; }
+    a.button-link:hover { background: #00695c; }
     .instagram-frame {
-      width:100%; max-width:400px; height:300px;
-      border:none; margin-top:1em; border-radius:8px; box-shadow:0 0 8px rgba(0,0,0,0.1);
+      width: 100%; max-width: 400px; height: 300px;
+      border: none; margin-top: 1em; border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+    .zoom-link img {
+      max-width: 150px; margin: 1em 0; cursor: pointer;
     }
   </style>
 </head>
 <body>
   <script>
-    // redirect back to gate if not authenticated
     if (sessionStorage.getItem('auth') !== 'true') {
       window.location.href = 'index.html';
     }
@@ -43,23 +61,34 @@
     <section>
       <h2>📹 Zoom Conference Hub</h2>
       <p><em>By appointment only</em></p>
-      <iframe src="" width="100%" height="250" title="Zoom"></iframe>
-      <p><small>Email: ryan.abregano@k12.hi.us</small></p>
+      <div class="zoom-link">
+        <a href="https://zoom.us" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Zoom_Communications_Logo.svg/256px-Zoom_Communications_Logo.svg.png"
+               alt="Zoom: Join or create an account">
+        </a>
+      </div>
+      <iframe src="" width="100%" height="250" title="Zoom Meeting"></iframe>
+      <p><small>Email to request: <a href="mailto:ryan.abregano@k12.hi.us">ryan.abregano@k12.hi.us</a></small></p>
     </section>
 
     <section>
-      <h2>📅 Schedule</h2>
-      <a class="button-link" href="https://calendar.app.google/vAVS96g6UWSLZ58F9" target="_blank">Book Now</a>
+      <h2>📅 Schedule a Parent/Teacher/Guardian Meeting</h2>
+      <p>Note: 30-minute online meeting, phone call, or in-person.</p>
+      <a class="button-link" href="https://calendar.app.google/vAVS96g6UWSLZ58F9" target="_blank">
+        Book Now
+      </a>
     </section>
 
     <section>
       <h2>🏫 Google Classroom Access</h2>
-      <p>Email <strong>ryan.abregano@k12.hi.us</strong> to request your invite.</p>
+      <p>Email <a href="mailto:ryan.abregano@k12.hi.us"><strong>Mr. A’s</strong></a> to request your invite code.</p>
     </section>
 
     <section>
       <h2>🧾 Infinite Campus</h2>
-      <a class="button-link" href="https://www.infinitecampus.com/audience/parents-students" target="_blank">Access Portal</a>
+      <a class="button-link" href="https://www.infinitecampus.com/audience/parents-students" target="_blank">
+        Access Portal
+      </a>
     </section>
 
     <section>
@@ -68,22 +97,9 @@
     </section>
 
     <section>
-      <h2>📷 Nā Hāliʻa Aloha</h2>
+      <h2>📷 Na Halia aloha – student showcase gallery</h2>
       <p>Gallery coming soon—students may submit photos for approval.</p>
     </section>
   </div>
-
-  <!-- continue background chant -->
-  <div id="yt"></div>
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    function onYouTubeIframeAPIReady() {
-      new YT.Player('yt', {
-        height:'0', width:'0', videoId:'HOK74BGCYXM',
-        playerVars:{autoplay:1,loop:1,playlist:'HOK74BGCYXM',controls:0,modestbranding:1,rel:0},
-        events:{onReady:e=>{e.target.setVolume(10);e.target.playVideo();}}
-      });
-    }
-  </script>
 </body>
 </html>
