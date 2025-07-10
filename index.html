@@ -6,16 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
     html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;     /* align to top */
-      padding-top: 15vh;           /* push down 15% of viewport height */
+      margin: 0; padding: 0;
+      height: 100%; overflow: hidden;
+      display: flex; justify-content: center; 
+      align-items: flex-end;       /* push content toward bottom */
+      padding-bottom: 15vh;        /* 15% viewport padding at bottom */
       font-family: Georgia, serif;
-      background: #f5f0e6
+      background: #f5f0e6 
         url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png')
         center top / contain no-repeat fixed;
     }
@@ -31,81 +28,52 @@
     #login {
       width: 90%; max-width: 420px;
       background: rgba(255,255,255,0.95);
-      padding: 30px;
-      border-radius: 12px;
+      padding: 30px; border-radius: 12px;
       box-shadow: 0 0 15px rgba(0,0,0,0.2);
-      text-align: center;
-      position: relative;
+      text-align: center; position: relative;
       z-index: 1;
     }
-    #login img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-      margin-bottom: 1em;
-    }
     h1 {
-      margin: 0 0 0.5em;
-      font-size: 1.5em;
+      margin: 0 0 1em; font-size: 1.5em;
     }
     input[type="password"], button {
-      width: 100%;
-      padding: 12px;
-      margin: 0.5em 0;
-      box-sizing: border-box;
-      font-size: 1em;
+      width: 100%; padding: 12px; margin: 0.5em 0;
+      box-sizing: border-box; font-size: 1em;
     }
     button {
-      background: #000;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
+      background: #000; color: #fff; border: none;
+      cursor: pointer; border-radius: 4px;
     }
     .error {
-      color: red;
-      font-size: 0.9em;
-      margin-top: 0.5em;
+      color: red; font-size: 0.9em; margin-top: 0.5em;
     }
   </style>
 </head>
 <body>
   <div id="login">
-    <img src="https://3.files.edl.io/a578/20/05/14/201748-f5c02746-a3b7-42cb-8a92-4df9c2085c7b.jpg"
-         alt="Welcome to Mr. Abregano’s Classroom">
-    <h1>Welcome to Mr. Abregano’s Classroom</h1>
-    <p>Please enter the password:</p>
+    <h1>Enter Password to Continue</h1>
     <input type="password" id="pw" placeholder="Password…">
     <button onclick="check()">Submit</button>
     <p class="error" id="err"></p>
   </div>
 
-  <!-- Hidden YouTube audio -->
+  <!-- Hidden YouTube Audio -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     function onYouTubeIframeAPIReady(){
-      new YT.Player('yt', {
-        height: '0', width: '0', videoId: 'HOK74BGCYXM',
-        playerVars: {
-          autoplay: 1, loop: 1, playlist: 'HOK74BGCYXM',
-          controls: 0, modestbranding: 1, rel: 0, start: 0
-        },
-        events: {
-          onReady: e => {
-            e.target.setVolume(10);
-            e.target.playVideo();
-          }
-        }
+      new YT.Player('yt',{height:'0',width:'0',videoId:'HOK74BGCYXM',
+        playerVars:{autoplay:1,loop:1,playlist:'HOK74BGCYXM',controls:0,modestbranding:1,rel:0,start:0},
+        events:{onReady:e=>{e.target.setVolume(10);e.target.playVideo();}}
       });
     }
     function check(){
-      const p = document.getElementById('pw').value;
-      const e = document.getElementById('err');
+      const p = document.getElementById('pw').value,
+            e = document.getElementById('err');
       if(p === '@kamapuaa25'){
         e.textContent = '';
         document.getElementById('login').style.display = 'none';
-        // reveal your content here
+        // reveal your content here…
       } else {
         e.innerHTML = 'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
       }
