@@ -1,76 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mr. Abregano's Classroom</title>
+  <title>Olomana School - Student Gallery & Zoom Conference</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <style>
+    /* Leaf-pattern panels on left & right edges */
+    html,
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      height: 100%;
+      overflow: hidden;
       background-color: #f5f0e6;
-      background-image: url('https://drive.google.com/uc?export=view&id=10pQ75d2_hk-nHNc8NYf8WG9Lh9vID_Qa');
-      background-position: center top;
-      background-size: cover;
-      background-repeat: no-repeat;
+      background-image: url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png'),
+        url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png');
+      background-position: left center, right center;
+      background-repeat: repeat-y, repeat-y;
+      background-size: 0.5in auto, 0.5in auto;
       display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
+      align-items: flex-start;
+      font-family: Georgia, serif;
+      position: relative;
     }
-    .container {
-      width: 80%;
-      max-width: 1200px;
-      background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent */
+
+    .section {
+      max-width: 800px;
+      margin: 20px auto;
       padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
       text-align: center;
-      border-radius: 10px;
-    }
-    .button-link {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      margin: 10px 0;
-      font-size: 16px;
-    }
-    .button-link:hover {
-      background-color: #0056b3;
-    }
-    .header-title {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+      font-size: 2rem;
       color: #333;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    a.button-link {
+      display: inline-block;
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      margin: 10px;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    a.button-link:hover {
+      background-color: #45a049;
+    }
+
+    .disabled {
+      background-color: #888;
+    }
+
+    #yt {
+      display: none;
+    }
+
+    /* Styling for the photo frame */
+    .photo-box {
+      display: block;
+      width: 100%;
+      height: 350px;
+      background-color: #fff;
+      border: 6px solid #004c00; /* green border */
+      border-radius: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      position: relative;
+      background: url('https://www.example.com/your-photo.jpg') center/cover no-repeat; /* Insert your photo here */
+      background-size: cover;
+      margin-top: 20px;
+    }
+
+    /* Text box for your bio */
+    .bio-text-box {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 1rem;
+      color: #333;
+      width: 80%;
+      text-align: center;
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1 class="header-title">Welcome to Mr. Abregano's Classroom</h1>
-    <p>For students or guardians, you can schedule a one-on-one meeting via the following options:</p>
-    
-    <!-- Zoom Conference Button -->
+  <!-- Main content -->
+  <div class="section">
+    <h2>📹 Zoom Conference Hub</h2>
+    <p><em>By appointment only</em></p>
+
+    <!-- Interactive buttons -->
     <p>
       <a href="https://zoom.us/client/latest/ZoomInstaller.exe" target="_blank" class="button-link">
         💻 Download Zoom (PC)
       </a>
-      <a href="https://zoom.us/download" target="_blank" class="button-link">
+      <a href="#" class="button-link" onclick="document.getElementById('qrModal').style.display='block';return false;">
         📱 Get Zoom (Mobile)
       </a>
-      <a href="#" class="button-link" onclick="alert('Schedule feature coming soon!'); return false;">
-        📆 Schedule a Meeting (Coming Soon)
+      <a href="#" class="button-link disabled" aria-disabled="true">
+        📆 Schedule (Coming Soon)
       </a>
     </p>
-    
-    <p>Want to join the student-run gallery? <a href="https://pixelfed.org/" target="_blank">Visit our Pixelfed account!</a></p>
-    <div class="footer">
-      <p>If you are a student or guardian, please email <strong>Mr. A</strong> to request access: 
-        <a href="mailto:ryan.abregano@k12.hi.us">Ryan.abregano@k12.hi.us</a>
-      </p>
+  </div>
+
+  <!-- Photo Box with Bio -->
+  <div class="section">
+    <h2>🖼️ Photo Box</h2>
+    <p>This space showcases my biography. More details to come!</p>
+
+    <!-- Photo box with your photo (replace the background image) -->
+    <div class="photo-box">
+      <div class="bio-text-box">
+        <h3>Ryan Abregano</h3>
+        <p>
+          I am a passionate cultural educator and practitioner of Native Hawaiian perspectives. Currently, I serve as an Educational Assistant III at Olomana School in Hawaii, supporting students with disabilities. My aim is to support students and help develop ways to generate income for cultural work, alongside my growing interest in coding, web development, and technology.
+        </p>
+      </div>
     </div>
   </div>
 
@@ -102,4 +168,5 @@
     }
   </script>
 </body>
+
 </html>
