@@ -3,137 +3,248 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Olomana School – Resources</title>
-  <style>
-    /* Reset & full-height */
-    * { box-sizing:border-box; margin:0; padding:0 }
-    html, body { height:100%; font-family: Georgia, serif; background:#f5f0e6 }
+  <title>Mr. Abregano’s Classroom</title>
 
-    /* Side-panel pattern */
-    body {
-      background-image:
-        url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png'),
-        url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png');
-      background-position: left center, right center;
-      background-repeat: repeat-y, repeat-y;
-      background-size: 0.5in auto, 0.5in auto;
+  <!-- Montserrat for modern typography -->
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" 
+    rel="stylesheet">
+
+  <style>
+    /* ---------- CSS VARIABLES ---------- */
+    :root {
+      --primary:   #004d40; /* deep green */
+      --accent:    #00bfa5; /* teal */
+      --card-bg:   rgba(255,255,255,0.9);
+      --radius:    12px;
+      --shadow:    0 4px 20px rgba(0,0,0,0.1);
+      --border-thick: 4px;
     }
 
-    /* Main wrapper */
+    /* ---------- RESET & BASE ---------- */
+    * { box-sizing: border-box; margin:0; padding:0 }
+    html, body {
+      height:100%; font-family:'Montserrat',sans-serif;
+      background: #f5f0e6;
+      display:flex; justify-content:center; align-items:flex-start;
+      padding:2rem 0;
+    }
+
+    /* ---------- WRAPPER ---------- */
     .wrapper {
       display: flex;
       flex-wrap: wrap;
+      gap: 2rem;
       max-width: 1000px;
-      margin: 2em auto;
-      gap: 2em;
-      padding: 0 1em;
+      width: 90%;
     }
     .section {
       flex: 1 1 300px;
-      background: rgba(255,255,255,0.9);
-      border-radius: 12px;
-      padding: 1.5em;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 1.5rem;
     }
     h2 {
-      text-align: center;
-      margin-bottom: 0.5em;
-      font-size: 1.6em;
+      text-align:center;
+      margin-bottom:1rem;
+      color: var(--primary);
     }
-    p { text-align: center; margin: 0.75em 0; color: #333 }
+    p {
+      color:#333;
+      font-size: .95rem;
+      text-align:center;
+      margin-bottom:1rem;
+    }
 
-    /* Buttons */
+    /* ---------- BUTTONS ---------- */
     .buttons {
-      text-align: center;
-      margin: 1em 0;
+      text-align:center;
+      margin-bottom:1rem;
     }
     .button-link {
-      display: inline-block;
-      margin: 0.5em;
-      padding: 0.6em 1.2em;
-      background: #4CAF50;
+      display:inline-block;
+      margin:.25rem .25rem;
+      padding:.6rem 1.2rem;
+      background: var(--accent);
       color: #fff;
+      border: none;
+      border-radius: var(--radius);
       text-decoration: none;
-      border-radius: 6px;
-      font-size: 1em;
-      transition: background 0.3s;
+      font-size: .95rem;
+      transition: background .2s;
+      border: var(--border-thick) solid var(--accent);
     }
-    .button-link:hover { background: #388E3C }
+    .button-link:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+    }
     .button-link.disabled {
-      background: #aaa;
+      background: #aaa; border-color: #aaa;
       pointer-events: none;
     }
 
-    /* Photo + Bio */
-    .photo-box {
-      position: relative;
-      width: 100%;
-      padding-bottom: 75%; /* 4:3 aspect */
-      background: url('IMG_0041.JPG') center/cover no-repeat;
-      border-radius: 8px;
-      overflow: hidden;
-      margin-top: 1em;
+    /* ---------- PROFILE & BIO ---------- */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .bio-text {
-      position: absolute;
-      bottom: 0;
-      left: 0; right: 0;
-      background: rgba(255,255,255,0.85);
-      padding: 1em;
-      font-size: 0.95em;
-      color: #222;
+    .profile img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: var(--border-thick) solid var(--accent);
+      box-shadow: var(--shadow);
+      margin-bottom:1rem;
+    }
+    .bio {
       text-align: center;
+      color:#222;
+      line-height:1.4;
+      font-size:.95rem;
     }
 
-    /* Hidden YouTube player */
-    #yt { display: none }
+    /* ---------- LINKS ---------- */
+    .link-list {
+      list-style: none;
+      padding:0;
+      text-align:center;
+      margin:1rem 0;
+    }
+    .link-list li {
+      margin:.5rem 0;
+    }
+    .link-list a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .link-list a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------- SOCIAL EMBEDS ---------- */
+    .embed {
+      margin:1rem 0;
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+    /* Instagram gradient border */
+    .embed.instagram {
+      border: var(--border-thick) solid;
+      border-image: linear-gradient(
+        to right,
+        #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%
+      ) 1;
+    }
+    /* Pixelfed solid teal border */
+    .embed.pixelfed {
+      border: var(--border-thick) solid var(--accent);
+    }
+    .embed iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      display: block;
+    }
+
+    /* ---------- HIDDEN YOUTUBE PLAYER ---------- */
+    #yt { display:none }
   </style>
 </head>
-<body>
 
+<body>
   <div class="wrapper">
-    <!-- Zoom Conference Hub -->
+    <!-- ======== Zoom Conference Hub ======== -->
     <div class="section">
       <h2>📹 Zoom Conference Hub</h2>
       <p><em>By appointment only</em></p>
       <div class="buttons">
-        <a href="https://zoom.us/client/latest/ZoomInstaller.exe"
-           target="_blank" class="button-link">
+        <!-- PC installer -->
+        <a 
+          href="https://zoom.us/client/latest/ZoomInstaller.exe" 
+          target="_blank" 
+          class="button-link">
           💻 Download Zoom (PC)
         </a>
-        <a href="https://zoom.us/download"
-           target="_blank" class="button-link">
+        <!-- Mobile app link -->
+        <a 
+          href="https://zoom.us/download" 
+          target="_blank" 
+          class="button-link">
           📱 Get Zoom (Mobile)
         </a>
+        <!-- Future scheduling -->
         <a href="#" class="button-link disabled">
           📆 Schedule (Coming Soon)
         </a>
       </div>
-      <p>
-        If you’re a student or guardian, please email
-        <strong><a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a></strong>
+      <p>If you’re a student or guardian, email 
+        <strong><a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a></strong> 
         to request access.
       </p>
     </div>
 
-    <!-- Photo & Bio -->
+    <!-- ======== Profile & Bio ======== -->
+    <div class="section profile">
+      <h2>👤 Profile &amp; Bio</h2>
+      <!-- Profile picture -->
+      <img src="IMG_0041.JPG" alt="Mr. Abregano headshot">
+      <!-- Bio text -->
+      <div class="bio">
+        <p><strong>Ryan Abregano</strong> is a cultural educator and practitioner  
+        of Native Hawaiian perspectives. Currently an Educational Assistant III at  
+        Olomana School in Hawaiʻi, he supports students with disabilities and builds  
+        cultural programming, blending technology with aloha.</p>
+      </div>
+
+      <!-- Quick Links list -->
+      <ul class="link-list">
+        <!-- Google Classroom -->
+        <li>
+          🏫 <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a> (Google Classroom Access)
+        </li>
+        <!-- Infinite Campus Parent Portal -->
+        <li>
+          ⚛️ <a href="https://www.olomanaschoolhi.k12.hi.us/apps/pages/index.jsp?type=d&amp;uREC_ID=1959022" 
+              target="_blank">
+            Infinite Campus (Parent)
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- ======== Social Feeds ======== -->
     <div class="section">
-      <h2>🖼️ Photo &amp; Bio</h2>
-      <div class="photo-box">
-        <div class="bio-text">
-          <strong>Ryan Abregano</strong><br/>
-          I am a passionate cultural educator and practitioner of Native Hawaiian perspectives.  
-          Currently I serve as an Educational Assistant III at Olomana School in Hawaii, supporting  
-          students with disabilities. My aim is to develop cultural programming and share aloha through technology.
-        </div>
+      <h2>📸 Social Feeds</h2>
+
+      <!-- Instagram embed -->
+      <div class="embed instagram">
+        <iframe 
+          src="https://www.instagram.com/olomanaschool/embed" 
+          title="Olomana Instagram"></iframe>
+      </div>
+
+      <!-- Pixelfed link/embed -->
+      <div class="embed pixelfed">
+        <!-- Pixelfed does not support iframe embeds; link only -->
+        <a 
+          href="https://pixelfed.social/@olomanaschool" 
+          target="_blank" 
+          style="display:block; padding:1rem; color:var(--primary); text-decoration:none; font-weight:500;">
+          🌐 @olomanaschool on Pixelfed
+        </a>
       </div>
     </div>
   </div>
 
-  <!-- Kauhale O Kamapuaʻa chant (hidden autoplay loop) -->
+  <!-- ======== Hidden Kauhale Chant ======== -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
+    // Initialize YouTube player invisibly, autoplay & loop
     function onYouTubeIframeAPIReady() {
       new YT.Player('yt', {
         height:'0', width:'0',
@@ -142,10 +253,14 @@
           autoplay:1, loop:1, playlist:'HOK74BGCYXM',
           controls:0, modestbranding:1, rel:0, start:0
         },
-        events:{ onReady:e=>{ e.target.setVolume(10); e.target.playVideo(); }}
+        events:{ 
+          onReady: e => {
+            e.target.setVolume(10);
+            e.target.playVideo();
+          }
+        }
       });
     }
   </script>
-
 </body>
 </html>
