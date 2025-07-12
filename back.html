@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Mr. Abregano’s Classroom</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <style>
     :root {
       --bg: #f5f0e6;
@@ -14,127 +14,84 @@
       --ticker-color: #fff;
     }
     html, body {
-      margin: 0; padding: 0;
+      margin:0; padding:0;
       background: var(--bg);
       font-family: Georgia, serif;
       color: var(--text);
     }
-
-    /* ─── TOP TICKER ───────────────────────────────────── */
     .ticker {
       position: fixed; top:0; left:0; right:0;
       background: var(--ticker-bg);
       color: var(--ticker-color);
-      height:2.5rem; display:flex; align-items:center;
-      overflow:hidden; padding:0 1rem; z-index:1000;
+      height: 2.5rem; display: flex; align-items: center;
+      overflow: hidden; padding: 0 1rem; z-index:1000;
     }
     .ticker span {
-      display:inline-block; padding:0 2rem;
-      white-space:nowrap;
-      animation: scroll-ticker 20s linear infinite;
+      display: inline-block; padding: 0 2rem;
+      white-space: nowrap;
+      animation: scroll 20s linear infinite;
     }
-    @keyframes scroll-ticker {
-      from { transform:translateX(100%); }
-      to   { transform:translateX(-100%); }
+    @keyframes scroll {
+      from { transform: translateX(100%); }
+      to   { transform: translateX(-100%); }
     }
-
-    /* ─── LAYOUT ──────────────────────────────────────── */
-    .container {
-      display: flex;
-      gap: 2rem;
-      max-width: 1200px;
-      margin: 4rem auto 2rem;
-      padding: 0 1rem;
-    }
-    .column {
-      flex: 1;
-    }
+    .container { display: flex; gap:2rem; max-width:1200px; margin:4rem auto 2rem; padding:0 1rem; }
+    .column { flex:1; }
     .section {
       background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
+      padding:1.5rem;
+      border-radius:8px;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom:2rem;
     }
     .section h2 {
-      margin-top: 0;
-      color: var(--accent);
-      font-size: 1.5rem;
-      display: flex; align-items: center;
-      gap: .5rem;
-    }
-    .section p {
-      line-height: 1.4;
+      margin-top:0; color: var(--accent);
+      font-size:1.5rem; display:flex; align-items:center; gap:.5rem;
     }
     .button-link {
-      display: inline-block;
-      background: var(--accent);
-      color: #fff;
-      padding: .6rem 1rem;
-      margin: .5rem .5rem 0 0;
-      text-decoration: none;
-      border-radius: 4px;
-      font-size: .95rem;
+      display:inline-block; background:var(--accent);
+      color:#fff; padding:.6rem 1rem; margin:.5rem .5rem 0 0;
+      text-decoration:none; border-radius:4px; font-size:.95rem;
     }
-    .button-link.disabled {
-      background: #999;
-      cursor: default;
-    }
-
-    /* ─── VISION IMAGE ────────────────────────────────── */
+    .button-link.disabled { background:#999; cursor:default; }
     .vision-image-wrapper {
-      padding: 4px; /* half of border */
-      background: linear-gradient(45deg, gold, darkgoldenrod);
-      border-radius: 8px;
-      display: inline-block;
+      border:4px solid;
+      border-image-slice:1;
+      border-image-source: linear-gradient(45deg, gold, darkgoldenrod);
+      display:inline-block; border-radius:8px;
     }
     .vision-image-wrapper img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-      border-radius: 4px;
+      display:block; max-width:100%; height:auto; border-radius:4px;
     }
-
-    /* ─── SOCIAL FEEDS & PIXELFED ─────────────────────── */
     .social-iframe, .pixelfed-box {
-      border: 4px solid;
-      border-image-slice: 1;
-      margin-top: 1rem;
+      border:4px solid; border-image-slice:1; margin-top:1rem;
     }
     .social-iframe {
       border-image-source: linear-gradient(to right, orange, magenta);
-      width: 100%; height: 300px;
+      width:100%; height:300px;
     }
     .pixelfed-box {
       border-image-source: linear-gradient(to right, teal, cyan);
-      text-align:center;
+      text-align:center; padding:1rem;
     }
     .pixelfed-box img {
-      max-width: 200px;
-      margin: 1rem 0;
+      max-width:200px; display:block; margin:0 auto;
     }
-
-    /* ─── PROFILE & BIO ───────────────────────────────── */
     .profile {
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
+      display:flex; gap:1rem; align-items:flex-start;
     }
     .profile img {
-      width: 120px;
-      border-radius: 50%;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      width:120px; border-radius:50%;
+      box-shadow:0 2px 6px rgba(0,0,0,0.2);
     }
     .profile .bio-text {
-      flex: 1;
-      font-size: .95rem;
-      line-height: 1.5;
+      flex:1; font-size:.95rem; line-height:1.5;
     }
   </style>
 </head>
 <body>
 
-  <!-- TOP TICKER -->
+  <!-- ─── TOP TICKER ────────────────────────────────────── -->
   <div class="ticker" id="events-ticker">
     <span>Loading upcoming events &amp; weather…</span>
   </div>
@@ -144,22 +101,23 @@
     <!-- LEFT COLUMN -->
     <div class="column">
 
-      <!-- Our Vision -->
+      <!-- ▶ Our Vision -->
       <div class="section">
         <h2>🎯 Our Vision</h2>
         <div class="vision-image-wrapper">
+          <!-- make sure this file is in your repo root -->
           <img src="olomanavision.jpeg" alt="Olomana School Vision">
         </div>
       </div>
 
-      <!-- Zoom Conference Hub (moved to bottom) -->
+      <!-- ▶ Zoom Conference Hub -->
       <div class="section">
         <h2>📹 Zoom Conference Hub</h2>
         <p><em>By appointment only</em></p>
         <p>
           <a href="https://zoom.us/client/latest/ZoomInstaller.exe" target="_blank" class="button-link">💻 Download Zoom (PC)</a>
           <a href="#" class="button-link">📱 Get Zoom (Mobile)</a>
-          <a href="#" class="button-link disabled" aria-disabled="true">📅 Schedule (Coming Soon)</a>
+          <a href="#" class="button-link disabled">📅 Schedule (Coming Soon)</a>
         </p>
         <p style="font-size:.9em;">
           If you’re a student or guardian, email <a href="mailto:ryan.abregano@k12.hi.us"><strong>Mr. A’s</strong></a> to request access.
@@ -171,29 +129,30 @@
     <!-- RIGHT COLUMN -->
     <div class="column">
 
-      <!-- Social Feeds -->
+      <!-- ▶ Social Feeds -->
       <div class="section">
         <h2>📸 Social Feeds</h2>
-        <iframe 
+        <iframe
           class="social-iframe"
-          src="https://www.instagram.com/olomanaschool/embed" 
+          src="https://www.instagram.com/olomanaschool/embed"
           allowtransparency="true">
         </iframe>
       </div>
 
-      <!-- Pixelfed -->
+      <!-- ▶ Pixelfed -->
       <div class="section">
         <h2>🌐 Pixelfed</h2>
         <div class="pixelfed-box">
           <a href="https://pixelfed.social/register" target="_blank">
-            <img src="pixelfed-logo.svg" alt="Pixelfed Logo"/>
+            <img src="pixelfed-logo.svg" alt="Pixelfed Logo">
             <div>Sign up on Pixelfed</div>
           </a>
         </div>
       </div>
 
-      <!-- Profile & Bio -->
+      <!-- ▶ Profile & Bio -->
       <div class="section profile">
+        <!-- ensure this file matches your upload -->
         <img src="profile.jpg" alt="Ryan Abregano">
         <div class="bio-text">
           <h3>Ryan Abregano</h3>
@@ -204,49 +163,48 @@
       </div>
 
     </div>
-
   </div>
 
-  <!-- ─── ICS + WEATHER TICKER SCRIPT ─────────────────────────────────────── -->
+  <!-- ─── EVENTS + WEATHER TICKER ───────────────────────── -->
   <script src="https://cdn.jsdelivr.net/npm/ical.js@2.2.0/build/ical.min.js"></script>
   <script>
-    const ICS_PATH = './olomana_calendar.ics';
-    const WTTR_PATH = 'https://wttr.in/Waimanalo?format=j1';
+    const ICS_URL = './olomana_calendar.ics';
+    const WTTR_URL = 'https://wttr.in/Waimanalo?format=j1';
 
     async function updateTicker() {
       const now = new Date();
-      const cutoff = new Date(Date.now() + 30*24*60*60*1000);
+      const in30 = new Date(Date.now() + 30*24*60*60*1000);
 
-      // 1) ICS events
+      // 1) ICS Events
       let events = [];
       try {
-        let text = await fetch(ICS_PATH).then(r=>r.text());
-        let j = ICAL.parse(text);
-        let comp = new ICAL.Component(j);
+        const text = await fetch(ICS_URL).then(r=>r.text());
+        const data = ICAL.parse(text);
+        const comp = new ICAL.Component(data);
         events = comp.getAllSubcomponents('vevent')
           .map(c=>new ICAL.Event(c))
           .filter(ev=>{
-            const d=ev.startDate.toJSDate();
-            return d>=now && d<=cutoff;
+            const d = ev.startDate.toJSDate();
+            return d >= now && d <= in30;
           })
-          .sort((a,b)=>a.startDate.toJSDate()-b.startDate.toJSDate())
+          .sort((a,b)=>a.startDate.toJSDate() - b.startDate.toJSDate())
           .slice(0,5)
           .map(ev=>{
-            const d=ev.startDate.toJSDate();
-            return `${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})} – ${ev.summary}`;
+            const d = ev.startDate.toJSDate();
+            return `${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}: ${ev.summary}`;
           });
-      } catch(e){ console.warn('ICS load error',e); }
+      } catch(e){ console.warn(e) }
 
       // 2) Weather
       let weather = [];
       try {
-        let d = await fetch(WTTR_PATH).then(r=>r.json());
-        weather = d.weather.slice(0,3).map(day=>{
-          const dt = new Date(day.date);
-          const lbl = dt.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
-          return `${lbl}: High ${day.maxtempF}°F, Low ${day.mintempF}°F`;
+        const j = await fetch(WTTR_URL).then(r=>r.json());
+        weather = j.weather.slice(0,3).map(day=>{
+          const d = new Date(day.date);
+          const lbl = d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+          return `${lbl} – H${day.maxtempF}° L${day.mintempF}°`;
         });
-      } catch(e){ console.warn('Weather load error',e); }
+      } catch(e){ console.warn(e) }
 
       // 3) Render
       const items = [...events, ...weather];
@@ -258,18 +216,19 @@
     setInterval(updateTicker, 60_000);
   </script>
 
-  <!-- ─── HIDDEN YOUTUBE PLAYER ───────────────────────────────────────────── -->
+  <!-- ─── HIDDEN YOUTUBE PLAYER ─────────────────────────── -->
   <div id="yt-player"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     function onYouTubeIframeAPIReady() {
       new YT.Player('yt-player', {
-        height: '0', width: '0',
-        videoId: 'HOK74BGCYXM',
-        playerVars: { autoplay:1, loop:1, playlist:'HOK74BGCYXM', controls:0, modestbranding:1, rel:0 },
-        events: { onReady: e=>{ e.target.setVolume(10); e.target.playVideo(); } }
+        height:'0', width:'0',
+        videoId:'HOK74BGCYXM',
+        playerVars:{ autoplay:1, loop:1, playlist:'HOK74BGCYXM', controls:0, modestbranding:1, rel:0 },
+        events:{ onReady: e=>{ e.target.setVolume(10); e.target.playVideo(); } }
       });
     }
   </script>
+
 </body>
 </html>
