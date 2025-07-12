@@ -5,39 +5,71 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Mr. Abregano’s Classroom</title>
 
-  <!-- Montserrat for modern typography -->
+  <!-- Montserrat font for modern look -->
   <link 
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" 
     rel="stylesheet">
 
   <style>
-    /* ---------- CSS VARIABLES ---------- */
+    /* ---------- Variables ---------- */
     :root {
-      --primary:   #004d40; /* deep green */
-      --accent:    #00bfa5; /* teal */
-      --card-bg:   rgba(255,255,255,0.9);
-      --radius:    12px;
-      --shadow:    0 4px 20px rgba(0,0,0,0.1);
-      --border-thick: 4px;
+      --primary:       #004d40;
+      --accent:        #00bfa5;
+      --card-bg:       rgba(255,255,255,0.9);
+      --radius:        12px;
+      --shadow:        0 4px 20px rgba(0,0,0,0.1);
+      --border-thick:  4px;
+      --ticker-bg:     #222;
+      --ticker-color:  #fff;
     }
 
-    /* ---------- RESET & BASE ---------- */
+    /* ---------- Reset & Base ---------- */
     * { box-sizing: border-box; margin:0; padding:0 }
     html, body {
       height:100%; font-family:'Montserrat',sans-serif;
-      background: #f5f0e6;
-      display:flex; justify-content:center; align-items:flex-start;
-      padding:2rem 0;
+      background:#f5f0e6;
+      overflow-x:hidden;
     }
 
-    /* ---------- WRAPPER ---------- */
+    /* ---------- Broadcast Ticker ---------- */
+    .ticker {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: var(--ticker-bg);
+      color: var(--ticker-color);
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      z-index: 1000;
+      padding: 0 1rem;
+    }
+    .ticker-content {
+      display: inline-block;
+      white-space: nowrap;
+      animation: scroll 20s linear infinite;
+    }
+    @keyframes scroll {
+      0%   { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .ticker span {
+      display: inline-block;
+      margin-right: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* ---------- Page Wrapper ---------- */
     .wrapper {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
       max-width: 1000px;
       width: 90%;
+      margin: 4rem auto 2rem; /* push down below ticker */
     }
+
+    /* ---------- Section Cards ---------- */
     .section {
       flex: 1 1 300px;
       background: var(--card-bg);
@@ -51,29 +83,25 @@
       color: var(--primary);
     }
     p {
+      text-align:center;
       color:#333;
       font-size: .95rem;
-      text-align:center;
       margin-bottom:1rem;
     }
 
-    /* ---------- BUTTONS ---------- */
+    /* ---------- Buttons ---------- */
     .buttons {
       text-align:center;
       margin-bottom:1rem;
     }
     .button-link {
-      display:inline-block;
-      margin:.25rem .25rem;
+      display:inline-block; margin:.25rem;
       padding:.6rem 1.2rem;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius);
-      text-decoration: none;
-      font-size: .95rem;
-      transition: background .2s;
+      background: var(--accent); color:#fff;
       border: var(--border-thick) solid var(--accent);
+      border-radius: var(--radius);
+      text-decoration:none; font-size:.95rem;
+      transition:background .2s,border-color .2s;
     }
     .button-link:hover {
       background: var(--primary);
@@ -84,138 +112,87 @@
       pointer-events: none;
     }
 
-    /* ---------- PROFILE & BIO ---------- */
-    .profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .profile img {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: var(--border-thick) solid var(--accent);
-      box-shadow: var(--shadow);
-      margin-bottom:1rem;
-    }
-    .bio {
-      text-align: center;
-      color:#222;
-      line-height:1.4;
-      font-size:.95rem;
-    }
-
-    /* ---------- LINKS ---------- */
-    .link-list {
-      list-style: none;
-      padding:0;
-      text-align:center;
-      margin:1rem 0;
-    }
-    .link-list li {
-      margin:.5rem 0;
-    }
-    .link-list a {
-      color: var(--primary);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .link-list a:hover {
-      text-decoration: underline;
-    }
-
-    /* ---------- SOCIAL EMBEDS ---------- */
+    /* ---------- Social Embeds ---------- */
     .embed {
-      margin:1rem 0;
-      border-radius: var(--radius);
-      overflow:hidden;
+      margin:1rem 0; border-radius:var(--radius); overflow:hidden;
     }
-    /* Instagram gradient border */
-    .embed.instagram {
+    .instagram {
       border: var(--border-thick) solid;
       border-image: linear-gradient(
         to right,
         #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%
       ) 1;
     }
-    /* Pixelfed solid teal border */
-    .embed.pixelfed {
+    .pixelfed {
       border: var(--border-thick) solid var(--accent);
     }
-    .embed iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      display: block;
+    .embed iframe, .embed a {
+      display:block; width:100%; height:300px; text-align:center;
+      text-decoration:none; color:var(--primary); font-weight:500;
     }
 
-    /* ---------- HIDDEN YOUTUBE PLAYER ---------- */
-    #yt { display:none }
+    /* ---------- Profile & Bio (Right-justified) ---------- */
+    .profile {
+      text-align: right;
+    }
+    .profile img {
+      width:140px; height:140px; object-fit:cover;
+      border-radius:50%; border:var(--border-thick) solid var(--accent);
+      box-shadow:var(--shadow); margin-bottom:1rem;
+    }
+    .bio {
+      color:#222; line-height:1.4; font-size:.95rem;
+    }
+    .link-list {
+      list-style:none; padding:0; margin:1rem 0; text-align:right;
+    }
+    .link-list li { margin:.5rem 0; }
+    .link-list a {
+      color: var(--primary); text-decoration:none; font-weight:500;
+    }
+    .link-list a:hover { text-decoration:underline; }
+
+    /* ---------- Hidden YouTube Player ---------- */
+    #yt { display:none; }
   </style>
 </head>
 
 <body>
+  <!-- ======== TOP TICKER ======== -->
+  <div class="ticker">
+    <div class="ticker-content">
+      <span>🏈 Football: HS League Finals – 07/15 @ 7pm</span>
+      <span>🏀 Basketball: JV Game – 07/12 @ 3pm</span>
+      <span>📅 Fundraiser Luau – 08/01</span>
+      <span>World Clock: <span id="world-clock"></span></span>
+      <span>HST Time: <span id="hst-clock"></span></span>
+    </div>
+  </div>
+
+  <!-- ======== MAIN CONTENT ======== -->
   <div class="wrapper">
-    <!-- ======== Zoom Conference Hub ======== -->
+    <!-- Zoom Conference Hub -->
     <div class="section">
       <h2>📹 Zoom Conference Hub</h2>
       <p><em>By appointment only</em></p>
       <div class="buttons">
-        <!-- PC installer -->
-        <a 
-          href="https://zoom.us/client/latest/ZoomInstaller.exe" 
-          target="_blank" 
-          class="button-link">
+        <a href="https://zoom.us/client/latest/ZoomInstaller.exe" target="_blank" class="button-link">
           💻 Download Zoom (PC)
         </a>
-        <!-- Mobile app link -->
-        <a 
-          href="https://zoom.us/download" 
-          target="_blank" 
-          class="button-link">
+        <a href="https://zoom.us/download" target="_blank" class="button-link">
           📱 Get Zoom (Mobile)
         </a>
-        <!-- Future scheduling -->
         <a href="#" class="button-link disabled">
           📆 Schedule (Coming Soon)
         </a>
       </div>
-      <p>If you’re a student or guardian, email 
-        <strong><a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a></strong> 
-        to request access.
+      <p>
+        If you’re a student or guardian, email 
+        <strong><a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a></strong> to request access.
       </p>
     </div>
 
-    <!-- ======== Profile & Bio ======== -->
-    <!-- Bio text (updated per your request) -->
-<div class="bio">
-  <p>
-    <strong>Ryan Abregano</strong> is a cultural educator and practitioner of Native Hawaiian perspectives.  
-    Currently an Educational Assistant III at Olomana School in Hawaiʻi,  
-    he encourages all of his students to discover their place in Hawaiʻi,  
-    enriches students with cultural development,  
-    and blends technology thoughtfully toward sensitive Kanaka Maoli perspectives.
-  </p>
-</div>
-
-      <!-- Quick Links list -->
-      <ul class="link-list">
-        <!-- Google Classroom -->
-        <li>
-          🏫 <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a> (Google Classroom Access)
-        </li>
-        <!-- Infinite Campus Parent Portal -->
-        <li>
-          ⚛️ <a href="https://www.olomanaschoolhi.k12.hi.us/apps/pages/index.jsp?type=d&amp;uREC_ID=1959022" 
-              target="_blank">
-            Infinite Campus (Parent)
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <!-- ======== Social Feeds ======== -->
+    <!-- Social Feeds (moved above bio) -->
     <div class="section">
       <h2>📸 Social Feeds</h2>
 
@@ -226,30 +203,62 @@
           title="Olomana Instagram"></iframe>
       </div>
 
-      <!-- Pixelfed link/embed -->
+      <!-- Pixelfed link -->
       <div class="embed pixelfed">
-        <a 
-  href="https://pixelfed.social/register" 
-  target="_blank"
-  style="display:block; padding:1rem; color:var(--primary); text-decoration:none; font-weight:500;">
-  🌐 Join us on Pixelfed
-</a>
+        <a href="https://pixelfed.social/register" target="_blank">
+          🌐 Join us on Pixelfed
+        </a>
+      </div>
+    </div>
 
+    <!-- Profile & Bio (swapped into right-column) -->
+    <div class="section profile">
+      <h2>👤 Profile &amp; Bio</h2>
+      <img src="IMG_0041.JPG" alt="Mr. Abregano headshot">
+      <div class="bio">
+        <p>
+          <strong>Ryan Abregano</strong> is a cultural educator and practitioner of Native Hawaiian perspectives.  
+          Currently an Educational Assistant III at Olomana School in Hawaiʻi,  
+          he encourages all of his students to discover their place in Hawaiʻi,  
+          enriches students with cultural development,  
+          and blends technology thoughtfully toward sensitive Kanaka Maoli perspectives.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <ul class="link-list">
+        <li>🏫 <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a> (Google Classroom Access)</li>
+        <li>⚛️ <a href="https://www.olomanaschoolhi.k12.hi.us/apps/pages/index.jsp?type=d&amp;uREC_ID=1959022" target="_blank">
+          Infinite Campus (Parent Portal)
+        </a></li>
+      </ul>
+    </div>
+  </div>
 
   <!-- ======== Hidden Kauhale Chant ======== -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-    // Initialize YouTube player invisibly, autoplay & loop
+    // Render the world clock (UTC) and HST time every second
+    function updateClocks() {
+      document.getElementById('world-clock').textContent =
+        new Date().toLocaleTimeString('en-US', { timeZone: 'UTC' });
+      document.getElementById('hst-clock').textContent =
+        new Date().toLocaleTimeString('en-US', { timeZone: 'Pacific/Honolulu' });
+    }
+    setInterval(updateClocks, 1000);
+    updateClocks();
+
+    // Initialize hidden YouTube player for auto-playing chant
     function onYouTubeIframeAPIReady() {
       new YT.Player('yt', {
         height:'0', width:'0',
         videoId:'HOK74BGCYXM',
-        playerVars:{
+        playerVars: {
           autoplay:1, loop:1, playlist:'HOK74BGCYXM',
           controls:0, modestbranding:1, rel:0, start:0
         },
-        events:{ 
+        events: {
           onReady: e => {
             e.target.setVolume(10);
             e.target.playVideo();
