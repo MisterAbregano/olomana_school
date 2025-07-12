@@ -2,379 +2,272 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
   <title>Mr. Abregano’s Classroom</title>
-
-  <!-- Montserrat font for modern look -->
-  <link 
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" 
-    rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
-    /* ---------- Variables ---------- */
     :root {
-      --primary:       #004d40;
-      --accent:        #00bfa5;
-      --card-bg:       rgba(255,255,255,0.9);
-      --radius:        12px;
-      --shadow:        0 4px 20px rgba(0,0,0,0.1);
-      --border-thick:  4px;
-      --ticker-bg:     #222;
-      --ticker-color:  #fff;
+      --bg: #f5f0e6;
+      --card-bg: #fff;
+      --accent: #00695c;
+      --text: #222;
+      --ticker-bg: #111;
+      --ticker-color: #fff;
     }
-
-    /* ---------- Reset & Base ---------- */
-    * { box-sizing: border-box; margin:0; padding:0 }
     html, body {
-      height:100%; font-family:'Montserrat',sans-serif;
-      background:#f5f0e6;
-      overflow-x:hidden;
+      margin: 0; padding: 0;
+      background: var(--bg);
+      font-family: Georgia, serif;
+      color: var(--text);
     }
 
-    /* ---------- Broadcast Ticker ---------- */
+    /* ─── TOP TICKER ───────────────────────────────────── */
     .ticker {
-      position: fixed;
-      top: 0; left: 0; right: 0;
+      position: fixed; top:0; left:0; right:0;
       background: var(--ticker-bg);
       color: var(--ticker-color);
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      z-index: 1000;
-      padding: 0 1rem;
-    }
-    .ticker-content {
-      display: inline-block;
-      white-space: nowrap;
-      animation: scroll 20s linear infinite;
-    }
-    @keyframes scroll {
-      0%   { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
+      height:2.5rem; display:flex; align-items:center;
+      overflow:hidden; padding:0 1rem; z-index:1000;
     }
     .ticker span {
-      display: inline-block;
-      margin-right: 2rem;
-      font-size: 0.9rem;
+      display:inline-block; padding:0 2rem;
+      white-space:nowrap;
+      animation: scroll-ticker 20s linear infinite;
+    }
+    @keyframes scroll-ticker {
+      from { transform:translateX(100%); }
+      to   { transform:translateX(-100%); }
     }
 
-    /* ---------- Page Wrapper ---------- */
-    .wrapper {
+    /* ─── LAYOUT ──────────────────────────────────────── */
+    .container {
       display: flex;
-      flex-wrap: wrap;
       gap: 2rem;
-      max-width: 1000px;
-      width: 90%;
-      margin: 4rem auto 2rem; /* push down below ticker */
+      max-width: 1200px;
+      margin: 4rem auto 2rem;
+      padding: 0 1rem;
     }
-
-    /* ---------- Section Cards ---------- */
+    .column {
+      flex: 1;
+    }
     .section {
-      flex: 1 1 300px;
       background: var(--card-bg);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
       padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
     }
-    h2 {
-      text-align:center;
-      margin-bottom:1rem;
-      color: var(--primary);
+    .section h2 {
+      margin-top: 0;
+      color: var(--accent);
+      font-size: 1.5rem;
+      display: flex; align-items: center;
+      gap: .5rem;
     }
-    p {
-      text-align:center;
-      color:#333;
-      font-size: .95rem;
-      margin-bottom:1rem;
-    }
-
-    /* ---------- Buttons ---------- */
-    .buttons {
-      text-align:center;
-      margin-bottom:1rem;
+    .section p {
+      line-height: 1.4;
     }
     .button-link {
-      display:inline-block; margin:.25rem;
-      padding:.6rem 1.2rem;
-      background: var(--accent); color:#fff;
-      border: var(--border-thick) solid var(--accent);
-      border-radius: var(--radius);
-      text-decoration:none; font-size:.95rem;
-      transition:background .2s,border-color .2s;
-    }
-    .button-link:hover {
-      background: var(--primary);
-      border-color: var(--primary);
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      padding: .6rem 1rem;
+      margin: .5rem .5rem 0 0;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: .95rem;
     }
     .button-link.disabled {
-      background: #aaa; border-color: #aaa;
-      pointer-events: none;
+      background: #999;
+      cursor: default;
     }
 
-    /* ---------- Social Embeds ---------- */
-    .embed {
-      margin:1rem 0; border-radius:var(--radius); overflow:hidden;
+    /* ─── VISION IMAGE ────────────────────────────────── */
+    .vision-image-wrapper {
+      padding: 4px; /* half of border */
+      background: linear-gradient(45deg, gold, darkgoldenrod);
+      border-radius: 8px;
+      display: inline-block;
     }
-    .instagram {
-      border: var(--border-thick) solid;
-      border-image: linear-gradient(
-        to right,
-        #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%
-      ) 1;
-    }
-    .pixelfed {
-      border: var(--border-thick) solid var(--accent);
-    }
-    .embed iframe, .embed a {
-      display:block; width:100%; height:300px; text-align:center;
-      text-decoration:none; color:var(--primary); font-weight:500;
+    .vision-image-wrapper img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
     }
 
-    /* ---------- Profile & Bio (Right-justified) ---------- */
+    /* ─── SOCIAL FEEDS & PIXELFED ─────────────────────── */
+    .social-iframe, .pixelfed-box {
+      border: 4px solid;
+      border-image-slice: 1;
+      margin-top: 1rem;
+    }
+    .social-iframe {
+      border-image-source: linear-gradient(to right, orange, magenta);
+      width: 100%; height: 300px;
+    }
+    .pixelfed-box {
+      border-image-source: linear-gradient(to right, teal, cyan);
+      text-align:center;
+    }
+    .pixelfed-box img {
+      max-width: 200px;
+      margin: 1rem 0;
+    }
+
+    /* ─── PROFILE & BIO ───────────────────────────────── */
     .profile {
-      text-align: right;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
     }
     .profile img {
-      width:140px; height:140px; object-fit:cover;
-      border-radius:50%; border:var(--border-thick) solid var(--accent);
-      box-shadow:var(--shadow); margin-bottom:1rem;
+      width: 120px;
+      border-radius: 50%;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-    .bio {
-      color:#222; line-height:1.4; font-size:.95rem;
+    .profile .bio-text {
+      flex: 1;
+      font-size: .95rem;
+      line-height: 1.5;
     }
-    .link-list {
-      list-style:none; padding:0; margin:1rem 0; text-align:right;
-    }
-    .link-list li { margin:.5rem 0; }
-    .link-list a {
-      color: var(--primary); text-decoration:none; font-weight:500;
-    }
-    .link-list a:hover { text-decoration:underline; }
-
-    /* ---------- Hidden YouTube Player ---------- */
-    #yt { display:none; }
   </style>
 </head>
-
 <body>
-      <!-- ======== EVENTS TICKER (driven by ICS) ======== -->
+
+  <!-- TOP TICKER -->
   <div class="ticker" id="events-ticker">
-    <span>Loading upcoming events…</span>
+    <span>Loading upcoming events &amp; weather…</span>
   </div>
-  <!-- ======== ICS-driven ticker setup ======== -->
-<!-- ======== TOP TICKER (ICS Events + 3-Day Weather) ======== -->
-<div class="ticker" id="events-ticker">
-  <span>Loading upcoming events &amp; weather…</span>
-</div>
 
-<!-- ======== Ticker: ICS + Weather Script & Styles ======== -->
-<script src="https://cdn.jsdelivr.net/npm/ical.js@2.2.0/build/ical.min.js"></script>
-<script>
-  const ICS_PATH = './olomana_calendar.ics';
-  const WTTR_PATH = 'https://wttr.in/Waimanalo?format=j1';
+  <div class="container">
 
-  // Build and render ticker items
-  async function updateTicker() {
-    const now = new Date();
-    const cutoff = new Date(Date.now() + 30*24*60*60*1000);
+    <!-- LEFT COLUMN -->
+    <div class="column">
 
-    // 1. Fetch & parse ICS events
-    let events = [];
-    try {
-      const icsText = await fetch(ICS_PATH).then(r => r.text());
-      const jcal = ICAL.parse(icsText);
-      const comp = new ICAL.Component(jcal);
-      events = comp.getAllSubcomponents('vevent')
-        .map(c=>new ICAL.Event(c))
-        .filter(ev=>{
-          const d=ev.startDate.toJSDate();
-          return d>=now && d<=cutoff;
-        })
-        .sort((a,b)=>a.startDate.toJSDate() - b.startDate.toJSDate())
-        .slice(0,5)
-        .map(ev=>{
-          const d = ev.startDate.toJSDate();
-          return `${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})} – ${ev.summary}`;
-        });
-    } catch(e){ console.error('ICS error',e); }
-
-    // 2. Fetch wttr.in JSON for 3-day forecast
-    let weather = [];
-    try {
-      const data = await fetch(WTTR_PATH).then(r=>r.json());
-      const days = data.weather.slice(0,3);
-      weather = days.map(d=>{
-        const date = new Date(d.date);
-        const label = date.toLocaleDateString('en-US',{weekday:'short', month:'short', day:'numeric'});
-        const hi = d.maxtempF + '°F';
-        const lo = d.mintempF + '°F';
-        return `${label}: High ${hi}, Low ${lo}`;
-      });
-    } catch(e){ console.error('Weather error',e); }
-
-    // 3. Combine & render
-    const items = [...events, ...weather];
-    const container = document.getElementById('events-ticker');
-    container.innerHTML = items.map(txt=>`<span>${txt}</span>`).join('');
-  }
-
-  // Initial load + refresh every minute
-  updateTicker();
-  setInterval(updateTicker, 60_000);
-</script>
-
-<style>
-  /* ticker container */
-  .ticker {
-    position: fixed; top:0; left:0; right:0;
-    background: var(--ticker-bg);
-    color: var(--ticker-color);
-    height:2.5rem; display:flex; align-items:center;
-    overflow:hidden; padding:0 1rem; z-index:1000;
-  }
-  /* each item scrolls */
-  .ticker span {
-    display:inline-block;
-    padding:0 2rem;
-    white-space:nowrap;
-    animation: scroll-ticker 20s linear infinite;
-  }
-  @keyframes scroll-ticker {
-    from { transform:translateX(100%); }
-    to   { transform:translateX(-100%); }
-  }
-</style>
-
-  <!-- ======== MAIN CONTENT ======== -->
-  <div class="wrapper">
-    <!-- Zoom Conference Hub -->
-    <div class="section">
-      <h2>📹 Zoom Conference Hub</h2>
-      <p><em>By appointment only</em></p>
-      <div class="buttons">
-        <a href="https://zoom.us/client/latest/ZoomInstaller.exe" target="_blank" class="button-link">
-          💻 Download Zoom (PC)
-        </a>
-        <a href="https://zoom.us/download" target="_blank" class="button-link">
-          📱 Get Zoom (Mobile)
-        </a>
-        <a href="#" class="button-link disabled">
-          📆 Schedule (Coming Soon)
-        </a>
+      <!-- Our Vision -->
+      <div class="section">
+        <h2>🎯 Our Vision</h2>
+        <div class="vision-image-wrapper">
+          <img src="olomanavision.jpeg" alt="Olomana School Vision">
+        </div>
       </div>
-      <p>
-        If you’re a student or guardian, email 
-        <strong><a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a></strong> to request access.
-      </p>
+
+      <!-- Zoom Conference Hub (moved to bottom) -->
+      <div class="section">
+        <h2>📹 Zoom Conference Hub</h2>
+        <p><em>By appointment only</em></p>
+        <p>
+          <a href="https://zoom.us/client/latest/ZoomInstaller.exe" target="_blank" class="button-link">💻 Download Zoom (PC)</a>
+          <a href="#" class="button-link">📱 Get Zoom (Mobile)</a>
+          <a href="#" class="button-link disabled" aria-disabled="true">📅 Schedule (Coming Soon)</a>
+        </p>
+        <p style="font-size:.9em;">
+          If you’re a student or guardian, email <a href="mailto:ryan.abregano@k12.hi.us"><strong>Mr. A’s</strong></a> to request access.
+        </p>
+      </div>
+
     </div>
 
-    <!-- Social Feeds (moved above bio) -->
-    <div class="section">
-      <h2>📸 Social Feeds</h2>
+    <!-- RIGHT COLUMN -->
+    <div class="column">
 
-      <!-- Instagram embed -->
-      <div class="embed instagram">
+      <!-- Social Feeds -->
+      <div class="section">
+        <h2>📸 Social Feeds</h2>
         <iframe 
+          class="social-iframe"
           src="https://www.instagram.com/olomanaschool/embed" 
-          title="Olomana Instagram"></iframe>
+          allowtransparency="true">
+        </iframe>
       </div>
 
-      <!-- ======== Pixelfed Logo Card ======== -->
-<div class="section">
-  <h2>🌐 Pixelfed</h2>
-  <img
-    src="./pixelfed-logo.svg"
-    alt="Pixelfed Logo"
-    style="
-      display: block;
-      width: 100%;
-      max-width: 200px;
-      height: auto;
-      margin: 0.5rem auto;
-      border: 4px solid var(--accent);
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    "
-  />
-  <p style="text-align: center; font-size: 0.9rem; color: #555;">
-    <a href="https://pixelfed.social/register" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 500;">
-      Sign up on Pixelfed
-    </a>
-  </p>
-</div>
+      <!-- Pixelfed -->
+      <div class="section">
+        <h2>🌐 Pixelfed</h2>
+        <div class="pixelfed-box">
+          <a href="https://pixelfed.social/register" target="_blank">
+            <img src="pixelfed-logo.svg" alt="Pixelfed Logo"/>
+            <div>Sign up on Pixelfed</div>
+          </a>
+        </div>
+      </div>
 
+      <!-- Profile & Bio -->
+      <div class="section profile">
+        <img src="profile.jpg" alt="Ryan Abregano">
+        <div class="bio-text">
+          <h3>Ryan Abregano</h3>
+          <p>
+            I am a passionate cultural educator and practitioner of Native Hawaiian perspectives. Currently, I serve as an Educational Assistant III at Olomana School in Hawaiʻi, supporting students with disabilities. My aim is to support students and help develop ways to generate income for cultural work, alongside my growing interest in coding, web development, and technology.
+          </p>
+        </div>
+      </div>
 
-    <!-- Profile & Bio (swapped into right-column) -->
-<!-- ======== Profile & Bio ======== -->
-<!-- ======== Profile & Bio ======== -->
-<div class="section profile">
-  <h2>👤 Profile &amp; Bio</h2>
+    </div>
 
-  <!-- Headshot (now uploaded as IMG_0041.JPG) -->
-  <img 
-    src="./IMG_0041.JPG" 
-    alt="Mr. Abregano headshot"
-    style="
-      width:140px;
-      height:140px;
-      object-fit:cover;
-      border-radius:50%;
-      border:4px solid var(--accent);
-      box-shadow:var(--shadow);
-      margin-bottom:1rem;
-    "
-  />
-
-  <!-- Right-justified bio text -->
-  <div class="bio" style="text-align: right;">
-    <p>
-      <strong>Ryan Abregano</strong> is a cultural educator and practitioner of Native Hawaiian perspectives.  
-      Currently an Educational Assistant III at Olomana School in Hawaiʻi,  
-      he encourages all of his students to discover their place in Hawaiʻi,  
-      enriches students with cultural development,  
-      and blends technology thoughtfully toward sensitive Kanaka Maoli perspectives.
-    </p>
   </div>
 
-  <!-- Quick Links -->
-  <ul class="link-list" style="text-align: right;">
-    <li>🏫 <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a> (Google Classroom Access)</li>
-    <li>⚛️ <a href="https://www.olomanaschoolhi.k12.hi.us/apps/pages/index.jsp?type=d&amp;uREC_ID=1959022" target="_blank">
-      Infinite Campus (Parent Portal)
-    </a></li>
-  </ul>
-</div>
+  <!-- ─── ICS + WEATHER TICKER SCRIPT ─────────────────────────────────────── -->
+  <script src="https://cdn.jsdelivr.net/npm/ical.js@2.2.0/build/ical.min.js"></script>
+  <script>
+    const ICS_PATH = './olomana_calendar.ics';
+    const WTTR_PATH = 'https://wttr.in/Waimanalo?format=j1';
 
-  <!-- ======== Hidden Kauhale Chant ======== -->
-  <div id="yt"></div>
+    async function updateTicker() {
+      const now = new Date();
+      const cutoff = new Date(Date.now() + 30*24*60*60*1000);
+
+      // 1) ICS events
+      let events = [];
+      try {
+        let text = await fetch(ICS_PATH).then(r=>r.text());
+        let j = ICAL.parse(text);
+        let comp = new ICAL.Component(j);
+        events = comp.getAllSubcomponents('vevent')
+          .map(c=>new ICAL.Event(c))
+          .filter(ev=>{
+            const d=ev.startDate.toJSDate();
+            return d>=now && d<=cutoff;
+          })
+          .sort((a,b)=>a.startDate.toJSDate()-b.startDate.toJSDate())
+          .slice(0,5)
+          .map(ev=>{
+            const d=ev.startDate.toJSDate();
+            return `${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})} – ${ev.summary}`;
+          });
+      } catch(e){ console.warn('ICS load error',e); }
+
+      // 2) Weather
+      let weather = [];
+      try {
+        let d = await fetch(WTTR_PATH).then(r=>r.json());
+        weather = d.weather.slice(0,3).map(day=>{
+          const dt = new Date(day.date);
+          const lbl = dt.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+          return `${lbl}: High ${day.maxtempF}°F, Low ${day.mintempF}°F`;
+        });
+      } catch(e){ console.warn('Weather load error',e); }
+
+      // 3) Render
+      const items = [...events, ...weather];
+      const bar = document.getElementById('events-ticker');
+      bar.innerHTML = items.map(t=>`<span>${t}</span>`).join('');
+    }
+
+    updateTicker();
+    setInterval(updateTicker, 60_000);
+  </script>
+
+  <!-- ─── HIDDEN YOUTUBE PLAYER ───────────────────────────────────────────── -->
+  <div id="yt-player"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
-    // Render the world clock (UTC) and HST time every second
-    function updateClocks() {
-      document.getElementById('world-clock').textContent =
-        new Date().toLocaleTimeString('en-US', { timeZone: 'UTC' });
-      document.getElementById('hst-clock').textContent =
-        new Date().toLocaleTimeString('en-US', { timeZone: 'Pacific/Honolulu' });
-    }
-    setInterval(updateClocks, 1000);
-    updateClocks();
-
-    // Initialize hidden YouTube player for auto-playing chant
     function onYouTubeIframeAPIReady() {
-      new YT.Player('yt', {
-        height:'0', width:'0',
-        videoId:'HOK74BGCYXM',
-        playerVars: {
-          autoplay:1, loop:1, playlist:'HOK74BGCYXM',
-          controls:0, modestbranding:1, rel:0, start:0
-        },
-        events: {
-          onReady: e => {
-            e.target.setVolume(10);
-            e.target.playVideo();
-          }
-        }
+      new YT.Player('yt-player', {
+        height: '0', width: '0',
+        videoId: 'HOK74BGCYXM',
+        playerVars: { autoplay:1, loop:1, playlist:'HOK74BGCYXM', controls:0, modestbranding:1, rel:0 },
+        events: { onReady: e=>{ e.target.setVolume(10); e.target.playVideo(); } }
       });
     }
   </script>
