@@ -158,16 +158,67 @@
 </head>
 
 <body>
-  <!-- ======== TOP TICKER ======== -->
-  <div class="ticker">
-    <div class="ticker-content">
-      <span>🏈 Football: HS League Finals – 07/15 @ 7pm</span>
-      <span>🏀 Basketball: JV Game – 07/12 @ 3pm</span>
-      <span>📅 Fundraiser Luau – 08/01</span>
-      <span>World Clock: <span id="world-clock"></span></span>
-      <span>HST Time: <span id="hst-clock"></span></span>
-    </div>
+      <!-- ======== EVENTS TICKER (driven by ICS) ======== -->
+  <div class="ticker" id="events-ticker">
+    <span>Loading upcoming events…</span>
   </div>
+  <!-- ======== ICS-driven ticker setup ======== -->
+  <script src="https://cdn.jsdelivr.net/npm/ical.js@2.2.0/build/ical.min.js"></script>
+  <script>
+    (async function() {
+      // fetch your ICS file (must be in the repo root)
+      const res = await fetch('./olomana_calendar.ics');
+      const icsText = await res.text();
+
+      // parse and filter events
+      const jcal = ICAL.parse(icsText);
+      const comp = new ICAL.Component(jcal);
+      const vevents = comp.getAllSubcomponents('vevent');
+      const now = new Date();
+      const cutoff = new Date(Date.now() + 30*24*60*60*1000); // 30 days
+
+      const upcoming = vevents
+        .map(c => new ICAL.Event(c))
+        .filter(ev => {
+          const d = ev.startDate.toJSDate();
+          return d >= now && d <= cutoff;
+        })
+        .sort((a,b) => a.startDate.toJSDate() - b.startDate.toJSDate())
+        .slice(0,5)
+        .map(ev => {
+          const d = ev.startDate.toJSDate();
+          return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}) 
+                 + ' – ' + ev.summary;
+        });
+
+      // render into the ticker
+      document.getElementById('events-ticker').innerHTML =
+        upcoming.map(txt => `<span>${txt}</span>`).join('');
+    })();
+  </script>
+
+  <style>
+    /* Replace your old .ticker .ticker-content rules */
+    .ticker {
+      position: fixed; top:0; left:0; right:0;
+      background: var(--ticker-bg);
+      color: var(--ticker-color);
+      height:2.5rem; display:flex; align-items:center;
+      overflow:hidden; padding:0 1rem; z-index:1000;
+    }
+    .ticker span {
+      display:inline-block;
+      padding:0 2rem;
+      white-space:nowrap;
+      animation: scroll-ticker 15s linear infinite;
+    }
+    @keyframes scroll-ticker {
+      0%   { transform:translateX(100%); }
+      100% { transform:translateX(-100%); }
+    }
+  </style>
+
+
 
   <!-- ======== MAIN CONTENT ======== -->
   <div class="wrapper">
