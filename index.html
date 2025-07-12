@@ -1,169 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <title>Olomana School - Student Gallery & Zoom Conference</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Welina Mai Kākou</title>
+
+  <!-- Google Font for modern typography -->
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" 
+    rel="stylesheet">
+
   <style>
-    /* Leaf-pattern panels on left & right edges */
-    html,
-    body {
-      margin: 0;
-      padding: 0;
+    /* ---------- Root Variables ---------- */
+    :root {
+      --primary: #004d40;
+      --accent:  #00bfa5;
+      --card-bg: rgba(255,255,255,0.85);
+      --error:   #c00;
+      --radius:  12px;
+      --shadow:  0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    /* ---------- Global Reset & Layout ---------- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
       height: 100%;
-      overflow: hidden;
-      background-color: #f5f0e6;
-      background-image: url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png'),
-        url('https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png');
-      background-position: left center, right center;
-      background-repeat: repeat-y, repeat-y;
-      background-size: 0.5in auto, 0.5in auto;
+      font-family: 'Montserrat', sans-serif;
+      /* subtle pastel gradient background */
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
       display: flex;
+      align-items: center;
       justify-content: center;
-      align-items: flex-start;
-      font-family: Georgia, serif;
-      position: relative;
     }
 
-    .section {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    /* ---------- Card Container ---------- */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      width: 90%;
+      max-width: 360px;
+      padding: 2rem;
+      text-align: center;
     }
 
+    /* ---------- Logo ---------- */
+    .card img.logo {
+      max-width: 200px;
+      margin-bottom: 1rem;
+    }
+
+    /* ---------- Headings ---------- */
+    h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: .5rem;
+    }
     h2 {
-      text-align: center;
-      font-size: 2rem;
+      font-weight: 500;
+      font-size: 1.2rem;
       color: #333;
+      margin-bottom: 1.5rem;
     }
 
-    p {
-      text-align: center;
+    /* ---------- Input Field ---------- */
+    input[type="password"] {
+      width: 100%;
+      padding: .75rem 1rem;
       font-size: 1rem;
-      color: #555;
+      border: 1px solid #ccc;
+      border-radius: var(--radius);
+      margin-bottom: 1rem;
+      transition: border-color .2s;
+    }
+    input[type="password"]:focus {
+      outline: none;
+      border-color: var(--accent);
     }
 
-    a.button-link {
-      display: inline-block;
-      background-color: #4CAF50;
-      color: white;
-      text-align: center;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      margin: 10px;
+    /* ---------- Submit Button ---------- */
+    button {
+      width: 100%;
+      padding: .75rem 1rem;
       font-size: 1rem;
-      transition: background-color 0.3s;
+      font-weight: 500;
+      color: #fff;
+      background: var(--primary);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background .2s;
+    }
+    button:hover {
+      background: var(--accent);
     }
 
-    a.button-link:hover {
-      background-color: #45a049;
+    /* ---------- Error Message ---------- */
+    .error {
+      color: var(--error);
+      font-size: .9rem;
+      margin-top: .5rem;
     }
-
-    .disabled {
-      background-color: #888;
-    }
-
-    #yt {
-      display: none;
-    }
-
-    /* Instagram box style */
-    .instagram-box {
-      border: 6px solid #6a5b3f;
-      padding: 15px;
-      margin: 15px 0;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
-      background: linear-gradient(45deg, #ff5c8e, #ffce2f, #00c2e3);
-      background-size: 200% 200%;
-      animation: gradient 4s ease infinite;
-    }
-
-    /* Animation for Instagram background */
-    @keyframes gradient {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+    .error a {
+      color: var(--primary);
+      text-decoration: underline;
     }
   </style>
 </head>
 
 <body>
-  <!-- Main content -->
-  <div class="section">
-    <h2>📹 Zoom Conference Hub</h2>
-    <p><em>By appointment only</em></p>
+  <!-- ========== Login Card ========== -->
+  <div class="card">
+    <!-- Logo at top -->
+    <img 
+      class="logo" 
+      src="https://3.files.edl.io/8f50/22/04/13/193516-0639285f-cb74-4f6e-8935-c7bedaec630e.png" 
+      alt="Olomana School Logo">
 
-    <!-- Interactive buttons -->
-    <p>
-      <a href="https://zoom.us/client/latest/ZoomInstaller.exe" target="_blank" class="button-link">
-        💻 Download Zoom (PC)
-      </a>
-      <a href="#" class="button-link" onclick="document.getElementById('qrModal').style.display='block';return false;">
-        📱 Get Zoom (Mobile)
-      </a>
-      <a href="#" class="button-link disabled" aria-disabled="true">
-        📆 Schedule (Coming Soon)
-      </a>
-    </p>
+    <!-- Main greetings -->
+    <h1>Welina Mai Kākou</h1>
+    <h2>Mr. Abregano’s Classroom</h2>
+
+    <!-- Password field -->
+    <input 
+      type="password" 
+      id="pw" 
+      placeholder="Enter password…" 
+      aria-label="Classroom password">
+
+    <!-- Submit button -->
+    <button id="submitBtn">Submit</button>
+
+    <!-- Inline error message container -->
+    <p class="error" id="err"></p>
   </div>
 
-  <!-- Safehaven Gallery -->
-  <div class="section">
-    <h2>📖 Safehaven Gallery</h2>
-    <p>A flipbook of student memories and stories.</p>
-
-    <!-- Clickable Pixelfed link image -->
-    <p>
-      <a href="https://pixelfed.org/" target="_blank">
-        <img 
-          src="https://pixelfed.org/favicons/android-chrome-192x192.png" 
-          alt="Visit Pixelfed" 
-          style="width:150px;display:block;margin:1em auto;border-radius:8px;box-shadow:0 0 8px rgba(0,0,0,0.1);" />
-      </a>
-    </p>
-  </div>
-
-  <!-- Hidden YouTube player for Kauhale chant -->
-  <div id="yt"></div>
-  <script src="https://www.youtube.com/iframe_api"></script>
+  <!-- ========== Password Check Script ========== -->
   <script>
-    function onYouTubeIframeAPIReady() {
-      new YT.Player('yt', {
-        height: '0',
-        width: '0',
-        videoId: 'HOK74BGCYXM',
-        playerVars: {
-          autoplay: 1,
-          loop: 1,
-          playlist: 'HOK74BGCYXM',
-          controls: 0,
-          modestbranding: 1,
-          rel: 0,
-          start: 0
-        },
-        events: {
-          onReady: e => {
-            e.target.setVolume(10);
-            e.target.playVideo();
-          }
-        }
-      });
+    // Display admission form link on wrong password
+    function showError() {
+      document.getElementById('err').innerHTML =
+        'Access denied. <a href="https://mobile.surveymonkey.com/web/collectors/436413869/send?survey_id=419121540" target="_blank">Press here for admission form</a>.';
     }
+
+    // Validate password and redirect on success
+    function check() {
+      const pwVal = document.getElementById('pw').value;
+      if (pwVal === '@kamapuaa25') {
+        sessionStorage.setItem('auth', 'true');
+        window.location.href = 'back.html';
+      } else {
+        showError();
+      }
+    }
+
+    // Event listeners for click & Enter key
+    document.getElementById('submitBtn')
+      .addEventListener('click', check);
+    document.getElementById('pw')
+      .addEventListener('keypress', e => {
+        if (e.key === 'Enter') check();
+      });
   </script>
 </body>
-
 </html>
