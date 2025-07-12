@@ -212,18 +212,47 @@
     </div>
 
     <!-- Profile & Bio (swapped into right-column) -->
-    <div class="section profile">
-      <h2>👤 Profile &amp; Bio</h2>
-      <img src="IMG_0041.JPG" alt="Mr. Abregano headshot">
-      <div class="bio">
-        <p>
-          <strong>Ryan Abregano</strong> is a cultural educator and practitioner of Native Hawaiian perspectives.  
-          Currently an Educational Assistant III at Olomana School in Hawaiʻi,  
-          he encourages all of his students to discover their place in Hawaiʻi,  
-          enriches students with cultural development,  
-          and blends technology thoughtfully toward sensitive Kanaka Maoli perspectives.
-        </p>
-      </div>
+<!-- ======== Profile & Bio ======== -->
+<div class="section profile">
+  <h2>👤 Profile &amp; Bio</h2>
+
+  <!-- Profile picture: make sure this path + name exactly matches your repo -->
+  <img 
+    src="./IMG_0041.JPG" 
+    alt="Mr. Abregano headshot"
+    style="
+      width:140px;
+      height:140px;
+      object-fit:cover;
+      border-radius:50%;
+      border:4px solid var(--accent);
+      box-shadow:var(--shadow);
+      margin-bottom:1rem;
+      /* fallback border if image missing */
+      background:#eee url('data:image/svg+xml;utf8,<svg xmlns=&#39;http://www.w3.org/2000/svg&#39; width=140 height=140><text x=50% y=50% fill=%23ccc font-size=14 text-anchor=middle alignment-baseline=middle>Image not found</text></svg>') center/ contain no-repeat;
+    "
+  />
+
+  <!-- Right-justified bio text -->
+  <div class="bio" style="text-align: right;">
+    <p>
+      <strong>Ryan Abregano</strong> is a cultural educator and practitioner of Native Hawaiian perspectives.  
+      Currently an Educational Assistant III at Olomana School in Hawaiʻi,  
+      he encourages all of his students to discover their place in Hawaiʻi,  
+      enriches students with cultural development,  
+      and blends technology thoughtfully toward sensitive Kanaka Maoli perspectives.
+    </p>
+  </div>
+
+  <!-- Quick Links -->
+  <ul class="link-list" style="text-align: right;">
+    <li>🏫 <a href="mailto:ryan.abregano@k12.hi.us">Mr. A’s</a> (Google Classroom Access)</li>
+    <li>⚛️ <a href="https://www.olomanaschoolhi.k12.hi.us/apps/pages/index.jsp?type=d&amp;uREC_ID=1959022" target="_blank">
+      Infinite Campus (Parent Portal)
+    </a></li>
+  </ul>
+</div>
+
 
       <!-- Quick Links -->
       <ul class="link-list">
