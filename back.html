@@ -77,15 +77,18 @@ body::before {
     }
     .column { flex:1; }
 
-    /* CARD STYLES */
-    .section {
-      background: var(--card-bg);
-      padding: 1.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-bottom: 2rem;
-    }
-    .section h2 {
+/* CARD STYLES */
+.section {
+  position: relative;     /* above the ::before background */
+  background: rgba(255,255,255,0.2);  /* semi-transparent */
+  backdrop-filter: blur(4px);        /* optional blur */
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.section h2 {
       margin-top: 0;
       color: var(--accent);
       font-size: 1.5rem;
