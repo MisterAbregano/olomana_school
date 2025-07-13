@@ -217,8 +217,9 @@
   <!-- EVENTS + WEATHER TICKER SCRIPT -->
   <script src="https://cdn.jsdelivr.net/npm/ical.js@2.2.0/build/ical.min.js"></script>
   <script>
-    const ICS_URL  = './olomana_calendar.ics';
+    
     const WTTR_URL = 'https://wttr.in/Waimanalo?format=j1';
+    const ICS_URL = './calendar.ics';
 
     async function updateTicker() {
       const now  = new Date();
