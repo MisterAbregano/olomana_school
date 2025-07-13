@@ -54,42 +54,35 @@
     }
     /* ─── CHALKBOARD + HANDWRITING ───────────────────── */
 .chalkboard {
-  /* …other styles… */
-
-  /* replace the solid border: */
-  /* border: 8px solid #5c4033; */
-
-  /* with a gradient “wood-grain” frame: */
-  border: 8px solid transparent;
-  border-image-source: 
-    linear-gradient(
-      45deg,
-      #d2b48c 0%,
-      #c19a6b 25%,
-      #deb887 50%,
-      #c19a6b 75%,
-      #d2b48c 100%
-    );
-  border-image-slice: 1;
+  background: #222;
+  color: #f5f5f5;
+  font-family: Georgia, serif; /* or Chalkboard SE if loaded */
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
 }
 
 .chalkboard h2 {
   display: inline-block;
-  /* remove the cursor border and blink */
-  /* border-right: .15em solid #f5f5f5; */
-  animation: typing 4s steps(30) infinite;  /* only keep the typing if you still want that */
+  white-space: nowrap;
+  border-right: .15em solid #f5f5f5;
+  animation:
+    typing 4s steps(30) 1s infinite,
+    blink 0.75s step-end infinite;
   font-size: 1.8rem;
   margin: 0;
 }
 
-    @keyframes typing {
-      from { width: 0; }
-      to   { width: 100%; }
-    }
-    @keyframes blink {
-      from, to { border-color: transparent; }
-      50% { border-color: #f5f5f5; }
-    }
+@keyframes typing {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
     /* ─── WOOD-GRAIN BORDER AROUND VISION ───────────── */
     .vision-image-wrapper {
       border: 12px solid transparent;
@@ -146,8 +139,9 @@
 
       <!-- 1) Chalkboard header with hand-written looping text -->
       <div class="section chalkboard">
-        <h2>Welina Mai Kākou  Mr. Abregano’s Classroom</h2>
-      </div>
+  <h2> ✿^‿^) Welina Mai Kākou ༼ つ ◕‿◕ ༽つ </h2>
+  <!-- delete any empty <p> tags here -->
+</div>
 
       <!-- 2) Vision image with wood-grain border -->
       <div class="section">
