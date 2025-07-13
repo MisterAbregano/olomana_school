@@ -11,17 +11,21 @@
     rel="stylesheet">
 
   <style>
-    /* ─── Scrolling Opaque Background ───────────────────────────────── */
+/* ─── Scrolling, Rotating Opaque Background ────────────────── */
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;     /* scrolls with the document */
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: url('download.jpeg') center/cover no-repeat;
-  opacity: 0.15;                /* adjust for more/less transparency */
+  background:
+    url('download.jpeg') center center / contain no-repeat;
+  opacity: 0.15;          /* adjust transparency here */
   z-index: -1;
-  animation: bgScroll 60s linear infinite;
+  transform-origin: center center;
+  transform: rotate(var(--bg-rot, 0deg));
+  pointer-events: none;   /* let clicks pass through */
 }
+
 
 @keyframes bgScroll {
   from { background-position: 0 0; }
@@ -180,5 +184,56 @@ body::before {
         if (e.key === 'Enter') check();
       });
   </script>
+    <!-- your existing scripts… -->
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const degrees = window.scrollY * 0.1;
+      document.documentElement.style.setProperty('--bg-rot', degrees + 'deg');
+    });
+  </script>
+    <!-- your existing scripts… -->
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const degrees = window.scrollY * 0.1;
+      document.documentElement.style.setProperty('--bg-rot', degrees + 'deg');
+    });
+  </script>
+    <!-- your existing scripts… -->
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const degrees = window.scrollY * 0.1;
+      document.documentElement.style.setProperty('--bg-rot', degrees + 'deg');
+    });
+  </script>
+  <!-- your existing scripts… -->
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const degrees = window.scrollY * 0.1;
+      document.documentElement.style.setProperty('--bg-rot', degrees + 'deg');
+    });
+  </script>
+  <!-- your existing scripts… -->
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const degrees = window.scrollY * 0.1;
+      document.documentElement.style.setProperty('--bg-rot', degrees + 'deg');
+    });
+  </script>
+  <!-- your existing scripts… -->
+
+  <script>
+    window.addEventListener('scroll', () => {
+      const degrees = window.scrollY * 0.1;
+      document.documentElement.style.setProperty('--bg-rot', degrees + 'deg');
+    });
+  </script>
 </body>
 </html>
+
+
+
