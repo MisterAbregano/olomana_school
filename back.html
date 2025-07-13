@@ -127,17 +127,15 @@ body {
 </head>
 <body>
 
-<!-- SPORTS TICKER -->
-<div class="ticker">
-  <div style="width:100%; overflow:hidden;">
-    <iframe
-      src="https://www.espn.com/embed/ticker?item=top"
-      frameborder="0"
-      scrolling="no"
-      style="width:100%; height:100%; display:block;">
-    </iframe>
+  <!-- ─── SPORTS TICKER ────────────────────────────────── -->
+  <div class="ticker sports-ticker" id="sports-ticker">
+    <span>Loading live sports…</span>
   </div>
-</div>
+
+  <!-- ─── WEATHER TICKER ───────────────────────────────── -->
+  <div class="ticker weather-ticker" id="weather-ticker">
+    <span>Loading weather…</span>
+  </div>
 
     <!-- WEATHER TICKER (WeatherWidget.io with icons & moon phases) -->
   <div style="position:fixed; top:2.5rem; left:0; right:0; z-index:1000;">
@@ -177,7 +175,7 @@ body {
       }
     }(document,'script','weatherwidget-io-js');
   </script>
-
+  
   <div class="container">
 
     <!-- LEFT COLUMN -->
