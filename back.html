@@ -7,279 +7,293 @@
   <style>
     :root {
       --bg: #f5f0e6;
+      --card-bg: rgba(255,255,255,0.8);
       --accent: #00695c;
       --text: #222;
       --ticker-bg: #111;
       --ticker-color: #fff;
     }
+    * { box-sizing: border-box; }
     html, body {
       margin:0; padding:0;
+      width:100%; height:100%;
       background: var(--bg);
       font-family: Georgia, serif;
       color: var(--text);
-      position: relative; overflow-x: hidden;
+      position: relative;
+      overflow-x: hidden;
     }
 
-    /* ─── TOP TICKERS ────────────────────────────────────── */
+    /* ─── Scrolling Opaque Background ───────────────────────────────── */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url('download.jpeg') center/cover no-repeat;
+      opacity: 0.15;
+      z-index: -1;
+      animation: bgScroll 60s linear infinite;
+    }
+    @keyframes bgScroll {
+      from { background-position: center top; }
+      to   { background-position: center bottom; }
+    }
+
+    /* ─── TICKER ───────────────────────────────────────────────────────── */
     .ticker {
-      position: fixed; left:0; right:0;
+      position: fixed; top:0; left:0; right:0;
       background: var(--ticker-bg);
       color: var(--ticker-color);
-      height: 2.5rem; display:flex; align-items:center;
-      overflow:hidden; padding:0 1rem; z-index:1000;
+      height: 2.5rem; line-height: 2.5rem;
+      overflow: hidden; padding:0 1rem; z-index:1000;
+      font-size: .9rem;
     }
-    #events-ticker span {
-      display:inline-block; padding:0 2rem;
-      white-space:nowrap;
+    .ticker span {
+      display: inline-block; padding: 0 2rem;
+      white-space: nowrap;
       animation: scroll 20s linear infinite;
     }
     @keyframes scroll {
       from { transform: translateX(100%); }
       to   { transform: translateX(-100%); }
     }
-    .sports-ticker {
-      position: fixed; top:2.5rem; left:0; right:0;
-      background: var(--ticker-bg);
-      height:3rem; z-index:999;
-    }
-    .sports-ticker iframe {
-      width:100%; height:100%; border:none;
-    }
 
-    /* ─── SCROLLING, ROTATING BACKGROUND ───────────────── */
-    body::before {
-      content:""; position:absolute; top:0; left:0;
-      width:100%; height:100%;
-      background: url('download.jpeg') center center/contain no-repeat;
-      opacity: 0.15; z-index:-1;
-      transform-origin: center center;
-      transform: rotate(var(--bg-rot,0deg));
-      pointer-events:none;
-    }
-    @keyframes bgScroll {
-      from { transform: translateY(0); }
-      to   { transform: translateY(-100%); }
-    }
-
-    /* ─── LAYOUT ─────────────────────────────────────────── */
+    /* ─── LAYOUT ───────────────────────────────────────────────────────── */
     .container {
-      display:flex; gap:2rem;
-      max-width:1200px; margin:6rem auto 2rem;
-      padding:0 1rem;
+      display: flex; gap:2rem;
+      max-width:1200px; margin:4rem auto 2rem; padding:0 1rem;
     }
     .column { flex:1; }
 
-    /* ─── CARD STYLES ───────────────────────────────────── */
+    /* ─── CARDS ────────────────────────────────────────────────────────── */
     .section {
-      position: relative;
-      background: rgba(255,255,255,0.2);
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      background: var(--card-bg);
       padding:1.5rem;
       border-radius:8px;
       box-shadow:0 2px 8px rgba(0,0,0,0.1);
       margin-bottom:2rem;
+      position: relative;
     }
     .section h2 {
       margin-top:0; color: var(--accent);
       font-size:1.5rem; display:flex; align-items:center; gap:.5rem;
     }
-    .button-link {
-      display:inline-block; background:var(--accent);
-      color:#fff; padding:.6rem 1rem; margin:.5rem .5rem 0 0;
-      text-decoration:none; border-radius:4px; font-size:.95rem;
-    }
-    .button-link.disabled { background:#999; cursor:default; }
 
+    /* ─── BUTTONS ──────────────────────────────────────────────────────── */
+    .button-link {
+      display:inline-block;
+      background:var(--accent);
+      color:#fff; padding:.6rem 1rem;
+      margin:.5rem .5rem 0 0;
+      text-decoration:none; border-radius:4px;
+      font-size:.95rem;
+    }
+    .button-link.disabled {
+      background:#999; cursor:default;
+    }
+
+    /* ─── VISION IMAGE ────────────────────────────────────────────────── */
     .vision-image-wrapper {
-      border:4px solid; border-image-slice:1;
+      border:4px solid transparent;
+      border-image-slice:1;
       border-image-source: linear-gradient(45deg, gold, darkgoldenrod);
       display:inline-block; border-radius:8px;
+      overflow:hidden;
+      margin-top:.5rem;
     }
     .vision-image-wrapper img {
-      display:block; max-width:100%; height:auto; border-radius:4px;
+      display:block; max-width:100%; height:auto;
     }
 
+    /* ─── SOCIAL & PIXELFED ───────────────────────────────────────────── */
     .social-iframe {
-      border:4px solid; border-image-slice:1;
-      border-image-source: linear-gradient(to right, orange, magenta);
       width:100%; height:300px;
+      border:4px solid transparent;
+      border-image-slice:1;
+      border-image-source: linear-gradient(to right, orange, magenta);
+      border-radius:8px;
     }
     .pixelfed-box {
-      border:4px solid; border-image-slice:1;
-      border-image-source: linear-gradient(to right, teal, cyan);
       text-align:center; padding:1rem;
+      border:4px solid transparent;
+      border-image-slice:1;
+      border-image-source: linear-gradient(to right, teal, cyan);
+      border-radius:8px;
+      margin-top:1rem;
     }
     .pixelfed-box img {
       max-width:200px; display:block; margin:0 auto .5rem;
     }
+
+    /* ─── PROFILE ──────────────────────────────────────────────────────── */
     .profile {
       display:flex; gap:1rem; align-items:flex-start;
     }
     .profile img {
-      width:120px; border-radius:50%;
-      box-shadow:0 2px 6px rgba(0,0,0,0.2);
+      width:120px; height:120px; object-fit:cover;
+      border-radius:50%; box-shadow:0 2px 6px rgba(0,0,0,0.2);
     }
-    .bio-text { flex:1; font-size:.95rem; line-height:1.5; }
+    .profile .bio-text h3 {
+      margin:0 0 .5rem; font-size:1.3rem;
+    }
+    .profile .bio-text p {
+      margin:0; line-height:1.5; font-size:.95rem;
+    }
   </style>
 </head>
 <body>
 
-  <!-- EVENTS & WEATHER TICKER -->
+  <!-- TOP TICKER -->
   <div class="ticker" id="events-ticker">
     <span>Loading upcoming events &amp; weather…</span>
   </div>
 
-  <!-- SPORTS SCORES TICKER -->
-  <div class="sports-ticker ticker">
-    <iframe
-      src="https://www.espn.com/scoreboard/?device=desktop&sport=football"
-      scrolling="no"
-    ></iframe>
+  <div class="container">
 
-<div class="container">
+    <!-- LEFT COLUMN -->
+    <div class="column">
 
-  <!-- LEFT column -->
-  <div class="column">
-
-    <!-- Vision -->
-    <div class="section">
-      <h2>🌴 Welina Mai Kākou to Mr. Abregano’s Classroom 🌺</h2>
-      <div class="vision-image-wrapper">
-        <img src="OlomanaVision.jpg" alt="Olomana School Vision">
+      <!-- Vision -->
+      <div class="section">
+        <h2>🌴 Welina Mai Kākou to Mr. Abregano’s Classroom 🌺</h2>
+        <div class="vision-image-wrapper">
+          <img src="OlomanaVision.jpg" alt="Olomana School Vision">
+        </div>
       </div>
-    </div>
 
-    <!-- Zoom Conference Hub -->
-    <div class="section">
-      <h2>📹 Zoom Conference Hub</h2>
-      <p><em>By appointment only</em></p>
-      <p>
-        <a href="https://zoom.us/client/latest/ZoomInstaller.exe" class="button-link">💻 Download Zoom (PC)</a>
-        <a href="#" class="button-link">📱 Get Zoom (Mobile)</a>
-      </p>
-      <p style="font-size:.9em;">
-        If you’re a student or guardian, email <a href="mailto:ryan.abregano@k12.hi.us"><strong>Mr. A’s</strong></a> to request access.
-      </p>
-    </div>
-
-    <!-- Student Handbook -->
-    <div class="section">
-      <h2>📖 Student Handbook</h2>
-      <object
-        data="23-24StudentHandbook1.pdf"
-        type="application/pdf"
-        width="100%" height="400">
-        <p>Your browser doesn’t support PDFs. <a href="23-24StudentHandbook1.pdf" target="_blank">Download it here.</a></p>
-      </object>
-    </div>
-
-    <!-- School Calendar -->
-    <div class="section">
-      <h2>📅 School Calendar</h2>
-      <iframe
-        src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&amp;ctz=Pacific/Honolulu"
-        style="border:0"
-        width="100%" height="400" frameborder="0" scrolling="no">
-      </iframe>
-    </div>
-
-  </div> <!-- end LEFT column -->
-
-
-  <!-- RIGHT column -->
-  <div class="column">
-
-  <!-- Profile & Bio -->
-    <div class="section profile">
-      <img src="IMG_0041.jpg" alt="Ryan Abregano">
-      <div class="bio-text">
-        <h3>Ryan Abregano</h3>
-        <p>I’m a cultural educator and mentor who draws on my own journey through school and life in Hawaiʻi to guide students toward academic and personal success. By blending hands-on activities, collaborative tech tools, and real-world examples, my goal is to empower every student to discover their strengths, set meaningful goals, and grow into confident, creative contributors to our community.</p>
+      <!-- Zoom Conference Hub -->
+      <div class="section">
+        <h2>📹 Zoom Conference Hub</h2>
+        <p><em>By appointment only</em></p>
+        <p>
+          <a href="https://zoom.us/client/latest/ZoomInstaller.exe" class="button-link">💻 Download Zoom (PC)</a>
+          <a href="#" class="button-link">📱 Get Zoom (Mobile)</a>
+        </p>
+        <p style="font-size:.9em;">
+          If you’re a student or guardian, email <a href="mailto:ryan.abregano@k12.hi.us"><strong>Mr. A’s</strong></a> to request access.
+        </p>
       </div>
-    </div>
 
-    <!-- Social Feeds -->
-    <div class="section">
-      <h2>📸 Social Feeds</h2>
-      <iframe
-        class="social-iframe"
-        src="https://www.instagram.com/olomanaschool/embed"
-        allowtransparency="true">
-      </iframe>
-    </div>
-
-    <!-- Pixelfed -->
-    <div class="section">
-      <h2>🌐 Pixelfed</h2>
-      <div class="pixelfed-box">
-        <a href="https://pixelfed.social/register" target="_blank">
-          <img src="pixelfed-logo.svg" alt="Pixelfed Logo">
-          <div>Sign up on Pixelfed</div>
-        </a>
+      <!-- Student Handbook -->
+      <div class="section">
+        <h2>📖 Student Handbook</h2>
+        <object
+          data="23-24StudentHandbook1.pdf"
+          type="application/pdf"
+          width="100%" height="400">
+          <p>Your browser doesn’t support PDFs. <a href="23-24StudentHandbook1.pdf" target="_blank">Download it here.</a></p>
+        </object>
       </div>
+
+      <!-- School Calendar -->
+      <div class="section">
+        <h2>📅 School Calendar</h2>
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&amp;ctz=Pacific/Honolulu"
+          style="border:0"
+          width="100%" height="400" frameborder="0" scrolling="no">
+        </iframe>
+      </div>
+
     </div>
 
-  </div> <!-- end RIGHT column -->
+    <!-- RIGHT COLUMN -->
+    <div class="column">
 
-</div> <!-- end container -->
+      <!-- Profile & Bio -->
+      <div class="section profile">
+        <img src="IMG_0041.jpg" alt="Ryan Abregano">
+        <div class="bio-text">
+          <h3>Ryan Abregano</h3>
+          <p>
+            I’m a cultural educator and mentor who draws on my own journey through school and life in Hawaiʻi to guide students toward academic and personal success. By blending hands-on activities, collaborative tech tools, and real-world examples, my goal is to empower every student to discover their strengths, set meaningful goals, and grow into confident, creative contributors to our community.
+          </p>
+        </div>
+      </div>
 
+      <!-- Social Feeds -->
+      <div class="section">
+        <h2>📸 Social Feeds</h2>
+        <iframe
+          class="social-iframe"
+          src="https://www.instagram.com/olomanaschool/embed"
+          allowtransparency="true">
+        </iframe>
+      </div>
 
-  <!-- ─── TICKER SCRIPT ───────────────────────────────── -->
+      <!-- Pixelfed -->
+      <div class="section">
+        <h2>🌐 Pixelfed</h2>
+        <div class="pixelfed-box">
+          <a href="https://pixelfed.social/register" target="_blank">
+            <img src="pixelfed-logo.svg" alt="Pixelfed Logo">
+            <div>Sign up on Pixelfed</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div><!-- /container -->
+
+  <!-- ─── EVENTS & WEATHER SCRIPT ────────────────────────────────── -->
   <script src="https://cdn.jsdelivr.net/npm/ical.js@2.2.0/build/ical.min.js"></script>
   <script>
     const ICS_URL = './calendar.ics';
     const WTTR_URL = 'https://wttr.in/Waimanalo?format=j1';
 
     async function updateTicker() {
-      const now = new Date(), in30 = new Date(Date.now()+30*86400000);
+      const now = new Date();
+      const in30 = new Date(Date.now() + 30*24*60*60*1000);
 
       let events = [];
       try {
-        const txt = await fetch(ICS_URL).then(r=>r.text());
-        const data = ICAL.parse(txt), comp=new ICAL.Component(data);
+        const text = await fetch(ICS_URL).then(r=>r.text());
+        const data = ICAL.parse(text);
+        const comp = new ICAL.Component(data);
         events = comp.getAllSubcomponents('vevent')
           .map(c=>new ICAL.Event(c))
-          .filter(ev=>{ const d=ev.startDate.toJSDate(); return d>=now&&d<=in30; })
-          .sort((a,b)=>a.startDate.toJSDate()-b.startDate.toJSDate())
+          .filter(ev=>{
+            const d = ev.startDate.toJSDate();
+            return d >= now && d <= in30;
+          })
+          .sort((a,b)=>a.startDate.toJSDate() - b.startDate.toJSDate())
           .slice(0,5)
           .map(ev=>{
-            const d=ev.startDate.toJSDate();
+            const d = ev.startDate.toJSDate();
             return `${d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}: ${ev.summary}`;
           });
       } catch(e){ console.warn(e) }
 
       let weather = [];
       try {
-        const j=await fetch(WTTR_URL).then(r=>r.json());
-        weather=j.weather.slice(0,3).map(day=>{
-          const d=new Date(day.date),
-                lbl=d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
+        const j = await fetch(WTTR_URL).then(r=>r.json());
+        weather = j.weather.slice(0,3).map(day=>{
+          const d = new Date(day.date);
+          const lbl = d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});
           return `${lbl} – H${day.maxtempF}° L${day.mintempF}°`;
         });
       } catch(e){ console.warn(e) }
 
-      const items=[...events,...weather];
+      const items = [...events, ...weather];
       document.getElementById('events-ticker').innerHTML =
         items.map(t=>`<span>${t}</span>`).join('');
     }
-    updateTicker(); setInterval(updateTicker,60000);
-
-    window.addEventListener('scroll',()=>{
-      const deg=window.scrollY*0.1;
-      document.documentElement.style.setProperty('--bg-rot',deg+'deg');
-    });
+    updateTicker();
+    setInterval(updateTicker, 60000);
   </script>
 
-  <!-- ─── HIDDEN YOUTUBE PLAYER ─────────────────────────── -->
+  <!-- ─── HIDDEN YOUTUBE PLAYER ────────────────────────────────── -->
   <div id="yt-player"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     function onYouTubeIframeAPIReady() {
-      new YT.Player('yt-player',{height:'0',width:'0',
+      new YT.Player('yt-player', {
+        height:'0', width:'0',
         videoId:'HOK74BGCYXM',
-        playerVars:{autoplay:1,loop:1,playlist:'HOK74BGCYXM',controls:0,modestbranding:1,rel:0},
-        events:{onReady:e=>{e.target.setVolume(10);e.target.playVideo();}}
+        playerVars:{ autoplay:1, loop:1, playlist:'HOK74BGCYXM', controls:0, modestbranding:1, rel:0 },
+        events:{ onReady: e=>{ e.target.setVolume(10); e.target.playVideo(); } }
       });
     }
   </script>
