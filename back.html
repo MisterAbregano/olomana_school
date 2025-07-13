@@ -15,11 +15,12 @@
     }
     *, *::before, *::after { box-sizing: border-box; }
     body {
-      margin: 0; padding: 0;
+      margin:0; padding:0;
       font-family: Georgia, serif;
       color: var(--text);
       background: var(--bg);
     }
+    /* ─── TICKER ─────────────────────────────────────── */
     .ticker {
       position: fixed; top:0; left:0; right:0;
       background: var(--ticker-bg); color: var(--ticker-color);
@@ -35,8 +36,9 @@
       from { transform: translateX(100%); }
       to   { transform: translateX(-100%); }
     }
+    /* ─── LAYOUT ─────────────────────────────────────── */
     .container {
-      display: flex; gap:2rem;
+      display:flex; gap:2rem;
       max-width:1200px; margin:4rem auto 2rem; padding:0 1rem;
     }
     .column { flex:1; }
@@ -50,27 +52,52 @@
       margin-top:0; color: var(--accent);
       font-size:1.5rem; display:flex; align-items:center; gap:.5rem;
     }
+    /* ─── CHALKBOARD + HANDWRITING ───────────────────── */
+    .chalkboard {
+      background:#2b2b2b; color:#f5f5f5;
+      border:8px solid #5c4033; padding:1rem;
+      font-family:'Chalkduster', cursive, Georgia, serif;
+      text-align:center; margin-bottom:2rem;
+      /* ensure overflow for typewriter */
+      overflow:hidden;
+      white-space:nowrap;
+      position: relative;
+    }
+    .chalkboard h2 {
+      display:inline-block;
+      /* typewriter effect */
+      border-right: .15em solid #f5f5f5;
+      animation:
+        typing 4s steps(30) infinite,
+        blink 0.75s step-end infinite;
+      font-size:1.8rem; margin:0;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to   { width: 100%; }
+    }
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: #f5f5f5; }
+    }
+    /* ─── WOOD-GRAIN BORDER AROUND VISION ───────────── */
+    .vision-image-wrapper {
+      border: 12px solid transparent;
+      border-image: url('woodgrain.png') 30 round;
+      display:inline-block; border-radius:8px;
+      margin-bottom:2rem;
+    }
+    .vision-image-wrapper img {
+      display:block; max-width:100%; height:auto; border-radius:4px;
+    }
+    /* ─── BUTTONS ────────────────────────────────────── */
     .button-link {
       display:inline-block; background:var(--accent);
       color:#fff; padding:.6rem 1rem; margin:.5rem .5rem 0 0;
       text-decoration:none; border-radius:4px; font-size:.95rem;
     }
     .button-link.disabled { background:#999; cursor:default; }
-    .chalkboard {
-      background:#2b2b2b; color:#f5f5f5;
-      border:8px solid #5c4033; padding:1rem;
-      font-family:'Chalkduster', cursive, Georgia, serif;
-      text-align:center; margin-bottom:2rem;
-    }
-    .chalkboard h2 { font-size:1.8rem; margin:.5rem 0; }
-    .profile {
-      display:flex; gap:1rem; align-items:flex-start;
-    }
-    .profile img {
-      width:120px; border-radius:50%;
-      box-shadow:0 2px 6px rgba(0,0,0,0.2);
-    }
-    .bio-text { font-size:.95rem; line-height:1.5; }
+    /* ─── SOCIAL + PIXELFED ───────────────────────────── */
     .social-iframe {
       width:100%; height:300px; border:4px solid;
       border-image-slice:1;
@@ -84,34 +111,52 @@
       border-radius:4px;
     }
     .pixelfed-box img { max-width:180px; display:block; margin:0 auto .5rem; }
+    /* ─── PROFILE & BIO ─────────────────────────────── */
+    .profile {
+      display:flex; gap:1rem; align-items:flex-start;
+    }
+    .profile img {
+      width:120px; border-radius:50%;
+      box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    }
+    .bio-text { font-size:.95rem; line-height:1.5; }
   </style>
 </head>
 <body>
 
-  <!-- Top ticker -->
+  <!-- TOP TICKER -->
   <div class="ticker" id="events-ticker">
     <span>Loading upcoming events &amp; weather…</span>
   </div>
 
   <div class="container">
 
-    <!-- LEFT COLUMN: Welcome + Zoom -->
+    <!-- LEFT COLUMN -->
     <div class="column">
 
-      <!-- Chalkboard welcome -->
+      <!-- 1) Chalkboard header with hand-written looping text -->
       <div class="section chalkboard">
-        <h2>Welina Mai Kākou</h2>
-        <h2>Mr. Abregano’s Classroom</h2>
+        <h2>Welina Mai Kākou  Mr. Abregano’s Classroom</h2>
       </div>
 
-      <!-- Zoom Conference Hub -->
+      <!-- 2) Vision image with wood-grain border -->
+      <div class="section">
+        <h2>🌺 Our Vision</h2>
+        <div class="vision-image-wrapper">
+          <img src="OlomanaVision.jpg" alt="Olomana School Vision">
+        </div>
+      </div>
+
+      <!-- 3) Zoom Conference Hub -->
       <div class="section">
         <h2>📹 Zoom Conference Hub</h2>
         <p><em>By appointment only</em></p>
         <p>
           <a href="https://zoom.us/client/latest/ZoomInstaller.exe"
              target="_blank"
-             class="button-link">💻 Download Zoom (PC)</a>
+             class="button-link">
+            💻 Download Zoom (PC)
+          </a>
           <a href="#" class="button-link">📱 Get Zoom (Mobile)</a>
           <a href="#" class="button-link disabled">📅 Schedule (Coming Soon)</a>
         </p>
@@ -124,21 +169,24 @@
 
     </div>
 
-    <!-- RIGHT COLUMN: Bio + Socials -->
+    <!-- RIGHT COLUMN -->
     <div class="column">
 
-      <!-- Profile & Bio -->
+      <!-- 1) Profile & Bio -->
       <div class="section profile">
         <img src="IMG_0041.jpg" alt="Ryan Abregano">
         <div class="bio-text">
           <h3>Ryan Abregano</h3>
           <p>
-            I am a passionate cultural educator and practitioner of Native Hawaiian perspectives. Currently, I serve as an Educational Assistant III at Olomana School in Hawaiʻi, supporting students with disabilities. My aim is to support students and help develop ways to generate income for cultural work, alongside my growing interest in coding, web development, and technology.
+            I am a passionate cultural educator and practitioner of Native Hawaiian perspectives. Currently,
+            I serve as an Educational Assistant III at Olomana School in Hawaiʻi, supporting students with
+            disabilities. My aim is to support students and help develop ways to generate income for cultural
+            work, alongside my growing interest in coding, web development, and technology.
           </p>
         </div>
       </div>
 
-      <!-- Instagram embed -->
+      <!-- 2) Instagram feed -->
       <div class="section">
         <h2>📸 Social Feeds</h2>
         <iframe
@@ -148,7 +196,7 @@
         </iframe>
       </div>
 
-      <!-- Pixelfed signup -->
+      <!-- 3) Pixelfed signup -->
       <div class="section">
         <h2>🌐 Pixelfed</h2>
         <div class="pixelfed-box">
@@ -162,18 +210,18 @@
     </div>
   </div>
 
-  <!-- EVENTS + WEATHER SCRIPT -->
+  <!-- EVENTS + WEATHER TICKER SCRIPT -->
   <script src="https://cdn.jsdelivr.net/npm/ical.js@2.2.0/build/ical.min.js"></script>
   <script>
     const ICS_URL  = './olomana_calendar.ics';
     const WTTR_URL = 'https://wttr.in/Waimanalo?format=j1';
 
     async function updateTicker() {
-      const now    = new Date();
-      const in30   = new Date(Date.now() + 30*86400*1000);
-      let items    = [];
+      const now  = new Date();
+      const in30 = new Date(Date.now() + 30*86400*1000);
+      let items = [];
 
-      // ICS events
+      // 1) Upcoming ICS events
       try {
         let text = await fetch(ICS_URL).then(r=>r.text());
         let data = ICAL.parse(text);
@@ -193,7 +241,7 @@
         items.push(...evs);
       } catch(e){ console.warn(e) }
 
-      // Weather
+      // 2) Next 3-day weather
       try {
         let j = await fetch(WTTR_URL).then(r=>r.json());
         let w = j.weather.slice(0,3).map(day=>{
@@ -204,6 +252,7 @@
         items.push(...w);
       } catch(e){ console.warn(e) }
 
+      // render
       let bar = document.getElementById('events-ticker');
       bar.innerHTML = items.map(t=>`<span>${t}</span>`).join('');
     }
@@ -211,7 +260,7 @@
     setInterval(updateTicker, 60000);
   </script>
 
-  <!-- HIDDEN YT PLAYER -->
+  <!-- HIDDEN YOUTUBE PLAYER -->
   <div id="yt-player"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
@@ -219,8 +268,11 @@
       new YT.Player('yt-player',{
         height:'0', width:'0',
         videoId:'HOK74BGCYXM',
-        playerVars:{ autoplay:1, loop:1, playlist:'HOK74BGCYXM', controls:0, modestbranding:1, rel:0 },
-        events:{ onReady:e=>{ e.target.setVolume(10); e.target.playVideo() }}
+        playerVars:{
+          autoplay:1, loop:1, playlist:'HOK74BGCYXM',
+          controls:0, modestbranding:1, rel:0
+        },
+        events:{ onReady:e=>{ e.target.setVolume(10); e.target.playVideo(); }}
       });
     }
   </script>
