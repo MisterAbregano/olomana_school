@@ -5,21 +5,34 @@
   <title>Mr. Abregano’s Classroom</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <style>
-    /* ─── Scrolling Opaque Background ───────────────────────────────── */
+    
+/* ─── Scrolling Opaque Background ───────────────────────────────── */
+body {
+  position: relative;
+  overflow-x: hidden; /* prevent horizontal scroll */
+}
+
 body::before {
   content: "";
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
   background: url('download.jpeg') center/cover no-repeat;
-  opacity: 0.15;                /* adjust for more/less transparency */
-  z-index: -1;
+  opacity: 0.15;               /* adjust transparency */
+  z-index: -1;                 /* behind everything */
   animation: bgScroll 60s linear infinite;
 }
 
 @keyframes bgScroll {
-  from { background-position: 0 0; }
-  to   { background-position: 0 100%; }
+  from   { transform: translateY(   0); }
+  to     { transform: translateY(-100%); }
+}
+
+/* Ensure your cards still look nice on top */
+.section {
+  position: relative;  /* above the ::before */
+  background: white;
+  /* ...your existing .section rules... */
 }
 
     :root {
