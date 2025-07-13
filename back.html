@@ -49,23 +49,34 @@ body::before {
       font-family: Georgia, serif;
       color: var(--text);
     }
-    /* TOP TICKER */
-    .ticker {
-      position: fixed; top:0; left:0; right:0;
-      background: var(--ticker-bg);
-      color: var(--ticker-color);
-      height: 2.5rem; display: flex; align-items: center;
-      overflow: hidden; padding: 0 1rem; z-index:1000;
-    }
-    .ticker span {
-      display: inline-block; padding: 0 2rem;
-      white-space: nowrap;
-      animation: scroll 20s linear infinite;
-    }
-    @keyframes scroll {
-      from { transform: translateX(100%); }
-      to   { transform: translateX(-100%); }
-    }
+    /* ─── EVENTS/WEATHER TICKER ───────────────────────────── */
+.ticker {
+  /* your existing ticker styles */
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2.5rem;
+  /* etc… */
+}
+@keyframes scroll {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(-100%); }
+}
+
+/* ─── SPORTS SCORES TICKER ───────────────────────────── */
+.sports-ticker {
+  position: fixed;
+  top: 2.5rem;      /* sits just under the main ticker */
+  left: 0; right: 0;
+  height: 3rem;     /* adjust for your iframe’s height */
+  background: var(--ticker-bg);
+  z-index: 999;
+}
+.sports-ticker iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 
     /* LAYOUT */
     .container {
@@ -167,12 +178,28 @@ body::before {
 </head>
 <body>
 
-  <!-- ─── TOP TICKER: EVENTS + WEATHER ─────────────────── -->
+  <body>
+  <!-- ─── TOP TICKERS ────────────────────────────────────── -->
+  <!-- 1) Events + Weather -->
   <div class="ticker" id="events-ticker">
     <span>Loading upcoming events &amp; weather…</span>
   </div>
 
+  <!-- 2) Sports Scores -->
+  <div class="ticker sports-ticker">
+    <iframe
+      src="https://www.espn.com/scoreboard/?device=desktop&sport=football"
+      frameborder="0"
+      scrolling="no"
+      width="100%" height="100%">
+    </iframe>
+  </div>
+
+  <!-- ─── YOUR MAIN CONTENT ─────────────────────────────── -->
   <div class="container">
+    …rest of your page…
+  </div>
+
 
     <!-- LEFT COLUMN -->
     <div class="column">
