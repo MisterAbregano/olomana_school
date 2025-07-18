@@ -4,6 +4,17 @@
   <meta charset="UTF-8">
   <title>Mr. Abregano’s Classroom</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  /* Moon section styling */
+.moon-section {
+  text-align: center;
+  padding: 1rem 0;
+}
+#kaulana-mahina-name {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: var(--accent);
+}
+
   <style>
     :root {
       --bg: #f5f0e6;
@@ -199,6 +210,48 @@ body {
           <img src="OlomanaVision.jpg" alt="Olomana School Vision">
         </div>
       </div>
+
+  <!-- 🌤️ ʻImi ʻIke Kaiāulu – Weather, Moon, Surf, Tides, Calendar -->
+  <div class="section" id="weather-widget">
+    <h2>⛅ ʻImi ʻIke Kaiāulu (Environmental Awareness)</h2>
+
+    <!-- Doppler Radar -->
+    <iframe
+      src="https://embed.windy.com/embed2.html?lat=21.3&lon=-157.8&zoom=8&overlay=rain"
+      width="100%" height="300" frameborder="0">
+    </iframe>
+
+    <!-- Dynamic Moon Phase Section -->
+    <div class="moon-section" style="margin-top:1rem;">
+      <iframe
+        id="moon-widget"
+        src="https://in-the-sky.org/data/object.php?id=P301&embed=1&lon=-157.8&lat=21.3&tz=HST&sizex=200&sizey=200"
+        width="200" height="200" frameborder="0">
+      </iframe>
+      <p id="kaulana-mahina-name">
+        Loading moon phase…
+      </p>
+    </div>
+
+    <!-- Tide + Surf Forecast -->
+    <div style="margin-top:1rem;">
+      <iframe
+        src="https://magicseaweed.com/Honolulu-Surf-Report/361/"
+        width="100%" height="300" frameborder="0">
+      </iframe>
+      <p><strong>Kai:</strong> Kai piʻi a me kai emi – Ebb and Flow</p>
+      <p><strong>Nalu:</strong> Live surf forecast for Honolulu 🌊</p>
+    </div>
+
+    <!-- ʻŌlelo Hawaiʻi Calendar -->
+    <div style="margin-top:1rem;">
+      <iframe
+        src="https://calendar.google.com/calendar/embed?src=hawaiianmooncalendar%40gmail.com&ctz=Pacific%2FHonolulu"
+        style="border:0" width="100%" height="300" frameborder="0" scrolling="no">
+      </iframe>
+      <p><strong>Mahina Helu:</strong> Ianuali, Pepeluali, Malaki…</p>
+    </div>
+  </div>
 
       <div class="section">
         <h2>📹 Zoom Conference Hub</h2>
