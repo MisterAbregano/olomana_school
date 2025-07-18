@@ -330,5 +330,25 @@ body {
     }
   </script>
 
+<!-- Suncalc library for moon calculations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.8.0/suncalc.min.js"></script>
+<script>
+  // 30 Hawaiian lunar-night names
+  const kaulanaMahina = [
+    "Muku – New moon (no light)",
+    /* …all 30 names… */
+    "Mauli – Life spirit (final breath)"
+  ];
+
+  // Compute lunar age and pick the right name
+  const now = new Date();
+  const { phase } = SunCalc.getMoonIllumination(now);
+  let age = Math.round(phase * 29.53);
+  age = Math.max(0, Math.min(29, age));
+
+  // Insert into the placeholder
+  document.getElementById('kaulana-mahina-name').innerHTML =
+    `<strong>Mahina (moon phase):</strong> ${kaulanaMahina[age]}`;
+</script>
 </body>
 </html>
