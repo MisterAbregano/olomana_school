@@ -228,13 +228,22 @@ body {
     <div class="moon-section" style="margin-top:1rem;">
       <iframe
         id="moon-widget"
-        src="https://in-the-sky.org/data/object.php?id=P301&embed=1&lon=-157.8&lat=21.3&tz=HST&sizex=200&sizey=200"
-        width="200" height="200" frameborder="0">
-      </iframe>
-      <p id="kaulana-mahina-name">
-        Loading moon phase…
-      </p>
-    </div>
+        src="https://in-the-sky.org/data/object.php?id=P301&embed=1&lon=-157.8&lat=21.3&tz=HST&size=small"
+        width="200" height="200" frameborder="0"
+      <div class="moon-section" style="margin-top:1rem;">
+  <!-- LIVE moon graphic from In-the-Sky.org -->
+  <iframe
+    id="moon-widget"
+    src="https://in-the-sky.org/data/object.php?id=P301&embed=1&lon=-157.8&lat=21.3&tz=HST&size=small"
+    width="200" height="200" frameborder="0"
+  ></iframe>
+
+  <!-- Placeholder for Hawaiian name (script will overwrite this) -->
+  <p id="kaulana-mahina-name">
+    Loading moon phase…
+  </p>
+</div>
+
 
     <!-- Tide + Surf Forecast -->
     <div style="margin-top:1rem;">
