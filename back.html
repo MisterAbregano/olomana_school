@@ -338,27 +338,24 @@
     })();
   </script>
 
-  <!-- ─── HIDDEN YOUTUBE BACKGROUND MUSIC ──────────────────── -->
+  <!-- HIDDEN YOUTUBE BACKGROUND MUSIC -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     let ytPlayer;
     function onYouTubeIframeAPIReady() {
-      ytPlayer = new YT.Player('yt', {
-        height: '0', width: '0',
-        videoId: 'HOK74BGCYXM',
-        playerVars: { autoplay:1, loop:1, playlist:'HOK74BGCYXM', controls:0, modestbranding:1, rel:0 },
-        events: { onReady: e => { e.target.setVolume(50); e.target.playVideo(); } }
-      });
+      ytPlayer = new YT.Player('yt', { /* … */ });
     }
     window.addEventListener('load', () => {
       if (ytPlayer && ytPlayer.seekTo) {
-        ytPlayer.seekTo(0); ytPlayer.playVideo();
+        ytPlayer.seekTo(0);
+        ytPlayer.playVideo();
       } else {
         onYouTubeIframeAPIReady();
       }
     });
   </script>
+
 
 </body>
 </html>
