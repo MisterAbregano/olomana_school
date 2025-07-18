@@ -67,18 +67,33 @@
   to   { transform: translateX(-100%); }
 }
 
-/* ─── avoid content hiding under fixed ticker ───────────────── */
-body {
-  padding-top: 2.5rem;
-}
-.ticker > div {
+/* ─── UNIFIED TICKER STYLES ─────────────────── */
+.ticker {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--ticker-bg);
+  color: var(--ticker-color);
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  padding: 0 1rem;
   white-space: nowrap;
-  animation: scrollLeft 30s linear infinite;
+  z-index: 1000;
 }
-@keyframes scrollLeft {
+#ticker-content span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 30s linear infinite;
+}
+@keyframes scroll-left {
   from { transform: translateX(0); }
   to   { transform: translateX(-100%); }
 }
+body {
+  padding-top: 2.5rem; /* keeps your main content from hiding behind the ticker */
+}
+
 
     /* ─── LAYOUT ─────────────────────────────────────────────── */
     .container { display:flex; gap:2rem; max-width:1200px; margin:4rem auto; padding:0 1rem; }
@@ -126,16 +141,13 @@ body {
   </style>
 </head>
 <body>
-
-  <!-- ─── SPORTS TICKER ────────────────────────────────── -->
-  <div class="ticker sports-ticker" id="sports-ticker">
-    <span>Loading live sports…</span>
+<!-- UNIFIED SPORTS TICKER -->
+<div class="ticker" id="ticker-bar">
+  <div id="ticker-content">
+    <span>Loading HHSAA sports events…</span>
   </div>
+</div>
 
-  <!-- ─── WEATHER TICKER ───────────────────────────────── -->
-  <div class="ticker weather-ticker" id="weather-ticker">
-    <span>Loading weather…</span>
-  </div>
 
     <!-- WEATHER TICKER (WeatherWidget.io with icons & moon phases) -->
   <div style="position:fixed; top:2.5rem; left:0; right:0; z-index:1000;">
