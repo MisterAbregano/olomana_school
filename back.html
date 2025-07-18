@@ -291,23 +291,34 @@
   </div><!-- /.container -->
 
   <!-- ─── HHSAA SPORTS TICKER SCRIPT ─────────────────────────── -->
-  <script>
-    async function loadTicker() {
-      try {
-        const res = await fetch('hhsaa_ticker.json');
-        const events = await res.json();
+<script>
+  async function loadTicker() {
+    try {
+      const res = await fetch('hhsaa_ticker.json');
+      console.log('📡 Ticker fetch status:', res.status);
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+      const events = await res.json();
+      console.log('📑 Ticker JSON:', events);
+      const content = document.getElementById('ticker-content');
+      if (events.length) {
         const span = document.createElement('span');
         span.textContent = events.join(' • ');
-        const content = document.getElementById('ticker-content');
         content.innerHTML = '';
         content.appendChild(span);
-      } catch (err) {
-        document.getElementById('ticker-content').textContent = '⚠️ Unable to load HHSAA sports events';
-        console.error(err);
+      } else {
+        content.textContent = 'ℹ️ No upcoming HHSAA events found';
       }
+    } catch (err) {
+      console.error('Ticker error:', err);
+      document.getElementById('ticker-content').textContent =
+        '⚠️ Unable to load HHSAA sports events';
     }
-    loadTicker();
-  </script>
+  }
+  loadTicker();
+</script>
+
 
   <!-- ─── MOON PHASE SCRIPT ─────────────────────────────────── -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.8.0/suncalc.min.js"></script>
