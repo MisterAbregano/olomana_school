@@ -1,14 +1,9 @@
 // updateTicker.js
-// ────────────────────────────────────────────────────
-// Scrapes the HHSAA News page and writes hhsaa_ticker.json
-// Uses Node 18+ built-in fetch and cheerio
-// ────────────────────────────────────────────────────
-
 const fs      = require('fs');
 const cheerio = require('cheerio');
 
 const URL = 'https://www.hhsaa.org/about/news';
-
+// …rest of your code…
 async function fetchEvents() {
   try {
     const res = await fetch(URL);
