@@ -381,6 +381,34 @@ body {
       });
     }
   </script>
+// assume you stored your player in a global variable:
+let ytPlayer;
+
+// in onYouTubeIframeAPIReady:
+function onYouTubeIframeAPIReady() {
+  ytPlayer = new YT.Player('yt', { /* … */ });
+}
+
+// anywhere you need to reset:
+if (ytPlayer && ytPlayer.seekTo) {
+  ytPlayer.seekTo(0);      // jump to 0 seconds
+  ytPlayer.playVideo();    // start playback again
+} else {
+  // fallback if player isn’t initialized yet
+  onYouTubeIframeAPIReady();
+}
+  <script>
+  // Option A: rewind & play on load
+  window.addEventListener('load', () => {
+    if (typeof ytPlayer !== 'undefined') {
+      ytPlayer.seekTo(0);
+      ytPlayer.playVideo();
+    } else {
+      onYouTubeIframeAPIReady();
+    }
+  });
+</script>
+
 </body>
 </html>
 </body>
