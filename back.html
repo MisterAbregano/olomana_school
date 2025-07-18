@@ -353,5 +353,35 @@ body {
   document.getElementById('kaulana-mahina-name').innerHTML =
     `<strong>Mahina (moon phase):</strong> ${kaulanaMahina[age]}`;
 </script>
+  <!-- HIDDEN YOUTUBE BACKGROUND MUSIC -->
+  <div id="yt"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    // This function *must* be in the global scope, before the API script is parsed
+    function onYouTubeIframeAPIReady() {
+      new YT.Player('yt', {
+        height: '0',
+        width: '0',
+        videoId: 'HOK74BGCYXM',
+        playerVars: {
+          autoplay: 1,
+          loop: 1,
+          playlist: 'HOK74BGCYXM',
+          controls: 0,
+          modestbranding: 1,
+          rel: 0
+        },
+        events: {
+          onReady: e => {
+            // bump the volume up so it’s audible
+            e.target.setVolume(50);
+            e.target.playVideo();
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>
 </body>
 </html>
