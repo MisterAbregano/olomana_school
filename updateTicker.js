@@ -1,35 +1,43 @@
 // updateTicker.js
-// 🏀 Scrapes the HHSAA website for sports headlines and updates the ticker feed
+// ────────────────────────────────────────────────────
+// Scrapes the HHSAA News page and writes hhsaa_ticker.json
+// Uses Node 18+ built-in fetch and cheerio
+// ────────────────────────────────────────────────────
 
-const fs = require('fs');
-const fetch = require('node-fetch');
+const fs      = require('fs');
 const cheerio = require('cheerio');
 
-// HHSAA sports section — change this to a specific sport if needed
-const URL = 'https://www.hhsaa.org/sports/football';
+const URL = 'https://www.hhsaa.org/about/news';
 
 async function fetchEvents() {
   try {
+    // Node 18+ has global fetch
     const res = await fetch(URL);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const html = await res.text();
-    const $ = cheerio.load(html);
+    const $    = cheerio.load(html);
 
     const events = [];
-
-    // Looks for article items on the page (adjust if HHSAA changes layout)
-    $('.news-item').slice(0, 5).each((i, el) => {
-      const title = $(el).find('h3').text().trim();
-      const date = $(el).find('.date').text().trim();
-      if (title && date) {
-        events.push(`${date}: ${title}`);
-      }
+    // Grab the first 5 news links
+    $('a[href*="/about/news/"]').slice(0, 5).each((i, el) => {
+      const raw = $(el).text().trim().replace(/\s+/g, ' ');
+      if (raw) events.push(raw);
     });
 
-    // Save to a file your website can read
-    fs.writeFileSync('hhsaa_ticker.json', JSON.stringify(events, null, 2));
-    console.log('✅ Ticker updated successfully!');
+    if (!events.length) {
+      console.warn('⚠️ No news items found on HHSAA News page');
+      events.push('No upcoming HHSAA news found');
+    }
+
+    fs.writeFileSync(
+      'hhsaa_ticker.json',
+      JSON.stringify(events, null, 2),
+      'utf-8'
+    );
+    console.log('✅ hhsaa_ticker.json updated:', events);
   } catch (err) {
     console.error('❌ Error updating ticker:', err);
+    process.exit(1);
   }
 }
 
