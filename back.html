@@ -1,41 +1,251 @@
-<!-- ▶ Main Layout Wrapper -->
-<div class="main-wrapper">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mr. Abregano’s Classroom</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <style>
+    :root {
+      --bg: #f5f0e6;
+      --card-bg: rgba(255,255,255,0.8);
+      --accent: #00695c;
+      --text: #222;
+      --ticker-bg: #111;
+      --ticker-color: #fff;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0; width: 100%; min-height: 100%;
+      background: var(--bg);
+      font-family: Georgia, serif;
+      color: var(--text);
+    }
+    /* ─── SPORTS TICKER ───────────────────────────────── */
+    .ticker {
+      position: fixed; top:0; left:0; right:0;
+      background: var(--ticker-bg); color: var(--ticker-color);
+      height:2.5rem; display:flex; align-items:center;
+      overflow:hidden; padding:0 1rem; white-space:nowrap; z-index:1000;
+    }
+    #ticker-content span {
+      display:inline-block; padding-left:100%;
+      animation: scroll-left 30s linear infinite;
+    }
+    @keyframes scroll-left {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-100%); }
+    }
+    body { padding-top: 2.5rem; }
 
-  <!-- Column 1: Welcome -->
-  <div class="welcome-box">
-    <!-- Example: Your Welina Mai card -->
-    <h1>🌴 Welina Mai<br>Kākou to Mr. Abregano’s Classroom 🌺</h1>
-    <img src="olomana_logo.png" alt="Olomana Logo" />
+    /* ─── LAYOUT ───────────────────────────────────────── */
+    .container {
+      display: flex;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+    .column { flex: 1; }
+
+    .section {
+      background: var(--card-bg);
+      padding: 1.5rem; border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 2rem; position: relative;
+    }
+    .section h2 {
+      margin-top: 0; color: var(--accent);
+      font-size: 1.5rem; display:flex; align-items:center; gap:.5rem;
+    }
+
+    .vision-image-wrapper {
+      border:4px solid transparent; border-image-slice:1;
+      border-image-source:linear-gradient(45deg, gold, darkgoldenrod);
+      border-radius:8px; overflow:hidden; margin-top:.5rem;
+    }
+    .vision-image-wrapper img {
+      width:100%; height:auto; display:block;
+    }
+
+    .button-link {
+      display:inline-block; text-decoration:none;
+      background:var(--accent); color:#fff;
+      padding:.6rem 1rem; border-radius:4px; margin:.5rem .5rem 0 0;
+      font-size:.95rem;
+    }
+    .button-link.disabled { background:#999; cursor:default; }
+
+    .profile { display:flex; gap:1rem; align-items:flex-start; }
+    .profile img {
+      width:120px; height:120px; object-fit:cover;
+      border-radius:50%; box-shadow:0 2px 6px rgba(0,0,0,0.2);
+    }
+    .profile .bio-text h3 { margin:0 0 .5rem; font-size:1.3rem; }
+    .profile .bio-text p { margin:0; line-height:1.5; font-size:.95rem; }
+
+    .social-iframe {
+      width:100%; height:300px; border:4px solid transparent;
+      border-image-slice:1; border-image-source:linear-gradient(to right, orange, magenta);
+      border-radius:8px;
+    }
+    .pixelfed-box {
+      text-align:center; padding:1rem; margin-top:1rem;
+      border:4px solid transparent; border-image-slice:1;
+      border-image-source:linear-gradient(to right, teal, cyan);
+      border-radius:8px;
+    }
+    .pixelfed-box img {
+      max-width:200px; display:block; margin:0 auto .5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── SPORTS TICKER ───────────────────────────────── -->
+  <div class="ticker" id="ticker-bar">
+    <div id="ticker-content">
+      <span>Loading HHSAA sports events…</span>
+    </div>
   </div>
 
-  <!-- Column 2: Profile -->
-  <div class="profile-column">
-    <div class="section profile">
-      <img
-        src="profile.jpg"
-        alt="Mr. R Abregano"
-        class="profile-photo"
-      />
-      <div class="bio-text">
-        <h3>Mr. R Abregano</h3>
-        <p><strong>Mr. R Abregano</strong> is a Native Hawaiian cultural educator and practitioner rooted in the traditional practices of 
-        <strong>hele lālau</strong> <em>(subsistence hunting)</em>, 
-        <strong>lawaiʻa</strong> <em>(traditional fishing)</em>, 
-        <strong>mele</strong> <em>(Hawaiian chant and song)</em>, and 
-        <strong>hula protocol</strong> <em>(ceremonial practices of dance and ritual)</em>.</p>
-        <p>Raised in the values of <strong>aloha ʻāina</strong> <em>(love for the land)</em> and 
-        <strong>kuleana</strong> <em>(responsibility)</em>, he brings 
-        <strong>ʻike kupuna</strong> <em>(ancestral knowledge)</em> into modern educational spaces with intention and heart.</p>
-        <p>He is passionate about learning from and with his <strong>haumāna</strong> <em>(students)</em>, seeking to understand their lived experiences 
-        so he can offer grounded, alternative perspectives. Through his cultural upbringing, he has been encouraged to cultivate 
-        <strong>substance within our keiki</strong> <em>(children)</em>—not only in what they learn, but in who they become.</p>
-        <p>His approach honors identity, purpose, and the deep connections between people and place.</p>
+  <!-- ─── WEATHER WIDGET EMBED ─────────────────────────── -->
+  <div style="position:fixed; top:2.5rem; left:0; right:0; z-index:1000;">
+    <a class="weatherwidget-io"
+       href="https://forecast7.com/en/21d3201569/honolulu/"
+       data-label_1="HONOLULU"
+       data-label_2="Weather"
+       data-theme="pure"
+       data-basecolor="#ffffff"
+       data-textcolor="#111"
+       data-accent="#00695c"
+       data-highcolor="#e74c3c"
+       data-lowcolor="#3498db"
+       data-days="3">
+      HONOLULU WEATHER
+    </a>
+  </div>
+  <script>
+    !function(d,s,id){
+      var js,fjs=d.getElementsByTagName(s)[0];
+      if(!d.getElementById(id)){
+        js=d.createElement(s); js.id=id;
+        js.src='https://weatherwidget.io/js/widget.min.js';
+        fjs.parentNode.insertBefore(js,fjs);
+      }
+    }(document,'script','weatherwidget-io-js');
+  </script>
+
+  <!-- ─── MAIN CONTENT ──────────────────────────────────── -->
+  <div class="container">
+
+    <!-- LEFT COLUMN -->
+    <div class="column">
+
+      <div class="section">
+        <h2>🌴 Welina Mai Kākou to Mr. Abregano’s Classroom 🌺</h2>
+        <div class="vision-image-wrapper">
+          <img src="OlomanaVision.jpg" alt="Olomana School Vision" />
+        </div>
       </div>
-    </div>
 
-    <!-- Social Feeds -->
-    <div class="social-box">
-      <!-- Insert Instagram embed or other widgets here -->
-    </div>
-  </div>
-</div>
+      <div class="section">
+        <h2>⛅ ʻImi ʻIke Kaiāulu (Environmental Awareness)</h2>
+        <!-- Doppler Radar -->
+        <iframe
+          src="https://embed.windy.com/embed2.html?lat=21.3&lon=-157.8&zoom=8&overlay=rain"
+          width="100%" height="300" frameborder="0">
+        </iframe>
+      </div>
+
+      <div class="section">
+        <h2>📹 Zoom Conference Hub</h2>
+        <p><em>By appointment only</em></p>
+        <p>
+          <a href="https://zoom.us/client/latest/ZoomInstaller.exe" class="button-link">💻 Download Zoom (PC)</a>
+          <a href="#" class="button-link">📱 Get Zoom (Mobile)</a>
+        </p>
+        <p style="font-size:.9em;">
+          Email <a href="mailto:ryan.abregano@k12.hi.us"><strong>Mr. A’s</strong></a> to request access.
+        </p>
+      </div>
+
+      <div class="section">
+        <h2>📖 Student Handbook</h2>
+        <object data="23-24StudentHandbook1.pdf" type="application/pdf" width="100%" height="400">
+          <p>Your browser doesn’t support PDFs. <a href="23-24StudentHandbook1.pdf" target="_blank">Download here</a>.</p>
+        </object>
+      </div>
+
+    </div><!-- /.column -->
+
+    <!-- RIGHT COLUMN -->
+    <div class="column">
+
+      <div class="section profile">
+        <img src="IMG_0041.jpg" alt="Ryan Abregano" />
+        <div class="bio-text">
+          <h3>Ryan Abregano</h3>
+          <p>
+            I am a cultural educator and mentor who draws on my own journey
+            through school and life in Hawaiʻi to guide students toward academic
+            and personal success. Whether helping a learner tackle a tough
+            assignment or coaching a small group project, I bring empathy,
+            patience, and a healthy dose of local ʻāina wisdom.
+          </p>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>📸 Social Feeds</h2>
+        <iframe class="social-iframe"
+                src="https://www.instagram.com/olomanaschool/embed"
+                allowtransparency="true">
+        </iframe>
+      </div>
+
+      <div class="section">
+        <h2>🌐 Pixelfed</h2>
+        <div class="pixelfed-box">
+          <a href="https://pixelfed.social/register" target="_blank">
+            <img src="pixelfed-logo.svg" alt="Pixelfed Logo" />
+            <div>Sign up on Pixelfed</div>
+          </a>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>📅 Google Calendar</h2>
+        <iframe
+          src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&amp;ctz=Pacific/Honolulu"
+          style="border:0" width="100%" height="400" frameborder="0" scrolling="no">
+        </iframe>
+      </div>
+
+    </div><!-- /.column -->
+
+  </div><!-- /.container -->
+
+  <!-- ─── HIDDEN YOUTUBE BACKGROUND MUSIC ──────────────────── -->
+  <div id="yt"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script>
+    let ytPlayer;
+    function onYouTubeIframeAPIReady() {
+      ytPlayer = new YT.Player('yt', {
+        height:'0', width:'0',
+        videoId:'HOK74BGCYXM',
+        playerVars:{ autoplay:1, loop:1, playlist:'HOK74BGCYXM', controls:0, modestbranding:1, rel:0 },
+        events:{ onReady:e=>{ e.target.unMute(); e.target.setVolume(30); e.target.playVideo(); } }
+      });
+    }
+    window.addEventListener('click', ()=>{
+      if(ytPlayer && ytPlayer.unMute){
+        ytPlayer.unMute();
+        ytPlayer.setVolume(30);
+        ytPlayer.playVideo();
+      }
+    },{ once:true });
+  </script>
+
+</body>
+</html>
