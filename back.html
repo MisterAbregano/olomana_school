@@ -125,7 +125,19 @@
       margin: 0.5rem 0 0;
       font-size: 1rem;
       color: var(--text);
-    }
+    }/* Center the weather widget on the page */
+.weather-container {
+  position: fixed;
+  top: 2.5rem;       /* same vertical position as before */
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+}
+
+/* Force the widget to size to its content */
+.weather-container .weatherwidget-io {
+  display: inline-block !important;
+}
   </style>
 </head>
 <body>
@@ -135,22 +147,34 @@
     <div id="ticker-content"><span>Loading HHSAA sports events…</span></div>
   </div>
 
-  <!-- ─── WEATHER TICKER REPLACEMENT ─────────────────────── -->
-  <div style="position:fixed; top:2.5rem; left:0; right:0; z-index:1000;">
-    <a class="weatherwidget-io"
-       href="https://forecast7.com/en/21d3201569/honolulu/"
-       data-label_1="HONOLULU"
-       data-label_2="Weather"
-       data-theme="pure"
-       data-basecolor="#ffffff"
-       data-textcolor="#111"
-       data-accent="#00695c"
-       data-highcolor="#e74c3c"
-       data-lowcolor="#3498db"
-       data-days="3">
-      HONOLULU WEATHER
-    </a>
-  </div>
+  <!-- ─── HONOLULU WEATHER (Current Only, Centered) ─────────────────── -->
+<div class="weather-container">
+  <a 
+    class="weatherwidget-io"
+    href="https://forecast7.com/en/21d3201569/honolulu/"
+    data-mode="Current"      <!-- only current conditions -->
+    data-days="0"            <!-- no multi-day forecast -->
+    data-theme="pure"
+    data-basecolor="#ffffff"
+    data-textcolor="#111"
+    data-accent="#00695c"
+    data-highcolor="#e74c3c"
+    data-lowcolor="#3498db"
+  >
+    HONOLULU WEATHER
+  </a>
+</div>
+<script>
+  !function(d,s,id){
+    var js,fjs=d.getElementsByTagName(s)[0];
+    if(!d.getElementById(id)){
+      js=d.createElement(s);js.id=id;
+      js.src='https://weatherwidget.io/js/widget.min.js';
+      fjs.parentNode.insertBefore(js,fjs);
+    }
+  }(document,'script','weatherwidget-io-js');
+</script>
+
   <script>
     !function(d,s,id){
       var js,fjs=d.getElementsByTagName(s)[0];
