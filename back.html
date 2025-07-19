@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Mr. Abregano’s Classroom</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  fix(profile): constrain profile-photo to circular thumbnail
   <style>
+    /* … lots of CSS rules … */
+
     :root {
       --bg: #f5f0e6;
       --card-bg: rgba(255,255,255,0.8);
@@ -181,9 +184,10 @@
     <!-- RIGHT COLUMN -->
     <div class="column">
 <img
-  src="Abregano%27s.JPG"
+  src="abreganos.jpg"         <!-- or your encoded/renamed filename -->
   alt="Ryan Abregano"
   class="profile-photo"
+  onerror="this.onerror=null;this.src='fallback-profile.png';"
 />
         <div class="bio-text">
           <h3>Ryan Abregano</h3>
