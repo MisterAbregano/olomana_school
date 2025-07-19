@@ -373,7 +373,7 @@
     })();
   </script>
 
-  <!-- HIDDEN YOUTUBE BACKGROUND MUSIC w/ UNMUTE & GESTURE FALLBACK -->
+    <!-- HIDDEN YOUTUBE BACKGROUND MUSIC w/ UNMUTE & GESTURE FALLBACK -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
@@ -392,26 +392,21 @@
           modestbranding: 1,
           rel: 0
         },
-        events: {
-          onReady: e => {
-            // Try to unmute & play immediately
-            e.target.unMute();
-            e.target.setVolume(100);
-            e.target.playVideo();
-          }
-        }
-      });
-    }
-
-    // If autoplay is blocked, this click will unmute & restart
-    window.addEventListener('click', () => {
-      if (ytPlayer && typeof ytPlayer.unMute === 'function') {
-        ytPlayer.unMute();
-        ytPlayer.setVolume(100);
-        ytPlayer.playVideo();
-      }
-    }, { once: true });
+       events: {
+  onReady: e => {
+    e.target.unMute();
+    e.target.setVolume(30);  // now at 30% volume
+    e.target.playVideo();
+  }
+}
+…
+window.addEventListener('click', () => {
+  if (ytPlayer && typeof ytPlayer.unMute === 'function') {
+    ytPlayer.unMute();
+    ytPlayer.setVolume(30);  // ensure 30% after user gesture
+    ytPlayer.playVideo();
+  }
+}, { once: true });
   </script>
 </body>
 </html>
-
