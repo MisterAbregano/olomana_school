@@ -2,69 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mr. Abregano’s Classroom</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr. Abregano’s Classroom</title>
   <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #f5f0e6;
+      --card-bg: rgba(255,255,255,0.8);
+      --accent: #00695c;
+      --text: #222;
+      --ticker-bg: #111;
+      --ticker-color: #fff;
+    }
+
     body {
       margin: 0;
-      font-family: 'Caveat', cursive;
-      background-color: #f5f0e6;
-      color: #1a1a1a;
+      font-family: sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
     }
 
-    .banner {
-      background-color: rgba(255,255,255,0.5);
-      text-align: center;
+    .section {
       padding: 1rem;
-      font-size: 1.4rem;
-      font-weight: bold;
-      position: relative;
-      backdrop-filter: blur(6px);
     }
 
-    .banner img {
-      width: 1.5em;
-      height: 1.5em;
-      vertical-align: middle;
-      margin: 0 0.5rem;
-    }
-
-    .main-wrapper {
+    .profile {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      gap: 2rem;
-      padding: 2rem;
-      max-width: 1200px;
-      margin: auto;
-    }
-
-    .left-column,
-    .right-column {
-      flex: 1 1 400px;
-      max-width: 500px;
+      text-align: center;
+      margin: 2rem auto;
     }
 
     .profile-photo {
       width: 180px;
       height: 180px;
+      border-radius: 12px;
       object-fit: cover;
-      border-radius: 0.5rem;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      margin: 1rem auto;
-      display: block;
+      margin-bottom: 1rem;
     }
 
     .bio-text {
-      font-size: 1.05rem;
-      line-height: 1.6;
-      padding: 1rem;
-      text-align: center;
+      font-family: 'Caveat', cursive;
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .welcome-card,
-    .school-logo {
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    .column {
+      flex: 1 1 300px;
+      max-width: 500px;
+    }
+
+    .school-logo,
+    .handbook {
       text-align: center;
       margin: 1rem auto;
     }
@@ -74,62 +75,62 @@
       height: auto;
     }
 
-    .social-feeds {
-      margin-top: 2rem;
-      text-align: center;
+    .handbook a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: var(--accent);
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
     }
 
-    .handbook {
-      margin-top: 2rem;
-      background-color: rgba(255, 255, 255, 0.6);
-      padding: 1rem;
+    .banner-still {
+      background: transparent;
       text-align: center;
-      border-radius: 10px;
+      font-weight: bold;
+      font-size: 1.6rem;
+      padding: 1rem 0;
     }
   </style>
 </head>
 <body>
-  <!-- Welina Mai Banner -->
-  <div class="banner">
-    <img src="boar-left.jpg" alt="Wild Boar">
+
+  <!-- Banner Still -->
+  <div class="banner-still">
+    <img src="boar-left.jpg" alt="Boar" style="width: 32px; vertical-align: middle;"> 
     Welina Mai Kākou to Mr. Abregano’s Classroom
-    <img src="boar-right.jpg" alt="Wild Boar">
+    <img src="boar-right.jpg" alt="Boar" style="width: 32px; vertical-align: middle;">
   </div>
 
-  <!-- Main Content Layout -->
-  <div class="main-wrapper">
-
-    <!-- Left Column -->
-    <div class="left-column">
-      <div class="welcome-card">
+  <div class="two-columns">
+    <!-- Column 1 -->
+    <div class="column">
+      <div class="school-logo">
         <img src="olomana_logo.jpg" alt="Olomana School Logo">
       </div>
     </div>
 
-    <!-- Right Column -->
-    <div class="right-column">
-      <img src="Abregano's.jpg" alt="Mr. R Abregano" class="profile-photo">
-
-      <div class="bio-text">
-        <h3>Mr. R Abregano</h3>
-        <p><strong>Mr. R Abregano</strong> is a Native Hawaiian cultural educator and practitioner rooted in the traditional practices of <strong>hele lālau</strong> <em>(subsistence hunting)</em>, <strong>lawaiʻā</strong> <em>(traditional fishing)</em>, <strong>mele</strong> <em>(Hawaiian chant and song)</em>, and <strong>hula protocol</strong> <em>(ceremonial practices of dance and ritual)</em>.</p>
-        <p>Raised in the values of <strong>aloha ʻāina</strong> <em>(love for the land)</em> and <strong>kuleana</strong> <em>(responsibility)</em>, he brings <strong>ʻike kupuna</strong> <em>(ancestral knowledge)</em> into modern educational spaces with intention and heart.</p>
-        <p>He is passionate about learning from and with his <strong>haumāna</strong> <em>(students)</em>, seeking to understand their lived experiences so he can offer grounded, alternative perspectives. Through his cultural upbringing, he has been encouraged to cultivate <strong>substance within our keiki</strong> <em>(children)</em>—not only in what they learn, but in who they become.</p>
-        <p>His approach honors identity, purpose, and the deep connections between people and place.</p>
-      </div>
-
-      <!-- Social Feed Embed Placeholder -->
-      <div class="social-feeds">
-        <!-- Insert your embed feed here -->
-      </div>
-
-      <!-- School Handbook -->
-      <div class="handbook">
-        <h4>School Handbook</h4>
-        <a href="handbook.pdf" target="_blank">Download the PDF</a>
+    <!-- Column 2 -->
+    <div class="column">
+      <div class="section profile">
+        <img src="Abregano's.jpg" alt="Mr. R Abregano" class="profile-photo">
+        <div class="bio-text">
+          <h3>Mr. R Abregano</h3>
+          <p><strong>Mr. R Abregano</strong> is a Native Hawaiian cultural educator and practitioner rooted in the traditional practices of <strong>hele lālau</strong> <em>(subsistence hunting)</em>, <strong>lawaiʻā</strong> <em>(traditional fishing)</em>, <strong>mele</strong> <em>(Hawaiian chant and song)</em>, and <strong>hula protocol</strong> <em>(ceremonial practices of dance and ritual)</em>.</p>
+          <p>Raised in the values of <strong>aloha ʻāina</strong> <em>(love for the land)</em> and <strong>kuleana</strong> <em>(responsibility)</em>, he brings <strong>ʻike kupuna</strong> <em>(ancestral knowledge)</em> into modern educational spaces with intention and heart.</p>
+          <p>He is passionate about learning from and with his <strong>haumāna</strong> <em>(students)</em>, seeking to understand their lived experiences so he can offer grounded, alternative perspectives. Through his cultural upbringing, he has been encouraged to cultivate <strong>substance within our keiki</strong> <em>(children)</em>—not only in what they learn, but in who they become.</p>
+          <p>His approach honors identity, purpose, and the deep connections between people and place.</p>
+        </div>
       </div>
     </div>
-
   </div>
+
+  <!-- Handbook Section -->
+  <div class="handbook">
+    <h4>School Handbook</h4>
+    <a href="handbook.pdf" target="_blank">Download PDF</a>
+  </div>
+
 </body>
 </html>
