@@ -373,24 +373,45 @@
     })();
   </script>
 
-  <!-- HIDDEN YOUTUBE BACKGROUND MUSIC -->
+  <!-- HIDDEN YOUTUBE BACKGROUND MUSIC w/ UNMUTE & GESTURE FALLBACK -->
   <div id="yt"></div>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     let ytPlayer;
+
     function onYouTubeIframeAPIReady() {
-      ytPlayer = new YT.Player('yt', { /* … */ });
+      ytPlayer = new YT.Player('yt', {
+        height: '0',
+        width: '0',
+        videoId: 'HOK74BGCYXM',
+        playerVars: {
+          autoplay: 1,
+          loop: 1,
+          playlist: 'HOK74BGCYXM',
+          controls: 0,
+          modestbranding: 1,
+          rel: 0
+        },
+        events: {
+          onReady: e => {
+            // Try to unmute & play immediately
+            e.target.unMute();
+            e.target.setVolume(100);
+            e.target.playVideo();
+          }
+        }
+      });
     }
-    window.addEventListener('load', () => {
-      if (ytPlayer && ytPlayer.seekTo) {
-        ytPlayer.seekTo(0);
+
+    // If autoplay is blocked, this click will unmute & restart
+    window.addEventListener('click', () => {
+      if (ytPlayer && typeof ytPlayer.unMute === 'function') {
+        ytPlayer.unMute();
+        ytPlayer.setVolume(100);
         ytPlayer.playVideo();
-      } else {
-        onYouTubeIframeAPIReady();
       }
-    });
+    }, { once: true });
   </script>
-
-
 </body>
 </html>
+
