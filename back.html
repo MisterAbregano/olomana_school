@@ -1,262 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Mr. Abregano’s Classroom</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mr. R Abregano – Olomana School</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    /* … lots of CSS rules … */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
 
-    :root {
-      --bg: #f5f0e6;
-      --card-bg: rgba(255,255,255,0.8);
-      --accent: #00695c;
-      --text: #222;
-      --ticker-bg: #111;
-      --ticker-color: #fff;
+    .welina-section {
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      background: transparent;
     }
-    * { box-sizing: border-box; }
-    html, body {
-      margin: 0; padding: 0; width: 100%; min-height: 100%;
-      background: var(--bg);
-      font-family: Georgia, serif;
-      color: var(--text);
-    }
-    /* ─── SPORTS TICKER ───────────────────────────────── */
-    .ticker {
-      position: fixed; top:0; left:0; right:0;
-      background: var(--ticker-bg); color: var(--ticker-color);
-      height:2.5rem; display:flex; align-items:center;
-      overflow:hidden; padding:0 1rem; white-space:nowrap; z-index:1000;
-    }
-    #ticker-content span {
-      display:inline-block; padding-left:100%;
-      animation: scroll-left 30s linear infinite;
-    }
-    @keyframes scroll-left {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-100%); }
-    }
-    body { padding-top: 2.5rem; }
 
-    /* ─── LAYOUT ───────────────────────────────────────── */
-    .container {
+    .welina-text {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin: 0;
+      color: white;
+      background-color: rgba(0,0,0,0.4);
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    .welina-image {
+      width: 160px;
+      height: auto;
+      margin-top: 1rem;
+      border-radius: 50%;
+      border: 2px solid white;
+    }
+
+    .two-column-container {
       display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
       gap: 2rem;
-      max-width: 1200px;
-      margin: 4rem auto;
+      margin: 2rem auto;
+      max-width: 1000px;
       padding: 0 1rem;
     }
-    .column { flex: 1; }
 
-    .section {
-      background: var(--card-bg);
-      padding: 1.5rem; border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-bottom: 2rem; position: relative;
-    }
-    .section h2 {
-      margin-top: 0; color: var(--accent);
-      font-size: 1.5rem; display:flex; align-items:center; gap:.5rem;
+    .column-left,
+    .column-right {
+      flex: 1;
+      min-width: 300px;
     }
 
-    .vision-image-wrapper {
-      border:4px solid transparent; border-image-slice:1;
-      border-image-source:linear-gradient(45deg, gold, darkgoldenrod);
-      border-radius:8px; overflow:hidden; margin-top:.5rem;
-    }
-    .vision-image-wrapper img {
-      width:100%; height:auto; display:block;
+    @media (max-width: 768px) {
+      .two-column-container {
+        flex-direction: column;
+        align-items: center;
+      }
     }
 
-    .button-link {
-      display:inline-block; text-decoration:none;
-      background:var(--accent); color:#fff;
-      padding:.6rem 1rem; border-radius:4px; margin:.5rem .5rem 0 0;
-      font-size:.95rem;
-    }
-    .button-link.disabled { background:#999; cursor:default; }
-
-    .profile { display:flex; gap:1rem; align-items:flex-start; }
-    .profile img {
-      width:120px; height:120px; object-fit:cover;
-      border-radius:50%; box-shadow:0 2px 6px rgba(0,0,0,0.2);
-    }
-    .profile .bio-text h3 { margin:0 0 .5rem; font-size:1.3rem; }
-    .profile .bio-text p { margin:0; line-height:1.5; font-size:.95rem; }
-
-    .social-iframe {
-      width:100%; height:300px; border:4px solid transparent;
-      border-image-slice:1; border-image-source:linear-gradient(to right, orange, magenta);
-      border-radius:8px;
-    }
-    .pixelfed-box {
-      text-align:center; padding:1rem; margin-top:1rem;
-      border:4px solid transparent; border-image-slice:1;
-      border-image-source:linear-gradient(to right, teal, cyan);
-      border-radius:8px;
-    }
-    .pixelfed-box img {
-      max-width:200px; display:block; margin:0 auto .5rem;
+    .banner {
+      background-color: transparent;
+      text-align: center;
+      font-size: 1.2rem;
+      padding: 1rem;
+      font-weight: 600;
     }
   </style>
 </head>
 <body>
 
-  <!-- ─── SPORTS TICKER ───────────────────────────────── -->
-  <div class="ticker" id="ticker-bar">
-    <div id="ticker-content">
-      <span>Loading HHSAA sports events…</span>
+  <!-- Sports Ticker + Welina Mai Banner -->
+  <div class="banner">
+    <marquee behavior="scroll" direction="left" scrollamount="4" style="color:#FFD700;">
+      ⚾ Updates from Olomana Athletics · ʻAʻohe hana nui ke alu ʻia · #ImuaOlomana
+    </marquee>
+    <div class="welina-text">Welina Mai</div>
+    <img src="images/profile.jpg" alt="Mr. R Abregano" class="welina-image" />
+  </div>
+
+  <!-- Two Column Layout Below -->
+  <div class="two-column-container">
+    <div class="column-left">
+      <h2>About Mr. R Abregano</h2>
+      <p>
+        Educational Assistant III at Olomana School, supporting special education students in a secure learning environment. Passionate about Native Hawaiian culture, cryptocurrency education, and youth development.
+      </p>
+      <p>
+        Fluent in ʻōlelo Hawaiʻi, Hawaiian Creole English, and English. Experienced in video editing (CapCut, Premiere), investment strategy, and community outreach.
+      </p>
+    </div>
+
+    <div class="column-right">
+      <h2>Featured Media</h2>
+      <p>
+        <iframe width="100%" height="200" src="https://www.youtube.com/embed/HOK74BGCYXM?autoplay=0" title="Kauhale O Kamapuaʻa" frameborder="0" allowfullscreen></iframe>
+      </p>
+      <p>
+        Password Entry (Coming Soon):<br />
+        <em style="font-family: cursive;">“Imua e nā pōkiʻi, a inu i ka wai ʻawaʻawa, ʻaʻohe hope e hoʻi mai ai.”</em>
+      </p>
     </div>
   </div>
-
-  <!-- ─── WEATHER WIDGET EMBED ─────────────────────────── -->
-  <div style="position:fixed; top:2.5rem; left:0; right:0; z-index:1000;">
-    <a class="weatherwidget-io"
-       href="https://forecast7.com/en/21d3201569/honolulu/"
-       data-label_1="HONOLULU"
-       data-label_2="Weather"
-       data-theme="pure"
-       data-basecolor="#ffffff"
-       data-textcolor="#111"
-       data-accent="#00695c"
-       data-highcolor="#e74c3c"
-       data-lowcolor="#3498db"
-       data-days="3">
-      HONOLULU WEATHER
-    </a>
-  </div>
-  <script>
-    !function(d,s,id){
-      var js,fjs=d.getElementsByTagName(s)[0];
-      if(!d.getElementById(id)){
-        js=d.createElement(s); js.id=id;
-        js.src='https://weatherwidget.io/js/widget.min.js';
-        fjs.parentNode.insertBefore(js,fjs);
-      }
-    }(document,'script','weatherwidget-io-js');
-  </script>
-
-  <!-- ─── MAIN CONTENT ──────────────────────────────────── -->
-<div class="column">
-  <!-- Left-column content... -->
-</div>
-<div class="column">
-  <!-- Right-column content... -->
-</div>
-
-
-    <!-- LEFT COLUMN -->
-    <div class="column">
-
-      <div class="section">
-        <h2>🌴 Welina Mai Kākou to Mr. Abregano’s Classroom 🌺</h2>
-        <div class="vision-image-wrapper">
-          <img src="OlomanaVision.jpg" alt="Olomana School Vision" />
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>⛅ ʻImi ʻIke Kaiāulu (Environmental Awareness)</h2>
-        <!-- Doppler Radar -->
-        <iframe
-          src="https://embed.windy.com/embed2.html?lat=21.3&lon=-157.8&zoom=8&overlay=rain"
-          width="100%" height="300" frameborder="0">
-        </iframe>
-      </div>
-
-      <div class="section">
-        <h2>📹 Zoom Conference Hub</h2>
-        <p><em>By appointment only</em></p>
-        <p>
-          <a href="https://zoom.us/client/latest/ZoomInstaller.exe" class="button-link">💻 Download Zoom (PC)</a>
-          <a href="#" class="button-link">📱 Get Zoom (Mobile)</a>
-        </p>
-        <p style="font-size:.9em;">
-          Email <a href="mailto:ryan.abregano@k12.hi.us"><strong>Mr. A’s</strong></a> to request access.
-        </p>
-      </div>
-
-      <div class="section">
-        <h2>📖 Student Handbook</h2>
-        <object data="23-24StudentHandbook1.pdf" type="application/pdf" width="100%" height="400">
-          <p>Your browser doesn’t support PDFs. <a href="23-24StudentHandbook1.pdf" target="_blank">Download here</a>.</p>
-        </object>
-      </div>
-
-    </div><!-- /.column -->
-
-    <!-- RIGHT COLUMN -->
-    <div class="column">
-<img
-  src="abreganos.jpg"         <!-- or your encoded/renamed filename -->
-  alt="Ryan Abregano"
-  class="profile-photo"
-  onerror="this.onerror=null;this.src='fallback-profile.png';"
-/>
-        <div class="bio-text">
-          <h3>Ryan Abregano</h3>
-          <p>
-            I am a cultural educator and mentor who draws on my own journey
-            through school and life in Hawaiʻi to guide students toward academic
-            and personal success. Whether helping a learner tackle a tough
-            assignment or coaching a small group project, I bring empathy,
-            patience, and a healthy dose of local ʻāina wisdom.
-          </p>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>📸 Social Feeds</h2>
-        <iframe class="social-iframe"
-                src="https://www.instagram.com/olomanaschool/embed"
-                allowtransparency="true">
-        </iframe>
-      </div>
-
-      <div class="section">
-        <h2>🌐 Pixelfed</h2>
-        <div class="pixelfed-box">
-          <a href="https://pixelfed.social/register" target="_blank">
-            <img src="pixelfed-logo.svg" alt="Pixelfed Logo" />
-            <div>Sign up on Pixelfed</div>
-          </a>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>📅 Google Calendar</h2>
-        <iframe
-          src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&amp;ctz=Pacific/Honolulu"
-          style="border:0" width="100%" height="400" frameborder="0" scrolling="no">
-        </iframe>
-      </div>
-
-    </div><!-- /.column -->
-
-  </div><!-- /.container -->
-
-  <!-- ─── HIDDEN YOUTUBE BACKGROUND MUSIC ──────────────────── -->
-  <div id="yt"></div>
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    let ytPlayer;
-    function onYouTubeIframeAPIReady() {
-      ytPlayer = new YT.Player('yt', {
-        height:'0', width:'0',
-        videoId:'HOK74BGCYXM',
-        playerVars:{ autoplay:1, loop:1, playlist:'HOK74BGCYXM', controls:0, modestbranding:1, rel:0 },
-        events:{ onReady:e=>{ e.target.unMute(); e.target.setVolume(30); e.target.playVideo(); } }
-      });
-    }
-    window.addEventListener('click', ()=>{
-      if(ytPlayer && ytPlayer.unMute){
-        ytPlayer.unMute();
-        ytPlayer.setVolume(30);
-        ytPlayer.playVideo();
-      }
-    },{ once:true });
-  </script>
 
 </body>
 </html>
