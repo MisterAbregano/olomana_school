@@ -1,458 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-
   <meta charset="UTF-8">
   <title>Mr. Abregano’s Classroom</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <style>
-    :root {
-      --bg: #f5f0e6;
-      --card-bg: rgba(255,255,255,0.8);
-      --accent: #00695c;
-      --text: #222;
-      --ticker-bg: #111;
-      --ticker-color: #fff;
-    } }
+    body {
+      margin: 0;
+      font-family: 'Caveat', cursive;
+      background-color: #f5f0e6;
+      color: #1a1a1a;
+    }
 
-.section.profile {
-  font-family: 'Caveat', cursive;
-  font-size: 20pt;
-  line-height: 1.5;
-  color: #1a1a1a;
-  text-align: center;
-  max-width: 600px;
-  margin: auto;
-}
-
-.profile-photo {
-  width: 180px;
-  height: 180px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  margin: 1rem auto;
-  display: block;
-}
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body {
-      margin:0; padding:0; width:100%; min-height:100%;
-      background: var(--bg);
-      font-family: Georgia, serif;
-      color: var(--text);
-      position: relative;
-    }
-    /* ─── SCROLLING BACKGROUND ───────────────────────────────── */
-    body::before {
-      content: "";
-      position: fixed; top:0; left:0;
-      width:100%; height:100%;
-      background: url('download.jpeg') center/cover no-repeat;
-      opacity: 0.15;
-      z-index: -1;
-      animation: bgScroll 60s linear infinite;
-    }
-    @keyframes bgScroll {
-      from { background-position: center top; }
-      to   { background-position: center bottom; }
-    }
-    /* ─── UNIFIED TICKER ───────────────────────────────────────── */
-    .ticker {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      background: var(--ticker-bg);
-      color: var(--ticker-color);
-      height: 2.5rem;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      padding: 0 1rem;
-      white-space: nowrap;
-      z-index: 1000;
-    }
-    #ticker-content span {
-      display: inline-block;
-      padding-left: 100%;
-      animation: scroll-left 50s linear infinite;
-    }
-    @keyframes scroll-left {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-100%); }
-    }
-    body { padding-top: 2.5rem; }
-    /* ─── LAYOUT ─────────────────────────────────────────────── */
-    .container { display:flex; gap:2rem; max-width:1200px; margin:4rem auto; padding:0 1rem; }
-    .column { flex:1; }
-    .section {
-      background: var(--card-bg);
-      padding:1.5rem; border-radius:8px;
-      box-shadow:0 2px 8px rgba(0,0,0,0.1);
-      margin-bottom:2rem; position: relative;
-    }
-    .section h2 {
-      margin-top:0; color: var(--accent);
-      font-size:1.5rem; display:flex; align-items:center; gap:.5rem;
-    }
-    .button-link {
-      display:inline-block; text-decoration:none;
-      background:var(--accent); color:#fff;
-      padding:.6rem 1rem; border-radius:4px; margin:.5rem .5rem 0 0;
-      font-size:.95rem;
-    }
-    .button-link.disabled { background:#999; cursor:default; }
-    .vision-image-wrapper {
-      border:4px solid transparent; border-image-slice:1;
-      border-image-source:linear-gradient(45deg, gold, darkgoldenrod);
-      border-radius:8px; overflow:hidden; margin-top:.5rem;
-    }
-    .vision-image-wrapper img { width:100%; height:auto; display:block; }
-    .profile { display:flex; gap:1rem; align-items:flex-start; }
-    .profile img {
-      width:120px; height:120px; object-fit:cover;
-      border-radius:50%; box-shadow:0 2px 6px rgba(0,0,0,0.2);
-    }
-    .profile .bio-text h3 { margin:0 0 .5rem; font-size:1.3rem; }
-    .profile .bio-text p { margin:0; line-height:1.5; font-size:.95rem; }
-    .social-iframe { width:100%; height:300px; border:4px solid transparent;
-      border-image-slice:1; border-image-source:linear-gradient(to right, orange, magenta);
-      border-radius:8px; }
-    .pixelfed-box {
-      text-align:center; padding:1rem; margin-top:1rem;
-      border:4px solid transparent; border-image-slice:1;
-      border-image-source:linear-gradient(to right, teal, cyan);
-      border-radius:8px;
-    }
-    .pixelfed-box img { max-width:200px; display:block; margin:0 auto .5rem; }
-
-    /* ─── MOON PHASE COMPONENT ───────────────────────────────── */
-    .moon-section {
-      background: var(--bg);
-      padding: 1rem;
-      border-radius: 8px;
+    .banner {
+      background-color: rgba(255,255,255,0.5);
       text-align: center;
-      margin-top: 1rem;
+      padding: 1rem;
+      font-size: 1.4rem;
+      font-weight: bold;
+      position: relative;
+      backdrop-filter: blur(6px);
     }
-    .moon-section h2 {
-      margin-top: 0;
-      color: var(--accent);
-      font-size: 1.3rem;
-    }
-    .moon-emoji {
-      font-size: 4rem;
-      line-height: 1;
-      margin: 0.5rem 0;
-    }
-    #kaulana-mahina-name {
-      margin: 0.5rem 0 0;
-      font-size: 1rem;
-      color: var(--text);
-    }/* Center the weather widget on the page */
-.weather-container {
-  position: fixed;
-  top: 2.5rem;       /* same vertical position as before */
-  width: 100%;
-  text-align: center;
-  z-index: 1000;
-}
 
-/* Force the widget to size to its content */
-.weather-container .weatherwidget-io {
-  display: inline-block !important;
-}
+    .banner img {
+      width: 1.5em;
+      height: 1.5em;
+      vertical-align: middle;
+      margin: 0 0.5rem;
+    }
+
+    .main-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .left-column,
+    .right-column {
+      flex: 1 1 400px;
+      max-width: 500px;
+    }
+
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin: 1rem auto;
+      display: block;
+    }
+
+    .bio-text {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .welcome-card,
+    .school-logo {
+      text-align: center;
+      margin: 1rem auto;
+    }
+
+    .school-logo img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .social-feeds {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .handbook {
+      margin-top: 2rem;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 1rem;
+      text-align: center;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
-
-  <!-- ─── SPORTS TICKER ───────────────────────────────── -->
-  <div class="ticker" id="ticker-bar">
-    <div id="ticker-content"><span>Loading HHSAA sports events…</span></div>
+  <!-- Welina Mai Banner -->
+  <div class="banner">
+    <img src="boar-left.jpg" alt="Wild Boar">
+    Welina Mai Kākou to Mr. Abregano’s Classroom
+    <img src="boar-right.jpg" alt="Wild Boar">
   </div>
 
-  <!-- ─── HONOLULU WEATHER (Current Only, Centered) ─────────────────── -->
-<div class="weather-container">
-  <a 
-    class="weatherwidget-io"
-    href="https://forecast7.com/en/21d3201569/honolulu/"
-    data-mode="Current"      <!-- only current conditions -->
-    data-days="0"            <!-- no multi-day forecast -->
-    data-theme="pure"
-    data-basecolor="#ffffff"
-    data-textcolor="#111"
-    data-accent="#00695c"
-    data-highcolor="#e74c3c"
-    data-lowcolor="#3498db"
-  >
-    HONOLULU WEATHER
-  </a>
-</div>
-<script>
-  !function(d,s,id){
-    var js,fjs=d.getElementsByTagName(s)[0];
-    if(!d.getElementById(id)){
-      js=d.createElement(s);js.id=id;
-      js.src='https://weatherwidget.io/js/widget.min.js';
-      fjs.parentNode.insertBefore(js,fjs);
-    }
-  }(document,'script','weatherwidget-io-js');
-</script>
+  <!-- Main Content Layout -->
+  <div class="main-wrapper">
 
-  <script>
-    !function(d,s,id){
-      var js,fjs=d.getElementsByTagName(s)[0];
-      if(!d.getElementById(id)){
-        js=d.createElement(s);js.id=id;
-        js.src='https://weatherwidget.io/js/widget.min.js';
-        fjs.parentNode.insertBefore(js,fjs);
-      }
-    }(document,'script','weatherwidget-io-js');
-  </script>
+    <!-- Left Column -->
+    <div class="left-column">
+      <div class="welcome-card">
+        <img src="olomana_logo.jpg" alt="Olomana School Logo">
+      </div>
+    </div>
 
-  <!-- ─── MAIN CONTENT ──────────────────────────────────── -->
-  <div class="container">
+    <!-- Right Column -->
+    <div class="right-column">
+      <img src="Abregano's.jpg" alt="Mr. R Abregano" class="profile-photo">
 
-    <!-- LEFT COLUMN -->
-    <div class="column">
-
-      <!-- Welina Mai Kākou -->
-      <div class="section">
-        <h2>🌴 Welina Mai Kākou to Mr. Abregano’s Classroom 🌺</h2>
-        <div class="vision-image-wrapper">
-          <img src="OlomanaVision.jpg" alt="Olomana School Vision">
-        </div>
+      <div class="bio-text">
+        <h3>Mr. R Abregano</h3>
+        <p><strong>Mr. R Abregano</strong> is a Native Hawaiian cultural educator and practitioner rooted in the traditional practices of <strong>hele lālau</strong> <em>(subsistence hunting)</em>, <strong>lawaiʻā</strong> <em>(traditional fishing)</em>, <strong>mele</strong> <em>(Hawaiian chant and song)</em>, and <strong>hula protocol</strong> <em>(ceremonial practices of dance and ritual)</em>.</p>
+        <p>Raised in the values of <strong>aloha ʻāina</strong> <em>(love for the land)</em> and <strong>kuleana</strong> <em>(responsibility)</em>, he brings <strong>ʻike kupuna</strong> <em>(ancestral knowledge)</em> into modern educational spaces with intention and heart.</p>
+        <p>He is passionate about learning from and with his <strong>haumāna</strong> <em>(students)</em>, seeking to understand their lived experiences so he can offer grounded, alternative perspectives. Through his cultural upbringing, he has been encouraged to cultivate <strong>substance within our keiki</strong> <em>(children)</em>—not only in what they learn, but in who they become.</p>
+        <p>His approach honors identity, purpose, and the deep connections between people and place.</p>
       </div>
 
-      <!-- ʻImi ʻIke Kaiāulu (Environmental Awareness) -->
-      <div class="section" id="weather-widget">
-        <h2>⛅ ʻImi ʻIke Kaiāulu (Environmental Awareness)</h2>
-
-        <!-- Doppler Radar -->
-        <iframe
-          src="https://embed.windy.com/embed2.html?lat=21.3&lon=-157.8&zoom=8&overlay=rain"
-          width="100%" height="300" frameborder="0">
-        </iframe>
-
-        <!-- Moon Phase Component -->
-        <div class="moon-section">
-          <h2>🌙 Kaulana Mahina (Moon Phase)</h2>
-          <div class="moon-emoji" id="moon-emoji" aria-label="Current moon phase">🌑</div>
-          <p id="kaulana-mahina-name">Loading moon phase…</p>
-          <noscript>
-            <p style="color:#a00;">Enable JavaScript to view the moon phase name.</p>
-          </noscript>
-        </div>
-
-        <!-- Tide & Surf Forecast -->
-        <div style="margin-top:1rem;">
-          <iframe
-            src="https://magicseaweed.com/Honolulu-Surf-Report/361/"
-            width="100%" height="300" frameborder="0">
-          </iframe>
-          <p><strong>Kai:</strong> Kai piʻi a me kai emi – Ebb and Flow</p>
-          <p><strong>Nalu:</strong> Live surf forecast for Honolulu 🌊</p>
-        </div>
-
-        <!-- Hawaiian Language Calendar -->
-        <div style="margin-top:1rem;">
-          <iframe
-            src="https://calendar.google.com/calendar/embed?src=hawaiianmooncalendar%40gmail.com&ctz=Pacific%2FHonolulu"
-            style="border:0" width="100%" height="300" frameborder="0" scrolling="no">
-          </iframe>
-          <p><strong>Mahina Helu:</strong> Ianuali, Pepeluali, Malaki…</p>
-        </div>
+      <!-- Social Feed Embed Placeholder -->
+      <div class="social-feeds">
+        <!-- Insert your embed feed here -->
       </div>
 
-      <!-- Zoom Conference Hub -->
-      <div class="section">
-        <h2>📹 Zoom Conference Hub</h2>
-        <p><em>By appointment only</em></p>
-        <p>
-          <a href="https://zoom.us/client/latest/ZoomInstaller.exe" class="button-link">💻 Download Zoom (PC)</a>
-          <a href="#" class="button-link">📱 Get Zoom (Mobile)</a>
-        </p>
-        <p style="font-size:.9em;">
-          Email <a href="mailto:ryan.abregano@k12.hi.us"><strong>Mr. A’s</strong></a> to request access.
-        </p>
+      <!-- School Handbook -->
+      <div class="handbook">
+        <h4>School Handbook</h4>
+        <a href="handbook.pdf" target="_blank">Download the PDF</a>
       </div>
+    </div>
 
-      <!-- Student Handbook -->
-      <div class="section">
-        <h2>📖 Student Handbook</h2>
-        <object data="23-24StudentHandbook1.pdf" type="application/pdf" width="100%" height="400">
-          <p>Your browser doesn’t support PDFs. <a href="23-24StudentHandbook1.pdf" target="_blank">Download here</a>.</p>
-        </object>
-      </div>
-
-    </div><!-- /.column -->
-
-    <!-- RIGHT COLUMN -->
-    <div class="column">
-
-<!-- ▶ Profile & Bio -->
-<img
-  src="Abregano&#39;s.JPG"
-  alt="Mr. R Abregano"
-  class="profile-photo"
-/>
-  <div class="bio-text">
-    <h3>Mr. R Abregano</h3>
-
-    <p>
-      <strong>Mr. R Abregano</strong> is a Native Hawaiian cultural educator and practitioner rooted in the traditional practices of 
-      <strong>hele lālau</strong> <em>(subsistence hunting)</em>, 
-      <strong>lawaiʻa</strong> <em>(traditional fishing)</em>, 
-      <strong>mele</strong> <em>(Hawaiian chant and song)</em>, and 
-      <strong>hula protocol</strong> <em>(ceremonial practices of dance and ritual)</em>.
-    </p>
-    <p>
-      Raised in the values of <strong>aloha ʻāina</strong> <em>(love for the land)</em> and 
-      <strong>kuleana</strong> <em>(responsibility)</em>, he brings 
-      <strong>ʻike kupuna</strong> <em>(ancestral knowledge)</em> into modern educational spaces with intention and heart.
-    </p>
-    <p>
-      He is passionate about learning from and with his <strong>haumāna</strong> <em>(students)</em>, seeking to understand their lived experiences 
-      so he can offer grounded, alternative perspectives. Through his cultural upbringing, he has been encouraged to cultivate 
-      <strong>substance within our keiki</strong> <em>(children)</em>—not only in what they learn, but in who they become.
-    </p>
-    <p>
-      His approach honors identity, purpose, and the deep connections between people and place.
-    </p>
   </div>
-</div>
-
-
-<!-- Instagram Feed -->
-      <div class="section">
-        <h2>📸 Social Feeds</h2>
-        <iframe class="social-iframe"
-                src="https://www.instagram.com/olomanaschool/embed"
-                allowtransparency="true">
-        </iframe>
-      </div>
-
-      <!-- Pixelfed -->
-      <div class="section">
-        <h2>🌐 Pixelfed</h2>
-        <div class="pixelfed-box">
-          <a href="https://pixelfed.social/register" target="_blank">
-            <img src="pixelfed-logo.svg" alt="Pixelfed Logo">
-            <div>Sign up on Pixelfed</div>
-          </a>
-        </div>
-      </div>
-
-      <!-- Google Calendar -->
-      <div class="section">
-        <h2>📅 Google Calendar</h2>
-        <iframe
-          src="https://calendar.google.com/calendar/embed?src=YOUR_CALENDAR_ID&ctz=Pacific/Honolulu"
-          style="border:0" width="100%" height="400" frameborder="0" scrolling="no">
-        </iframe>
-      </div>
-
-    </div><!-- /.column -->
-
-  </div><!-- /.container -->
-
-  <!-- ─── HHSAA SPORTS TICKER SCRIPT ─────────────────────────── -->
-<script>
-  async function loadTicker() {
-    try {
-      const res = await fetch('hhsaa_ticker.json');
-      console.log('📡 Ticker fetch status:', res.status);
-      if (!res.ok) {
-        throw new Error(`HTTP ${res.status}`);
-      }
-      const events = await res.json();
-      console.log('📑 Ticker JSON:', events);
-      const content = document.getElementById('ticker-content');
-      if (events.length) {
-        const span = document.createElement('span');
-        span.textContent = events.join(' • ');
-        content.innerHTML = '';
-        content.appendChild(span);
-      } else {
-        content.textContent = 'ℹ️ No upcoming HHSAA events found';
-      }
-    } catch (err) {
-      console.error('Ticker error:', err);
-      document.getElementById('ticker-content').textContent =
-        '⚠️ Unable to load HHSAA sports events';
-    }
-  }
-  loadTicker();
-</script>
-
-
-  <!-- ─── MOON PHASE SCRIPT ─────────────────────────────────── -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/suncalc/1.8.0/suncalc.min.js"></script>
-  <script>
-    (function(){
-      const kaulanaMahina = [
-        "Muku – New moon (no light)", "Hilo – First sliver, faint thread", "Hoaka – Crescent, faint light",
-        "Kūkahi – First quarter begins", "Kūlua – Second quarter", "Kūkolu – Third quarter",
-        "Kūpau – Last quarter", "ʻOle Kūkahi – Waning toward half", "ʻOle Kūlua – Second waning crescent",
-        "ʻOle Kūkolu – Third waning crescent", "ʻOle Kūpau – Last waning (half-moon)", "Huna – Hidden, rounding out",
-        "Mōhalu – Blossoming like a flower", "Hua – Fruit-shaped fullness", "Akua – First full-moon night",
-        "Hoku – Second full-moon night", "Māhealani – Third full-moon night (hazy)", "Kulua – Moon begins to wane",
-        "Lāʻau Kūkahi – First plant moon", "Lāʻau Kūlua – Second plant moon", "Lāʻau Kūpau – Last plant moon",
-        "ʻOle Kūkahi – Waning past half", "ʻOle Kūlua – Second waning", "ʻOle Kūpau – Third quarter",
-        "Kāloa Kūkahi – First Kanaloa day", "Kāloa Kūlua – Second Kanaloa day", "Kāloa Pau – Last Kanaloa day",
-        "Kāne – Day of the god Kāne", "Lono – Day of the god Lono", "Mauli – Life spirit (final breath)"
-      ];
-      const emojiPhases = ["🌑","🌒","🌓","🌔","🌕","🌖","🌗","🌘"];
-      window.addEventListener('DOMContentLoaded', () => {
-        if (typeof SunCalc === 'undefined') return console.error('SunCalc failed to load');
-        const { phase } = SunCalc.getMoonIllumination(new Date());
-        const age   = Math.min(29, Math.max(0, Math.round(phase * 29.53)));
-        const name  = kaulanaMahina[age] || 'Unknown phase';
-        const emoji = emojiPhases[Math.floor(phase * 8) % 8];
-        document.getElementById('moon-emoji').textContent = emoji;
-        document.getElementById('kaulana-mahina-name').textContent = name;
-      });
-    })();
-  </script>
-
-  <!-- HIDDEN YOUTUBE BACKGROUND MUSIC w/ UNMUTE & GESTURE FALLBACK -->
-  <div id="yt"></div>
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script>
-    let ytPlayer;
-
-    function onYouTubeIframeAPIReady() {
-      ytPlayer = new YT.Player('yt', {
-        height: '0',
-        width: '0',
-        videoId: 'HOK74BGCYXM',
-        playerVars: {
-          autoplay: 1,
-          loop: 1,
-          playlist: 'HOK74BGCYXM',
-          controls: 0,
-          modestbranding: 1,
-          rel: 0
-        },
-        events: {
-          onReady: e => {
-            // Try to unmute & play immediately
-            e.target.unMute();
-            e.target.setVolume(100);
-            e.target.playVideo();
-          }
-        }
-      });
-    }
-
-    // If autoplay is blocked, this click will unmute & restart
-    window.addEventListener('click', () => {
-      if (ytPlayer && typeof ytPlayer.unMute === 'function') {
-        ytPlayer.unMute();
-        ytPlayer.setVolume(100);
-        ytPlayer.playVideo();
-      }
-    }, { once: true });
-  </script>
 </body>
 </html>
-
